@@ -19,7 +19,7 @@ function SetProjectData(data) {
     DrawProjectList("ProjectList");
 }
 function SetAwardData(data) {
-    ProjectData = data;
+    AwardData = data;
     DrawAwardList("AwardList");
 }
 function Start() {
@@ -61,13 +61,19 @@ function DrawProjectList(name) {
 function DrawAwardList(name) {
     var html = "";
     for (var p of AwardData) {
-var code = '<div class="animate-box publication">'+
-'                        <h3><strong>'+p["Title"]+'/<strong>  '+p["Date"]+'</h3>'+
-'                        <p></p>'+
-'                        <hr/>'+
-'                    </div>';
+
+        var code = '<div class=" publication">'+
+        '                            <div class="text-center ">'+
+        '                            <h1><strong>🏆 '+p["Title"]+'</strong>          '+p["Date"]+'</h1>'+
+        '                            <p></p>'+
+        '                            </div>'+
+
+        '                        </div>'+
+        '                            <hr/>';
+        
         html += code;
     }
+    console.log(AwardData);
     document.getElementById(name).innerHTML = html;
 }
 function DrawPublicationList() {
