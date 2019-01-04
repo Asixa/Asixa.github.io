@@ -1,4 +1,4 @@
-var getJSON = function(url) {
+var getJSON = function(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.responseType = 'json';
@@ -22,10 +22,7 @@ function SetProjectData(data) {
 function Start() {
     console.log("hi");
 
-    $.getJSON("test.json", function(json) {
-        console.log("JSON Data received, name is " + json.name);
-    });
-    getJSON("Data\Projects.json", SetProjectData);
+    getJSON("https://asixa.github.io/Data/Projects.json", SetProjectData);
 }
 
 function DrawProjectList(name) {
@@ -53,6 +50,8 @@ function DrawProjectList(name) {
             '                        </div>';
 
         code.replace("{GITHUB}", p["Github"]);
+        code.replace("{IMAGE_LINK}", p["Github"]);
+        code.replace("{NAME}", p["Name"]);
         html += code;
     }
     document.getElementById(name).innerHTML = html;
