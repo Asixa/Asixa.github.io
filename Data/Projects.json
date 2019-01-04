@@ -1,13 +1,21 @@
 [{
-        "name": "ALight-Ray",
+        "Name": "ALight-Ray",
         "Date": "2018",
         "Field": "Computer Graphic",
-        "Description": "This is test description",
+        "Description": "A physical based offline path tracking renderer for personal research purpose.",
         "Github": "",
         "Image": "images/ALight.png"
     },
     {
-        "name": "ALight-Raster",
+        "Name": "ALight-Raster",
+        "Date": "2018",
+        "Field": "Computer Graphic",
+        "Description": "A physical based offline path tracking renderer for personal research purpose.",
+        "Github": "",
+        "Image": "images/ALight.png"
+    },
+    {
+        "Name": "Unity-Steam Multiplayer",
         "Date": "2018",
         "Field": "Computer Graphic",
         "Description": "",
@@ -15,15 +23,7 @@
         "Image": "images/ALight.png"
     },
     {
-        "name": "Unity-Steam Multiplayer",
-        "Date": "2018",
-        "Field": "Computer Graphic",
-        "Description": "",
-        "Github": "",
-        "Image": "images/ALight.png"
-    },
-    {
-        "name": "NodeEditor",
+        "Name": "NodeEditor",
         "Date": "2019",
         "Field": "WPF",
         "Description": "",

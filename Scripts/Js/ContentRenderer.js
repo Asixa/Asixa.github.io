@@ -29,17 +29,18 @@ function DrawProjectList(name) {
     var html = "";
 
     for (var p of ProjectData) {
+
         var code = '<div class="col-lg-4 col-md-4">' +
-            '                            <div class="fh5co-blog animate-box">' +
-            '                                <a href="#"><img class="img-responsive" src="{IMAGE_LINK}" alt=""></a>' +
+            '                            <div class="fh5co-blog ">' +
+            '                                <a href="#"><img class="img-responsive" src="' + p["Image"] + '" alt=""></a>' +
             '                                <div class="blog-text">' +
             '                                    <div class="prod-title">' +
-            '                                        <h3><a href="" #><strong>{NAME}</strong></a></h3>' +
-            '                                        <span class="posted_by">March 2018</span>' +
-            '                                        <span class="comment">Computer Grapihc</span>' +
-            '                                        <p>A physical based offline path tracking renderer for personal research purpose.</p>' +
-            '                                        <a href="#" class="btn btn-primary">Read More</a>' +
-            '                                        <a href="{GITHUB}">' +
+            '                                        <h3><a href="" #><strong>' + p["name"] + '</strong></a></h3>' +
+            '                                        <span class="posted_by">' + p["Date"] + '</span>' +
+            '                                        <span class="comment">' + p["Field"] + '</span>' +
+            '                                        <p>' + p["Description"] + '</p>' +
+            '                                        <a href="' + p["Page"] + '" class="btn btn-primary">Read More</a>' +
+            '                                        <a href="' + p["GitHub"] + '">' +
             '                                            <span class="comment" width="40">' +
             '												<img class="github" src="images/Logos/GitHub-Mark-64px.png" height="40" >' +
             '											</span>' +
@@ -49,9 +50,7 @@ function DrawProjectList(name) {
             '                            </div>' +
             '                        </div>';
 
-        code.replace("{GITHUB}", p["Github"]);
-        code.replace("{IMAGE_LINK}", p["Github"]);
-        code.replace("{NAME}", p["Name"]);
+
         html += code;
     }
     document.getElementById(name).innerHTML = html;
