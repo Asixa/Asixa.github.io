@@ -35,7 +35,7 @@ function DrawProjectList(name) {
             '                                <a href="#"><img class="img-responsive" src="' + p["Image"] + '" alt=""></a>' +
             '                                <div class="blog-text">' +
             '                                    <div class="prod-title">' +
-            '                                        <h3><a href="" #><strong>' + p["name"] + '</strong></a></h3>' +
+            '                                        <h3><a href="" #><strong>' + p["Name"] + '</strong></a></h3>' +
             '                                        <span class="posted_by">' + p["Date"] + '</span>' +
             '                                        <span class="comment">' + p["Field"] + '</span>' +
             '                                        <p>' + p["Description"] + '</p>' +
