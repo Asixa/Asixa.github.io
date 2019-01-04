@@ -19,7 +19,7 @@
         "Date": "2017",
         "Field": "Computer Compiler",
         "Description": "A programing language on DotNet Framework using MSIL for personal research purpose. ",
-        "Github": "",
+        "Github": "#",
         "Image": "images/Orange.png"
     },
     {
@@ -35,7 +35,7 @@
         "Date": "2019",
         "Field": "WPF",
         "Description": "A configurable Windows Presentation Foundation component for node editing ",
-        "Github": "",
+        "Github": "#",
         "Image": "images/NodeEditor.png"
     }
 ]

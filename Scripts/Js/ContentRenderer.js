@@ -40,7 +40,7 @@ function DrawProjectList(name) {
             '                                        <span class="comment">' + p["Field"] + '</span>' +
             '                                        <p>' + p["Description"] + '</p>' +
             '                                        <a href="' + p["Page"] + '" class="btn btn-primary">Read More</a>' +
-            '                                        <a href="' + p["GitHub"] + '">' +
+            '                                        <a href="' + p["Github"] + '">' +
             '                                            <span class="comment" width="40">' +
             '												<img class="github" src="images/Logos/GitHub-Mark-64px.png" height="40" >' +
             '											</span>' +
