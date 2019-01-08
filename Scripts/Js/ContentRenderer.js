@@ -63,7 +63,6 @@ function DrawProjectList(name) {
 
 function DrawAwardList(name) {
     var html = "";
-    console.log(AwardData);
     for (var p of AwardData) {
 
         var code = '<div class=" publication">' +
