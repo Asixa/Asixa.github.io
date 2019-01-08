@@ -892,10 +892,16 @@ figure {
     padding: 7em 0;
 }
 
-#fh5co-services,
 #fh5co-about,
 #fh5co-contact {
     padding: 7em 0;
+    @media screen and (max-width: $screen-sm) {
+        padding: 4em 0;
+    }
+}
+
+#fh5co-services {
+    padding: 0em 0;
     @media screen and (max-width: $screen-sm) {
         padding: 4em 0;
     }
