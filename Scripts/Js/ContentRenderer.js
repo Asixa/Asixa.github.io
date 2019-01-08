@@ -13,15 +13,18 @@ var getJSON = function(url, callback) {
     xhr.send();
 };
 var PrjectData = [];
-var AwardData=[];
+var AwardData = [];
+
 function SetProjectData(data) {
     ProjectData = data;
     DrawProjectList("ProjectList");
 }
+
 function SetAwardData(data) {
     AwardData = data;
     DrawAwardList("AwardList");
 }
+
 function Start() {
     getJSON("https://asixa.github.io/Data/Projects.json", SetProjectData);
     getJSON("https://asixa.github.io/Data/Awards.json", SetAwardData);
@@ -62,20 +65,21 @@ function DrawAwardList(name) {
     var html = "";
     for (var p of AwardData) {
 
-        var code = '<div class=" publication">'+
-        '                            <div class="text-center ">'+
-        '                            <h1><strong>🏆 '+p["Title"]+'</strong>          '+p["Date"]+'</h1>'+
-        '                            <p></p>'+
-        '                            </div>'+
+        var code = '<div class=" publication">' +
+            '                            <div class="text-center ">' +
+            '                            <h1><strong>🏆 ' + p["Title"] + '</strong>          ' + p["Date"] + '</h1>' +
+            '                            <p></p>' +
+            '                            </div>' +
 
-        '                        </div>'+
-        '                            <hr/>';
-        
+            '                        </div>' +
+            '                            <hr/>';
+
         html += code;
     }
     console.log(AwardData);
     document.getElementById(name).innerHTML = html;
 }
+
 function DrawPublicationList() {
 
     var myvar = '<div class="animate-box publication">' +
