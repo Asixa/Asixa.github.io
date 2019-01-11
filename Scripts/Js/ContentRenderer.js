@@ -26,8 +26,8 @@ function SetAwardData(data) {
 }
 
 function Start() {
-    getJSON("https://asixa.github.io/Data/Projects.json", SetProjectData);
-    getJSON("https://asixa.github.io/Data/Awards.json", SetAwardData);
+    getJSON("https://xingyuchen.me/Data/Projects.json", SetProjectData);
+    getJSON("https://xingyuchen.me/Data/Awards.json", SetAwardData);
 }
 
 function DrawProjectList(name) {
