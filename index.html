@@ -10,7 +10,7 @@
   <title>Xingyu Chen</title>
   <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="sticky-footer.css" rel="stylesheet">
+  <!-- <link href="bootstrap/css/blog.css" rel="stylesheet"> -->
 </head>
 
 <style>
@@ -26,12 +26,12 @@
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132051884-1"></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-132051884-1');
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-132051884-1');
 </script>
 
 <body>
@@ -39,18 +39,18 @@
   <!-- Begin page content -->
   <main role="main" class="container">
     <div class="row">
-        <div class="col-md-6 order-md-1" style="vertical-align:middle; text-align:center">
-            <img class="rounded-circle" src="images/A.jpg" width="300" height="300">
-          </div>
+      <div class="col-md-6 order-md-1 p-4" style="vertical-align:middle; text-align:center">
+        <img class="rounded-circle" src="images/A.jpg" width="300" height="300">
+      </div>
 
-      <div class="col-md-5 order-md-2">
-        <h3 class="my-4">Xingyu Chen |<span style="font-family: sans-serif"> 陈星宇</span> <small><br>Sophomore in Computer
-            Science</small> </h3>
-        <p class="lead"><b>University at Buffalo, SUNY.</b></p>
+      <div class="col-md-5 order-md-2 text-center pt-1">
+        <h1 class="pt-5">Xingyu Chen |<span style="font-family: sans-serif"> 陈星宇</h1>
+        <p class="lead"><b>Sophomore in Computer Science<br/>University at Buffalo, SUNY.</b></p>
+        <p class="lead"><b></b></p>
         <p class="lead"><b>Email: <a href="mailto:xchen252@buffalo.edu">xchen252 (AT) buffalo (DOT) edu</a> .</b></p>
-        <a href="files/CV2019.pdf" class="btn btn-primary my-2">Resume</a>
-        <a href="files/AM_SSR_TSRPT.pdf" class="btn btn-primary my-2">Transcript</a>
-        <a href="https://github.com/asixa" class="btn btn-primary my-2">GitHub</a>
+        <a href="files/CV2019.pdf" class="btn btn-primary btn-lg my-2">Resume</a>
+        <a href="files/AM_SSR_TSRPT.pdf" class="btn btn-primary btn-lg my-2">Transcript</a>
+        <a href="https://github.com/asixa" class="btn btn-primary btn-lg my-2">GitHub</a>
       </div>
 
     </div>
@@ -63,35 +63,34 @@
       <div class="col-md-6">
         <h2>News</h2>
         <div class="my-3 p-3 bg-white rounded box-shadow">
-          
-          <div class="media text-muted pt-3">
+
+          <div class="media text-muted pt-1 mt-2 border rounded">
             <img src="images/icons/Award.png" width="64" height="64" alt="" class="mr-2 rounded">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <p class="media-body pb-3 mb-0 lh-125 border-gray text-center">
               <strong class="d-block text-gray-dark">Award</strong>
               <b>[Jun 2019]</b> Dean's List Spring 2019.
             </p>
           </div>
-          
-          <div class="media text-muted pt-3">
-            <img src="images/icons/Acdamic.png" width="64" height="64" alt="" class="mr-2 rounded">
 
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <div class="media text-muted pt-1 mt-2 border rounded">
+            <img src="images/icons/Acdamic.png" width="64" height="64" alt="" class="mr-2 rounded">
+            <p class="media-body pb-3 mb-0 lh-125 border-gray text-center">
               <strong class="d-block text-gray-dark">Acdamic</strong>
               <b>[May 2019]</b> Got GPA 4.0 in the spring 2019 semester
             </p>
           </div>
 
-          <div class="media text-muted pt-3">
+          <div class="media text-muted pt-1 mt-2 border rounded">
             <img src="images/icons/Award.png" width="64" height="64" alt="" class="mr-2 rounded">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <p class="media-body pb-3 mb-0 lh-125 border-gray text-center">
               <strong class="d-block text-gray-dark">Award</strong>
               <b>[Dec 2018]</b> Got Best Project of CSE115
             </p>
           </div>
 
-          <div class="media text-muted pt-3">
+          <div class="media text-muted pt-1 mt-2 border rounded">
             <img src="images/icons/Acdamic.png" width="64" height="64" alt="" class="mr-2 rounded">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <p class="media-body pb-3 mb-0 lh-125 border-gray text-center">
               <strong class="d-block text-gray-dark">Acdamic</strong>
               <b>[Dec 2018]</b> Got GPA 4.0 in the fall 2018 semester
             </p>
@@ -109,9 +108,10 @@
           and Computing (ESC) Lab.
         </p>
         <h4>Research Interests</h4>
-        <button class="btn btn-secondary">Computer Graphic</button>
-        <button class="btn btn-secondary">Deep Learning</button>
-        <button class="btn btn-secondary">IOT</button>
+        <button class="btn btn-secondary mb-2">Computer Graphic</button>
+        <button class="btn btn-secondary mb-2">Deep Learning</button>
+        <button class="btn btn-secondary mb-2">IOT</button>
+        <button class="btn btn-secondary mb-2">Programming Language Theory</button>
       </div>
 
     </div>
@@ -119,108 +119,188 @@
   </div>
 
   <div class="container">
-    <hr>
+
     <h2>Education</h2>
-    <h4>State University of New York at Buffalo, Buffalo, NY, USA</h4>
-    <p>2018 ~ Present <br>Bachelor in Computer Science <br><b>GPA: 4.0/4.0</b></p>
-  </div>
-
-  <div class="container">
-    <hr>
-    <h2>Awards</h2>
-    <div class="my-3 p-3 bg-white rounded box-shadow">
-      <div class="media ">
-        <pclass="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          🏆Dean's List, Fall 2018 and Spring 2019
-          </p>
+    <!-- ---------- -->
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col-auto d-none d-lg-block p-3">
+        <image src="images/Education/UB.jpg" height="200" width="200" />
       </div>
-      <div class="media ">
-        <pclass="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          🏆CSE115 Project Competition Winner Fall 2018
-          </p>
+    <div class="col p-4 d-flex flex-column position-static">
+      <strong class="d-inline-block mb-2 text-primary text-center">2018 ~ Present</strong>
+      <h3 class="mb-0 text-center ">State University of New York at Buffalo</h3>
+      <div class="mb-1 text-center"><br>Bachelor in Computer Science 2022<br><b>GPA: 4.0/4.0</b></p>
       </div>
-
-
     </div>
   </div>
+  <!-- ---------- -->
+  </div>
+
+  <div class="container pb-4">
+    <h2>Awards</h2>
+
+    <div class="media  mt-2 border rounded">
+      <img src="images/icons/Award.png" width="64" height="64" alt="" class="mr-2 rounded">
+      <h4 class="media-body pt-3 pb-3 mb-0 lh-125 border-gray text-center align-middle">Dean's List, Fall 2018 and Spring 2019</h4>
+    </div>
+  </div>
+
+
+  <!-- <div class="container">
+    <h2>Publications</h2>
+
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col-auto d-none d-lg-block">
+        <image src="images/Publications/FerroTag/Icon.png" height="300" width="300" />
+      </div>
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">ACM Sensys 2019, (Acceptance ratio: 28/144).</strong>
+        <h3 class="mb-0">FerroTag: A Paper-based mmWave-Scannable Tagging Infrastructure</h3>
+        <div class="mb-1">
+          <a href="https://www.acsu.buffalo.edu/~zhengxio/" target="_blank">Zhengxiong Li</a>,
+          <a href="https://baichengchen.github.io/" target="_blank">Baicheng Chen</a>,
+          Zhuolin Yang, Huining Li,
+          <a href="https://www.acsu.buffalo.edu/~zhengxio/" target="_blank">Chenhan Xu</a>,
+          <b>Xingyu Chen</b>,
+          Kun Wang,
+          <a href="https://cse.buffalo.edu/~wenyaoxu/" target="_blank">Wenyao Xu</a>,
+          <p class="card-text mb-auto">Inventory management is pivotal in the supply chain to supervisethe
+            non-capitalized products and stock items.
+            Item counting, index-ing and identification are the major jobs of inventory management.Currently,
+            the most adopted inventory technologies in productcounting/identification are using either the
+            laser-scannable barcodeor the radio-frequency identification (RFID). However,
+            the laser-scannable barcode is entangled by an alignment issue and the RFIDis economically and
+            environmentally unfriendly (i.e., high-cost andnot naturally disposable).
+            To this end, we proposeFerroTagwhichis a paper-based mmWave-scannable tagging infrastructure for thenext
+            generation inventory management system,
+            featuring ultra-lowcost, environment-friendly, battery-free and in-situ.we evaluate the
+            performanceofFerroTagwith 201 different tag design patterns.
+            Results showthatFerroTagcan identify tags with an accuracy of more than 99%in a controlled lab setup.
+            Moreover, we examine the reliability,
+            ro-bustness and performance ofFerroTagunder various real-worldcircumstances, where FerroTagmaintains the
+            accuracy over 97%.
+            Therefore,FerroTagis a promising tagging infrastructure for theapplications in inventory management
+            systems.</p>
+          <a href="#" class="btn btn-primary mt-3">Paper</a>
+          <a href="#" class="btn btn-primary mt-3">Video</a>
+        </div>
+      </div>
+    </div>
+
+
+  </div> -->
 
 
   <div class="album py-5 bg-light">
     <div class="container">
       <h2>Projects</h2>
       <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="images/Raster.gif" alt="Card image cap">
-            <div class="card-body">
-              <h5>ALight-Raster</h5>
-              <p class="card-text">A realtime CPU rasterizer with programmable rendering pipeline for personal research
-                purpose.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">More</button>
-                </div>
-                <small class="text-muted">2018</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="images/RT.gif" alt="Card image cap">
-            <div class="card-body">
-              <h5>ALight-Ray</h5>
-              <p class="card-text">A physical based offline path tracking CPU renderer for personal research
-                purpose.<br> </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
-                </div>
-                <small class="text-muted">2018</small>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="images/GPU.gif" alt="Card image cap">
-            <div class="card-body">
-              <h5>ALightGPU</h5>
-              <p class="card-text">A simple GPU ray tracing renderer for personal research purpose.<br> </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
-                </div>
-                <small class="text-muted">2019</small>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- ALight renderer Complex -->
+        <div class="jumbotron p-4 p-md-5 border rounded shadow-sm">
+          <div class=" px-0">
+            <h1 class="font-italic">ALight Renderer Complex</h1>
+            <p class="lead my-3">ALight Renderer Complex is a combination of various rendering technologies, which provides a platform for Computer Graphic self-study.</p>
 
-        <!-- <div class="col-md-4">
-                  <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                        </div>
-                        <small class="text-muted">9 mins</small>
+            <div class="row">
+              <!-- CPU Raster -->
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="images/Raster.gif" alt="Card image cap">
+                  <div class="card-body">
+                    <h5>ALight-Rasterizer</h5>
+                    <p class="card-text">A realtime CPU rasterizer with programmable rendering pipeline for research and self-education purpose.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">More</button>
                       </div>
+                      <small class="text-muted">2018</small>
                     </div>
                   </div>
-                </div> -->
+                </div>
+              </div>
+              <!-- CPU Ray -->
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="images/RT.gif" alt="Card image cap">
+                  <div class="card-body">
+                    <h5>ALight-Ray</h5>
+                    <p class="card-text">A physical based offline path tracking CPU renderer for research and self-education purpose.
+                      purpose.<br> </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                      </div>
+                      <small class="text-muted">2018</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="images/GPU.gif" alt="Card image cap">
+                  <div class="card-body">
+                    <h5>ALightGPU</h5>
+                    <p class="card-text">A simple GPU ray tracing renderer using CUDA for research and self-education purpose.<br> </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                      </div>
+                      <small class="text-muted">2019</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="images/Icon.png" alt="Card image cap">
+                  <div class="card-body">
+                    <h5>ALight Rendering Pipline</h5>
+                    <p class="card-text">A simple rendering pipeline for Unity Engine with Many real-time rendering techniques <br> </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="" class="btn btn-sm btn-outline-secondary">GitHub</a> 
+                      </div>
+                      <small class="text-muted">2019</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="images/Icon.png" alt="Card image cap">
+                  <div class="card-body">
+                    <h5>ALight OpenGL</h5>
+                    <p class="card-text">OpenGL renderer for ALight.<br> </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                      </div>
+                      <small class="text-muted">2019</small>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+
+            </div>
+          </div>
+        </div>
+        <!-- ALight renderer Complex -->
+
 
 
       </div>
     </div>
   </div>
 
-  <footer class="footer">
+  <footer class="blog-footer p-3 border">
     <div class="container">
       <p class="m-0 text-center">Copyright &copy; Xingyu Chen 2019</p>
     </div>
