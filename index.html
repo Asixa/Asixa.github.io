@@ -8,6 +8,7 @@
   <meta name="author" content="">
   <link rel="icon" href="../../../../favicon.ico">
   <title>Xingyu Chen</title>
+  
   <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="bootstrap/css/blog.css" rel="stylesheet"> -->
@@ -21,7 +22,22 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
+
+  .tooltip-inner {
+    max-width: 500px;
+    /* If max-width does not work, try using width instead */
+    width: 500px; 
+  }
+  .tooltip.show {
+    opacity: 1;
+    background: rgb(255, 255, 255);
+  }
 </style>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="https://getbootstrap.com/docs/4.0/assets/js/docs.min.js"></script>
+
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132051884-1"></script>
@@ -83,6 +99,7 @@
         <!-- <a href="files/AM_SSR_TSRPT.pdf" class="btn btn-primary btn-lg my-2">Transcript</a> -->
         <a href="https://github.com/asixa" class="btn btn-primary btn-lg my-2">GitHub</a>
         <a href="https://scholar.google.com/citations?user=S4h-eTMAAAAJ&hl=en" class="btn btn-primary btn-lg my-2">Google Scholar</a>
+        <a href="https://notebook.xingyuchen.me" class="btn btn-primary btn-lg my-2">Notebook</a>
 
       </div>
 
@@ -197,9 +214,20 @@
 
     <div class="media bg-light mt-2 border rounded">
       <img src="images/icons/Award.png" width="64" height="64" alt="" class="mr-2 rounded">
-      <h4 class="media-body pt-3 pb-3 mb-0 lh-125 border-gray text-center align-middle"><a class="text-danger"><b>Best Paper Award</b></a>, ACM SenSys, 2019</h4>
+      <h4 class="media-body pt-3 pb-3 mb-0 lh-125 border-gray text-center align-middle"><a class="text-danger"><b id="sensys_pop" title="<img class='img-fluid' src='images/Events/sensys19.jpg'>" >Best Paper Award</b></a>, ACM SenSys, 2019</h4>
     </div>
-
+    <script>
+      $(document).ready(function(){
+        $('#sensys_pop').tooltip({
+          container: 'body',
+          animated: 'fade',
+          placement: 'bottom',
+          
+          html: true
+        });
+      })
+    </script>
+    
     <div class="media bg-light mt-2 border rounded">
       <img src="images/icons/Award.png" width="64" height="64" alt="" class="mr-2 rounded">
       <h4 class="media-body pt-3 pb-3 mb-0 lh-125 border-gray text-center align-middle">Dean's List, All semesters</h4>
@@ -226,6 +254,7 @@
 
   <div class="container">
     <h2>Publications</h2>
+
 
 
 
@@ -435,5 +464,6 @@
     </div>
   </footer>
 </body>
+
 
 </html>
