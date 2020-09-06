@@ -103,9 +103,15 @@
   <main role="main" class="container" style="margin-top: 10px;">
     <div class="row">
       <div class="col-md-6 order-md-1 p-4" style="vertical-align:middle; text-align:center">
-        <img class="" src="images/A.png" width="300" height="300">
+        <img id="avator" class="" src="images/A.png" width="300" height="300">
       </div>
 
+      <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const avator = urlParams.get('avator')
+        if (avator == "robot")
+          document.getElementById("avator").src = "images/A-R.jpg"
+      </script>
       <div class="col-md-5 order-md-2 text-center pt-1">
         <h2 class="pt-5">Xingyu Chen |<span style="font-family: sans-serif"> 陈星宇</h2>
         <p class="lead"><b>Sophomore in Computer Science<br />University at Buffalo, SUNY.</b></p>
