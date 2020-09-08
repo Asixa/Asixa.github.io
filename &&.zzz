@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- <link rel="icon" href="../../../../favicon.ico"> -->
+  <title>Xingyu Chen</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/highlight/styles/default.css">
+</head>
+
+<style>
+  .vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .tooltip-inner {
+    max-width: 500px;
+    /* If max-width does not work, try using width instead */
+    width: 500px;
+  }
+
+  .tooltip.show {
+    opacity: 1;
+    background: rgb(255, 255, 255);
+  }
+
+  img:hover>.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #000;
+    opacity: 0.5;
+    border-radius: 30px;
+  }
+</style>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.0/assets/js/docs.min.js"></script>
+<script src="assets/highlight/js/highlight.pack.js"></script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-132051884-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-132051884-1');
+</script>
+
+<body>
+
+  <!-- <nav class="navbar navbar-dark navbar-expand-lg fixed-top border " style="background-color: #f8f8f8;">
+    <div class="container ">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-dark" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#bio">Bio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#research">Research</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#teaching">Teaching</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#publications">Publications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#misc">Misc</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> -->
+  <!-- Begin page content -->
+  <main role="main" class="container" style="margin-top: 10px;">
+    <div class="row">
+      <div class="col-md-6 order-md-1 p-4" style="vertical-align:middle; text-align:center">
+        <img id="avator" class="" src="images/A.png" width="300" height="300">
+      </div>
+
+      <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const avator = urlParams.get('avator')
+        if (avator == "robot")
+          document.getElementById("avator").src = "images/A-R.jpg"
+      </script>
+      <div class="col-md-5 order-md-2 text-center pt-1">
+        <h2 class="pt-5">Xingyu Chen |<span style="font-family: sans-serif"> 陈星宇</h2>
+        <p class="lead"><b>Sophomore in Computer Science<br />University at Buffalo, SUNY.</b></p>
+        <p class="lead"><b></b></p>
+        <p class="lead"><b>Email: <a href="mailto:xchen252@buffalo.edu">xchen252 (AT) buffalo (DOT) edu</a> .</b></p>
+        <a href="files/CV2019_Fall.pdf" class="btn btn-primary btn-lg my-2">Resume</a>
+        <!-- <a href="files/AM_SSR_TSRPT.pdf" class="btn btn-primary btn-lg my-2">Transcript</a> -->
+
+
+        <a href="https://notebook.xingyuchen.me" class="btn btn-primary btn-lg my-2">Blog</a>
+
+        <a href="https://github.com/asixa"><img class="image-btn" height="50px" src="images/icons/github.png"></a>
+        <a href="https://scholar.google.com/citations?user=S4h-eTMAAAAJ&hl=en"><img class="image-btn"
+            src="images/icons/google-scholar.png"></a>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="container">
+    <hr>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h2>News</h2>
+        <div class="my-3 p-3 bg-white rounded box-shadow">
+
+          <!-- <div class="media text-muted pt-1 mt-2 border rounded shadow-sm">
+            <img src="images/icons/Acdamic.png" width="64" height="64" alt="" class="mr-2 rounded">
+            <p class="media-body pb-3 mb-0 lh-125 border-gray text-center">
+              <strong class="d-block text-gray-dark mt-3 h4">I am looking for a PhD position</strong>
+            </p>
+          </div> -->
+
+          <div class="media text-muted pt-1 mt-2 border rounded">
+            <img src="images/icons/Award.png" width="64" height="64" alt="" class="mr-2 rounded">
+            <p class="media-body pb-3 mb-0 lh-125 border-gray text-center">
+              <strong class="d-block text-gray-dark">Award</strong>
+              <b>[Feb 2020]</b> Dean's List Fall 2019.
+            </p>
+          </div>
+
+          <div class="media text-muted pt-1 mt-2 border rounded">
+            <img src="images/icons/Award.png" width="64" height="64" alt="" class="mr-2 rounded">
+            <p class="media-body pb-3 mb-0 lh-125 border-gray text-center">
+              <strong class="d-block text-gray-dark">Award</strong>
+              <b>[Nov 2019]</b> FerroTag won the best paper award.
+            </p>
+          </div>
+
+          <div class="media text-muted pt-1 mt-2 border rounded">
+            <img src="images/icons/Award.png" width="64" height="64" alt="" class="mr-2 rounded">
+            <p class="media-body pb-3 mb-0 lh-125 border-gray text-center">
+              <strong class="d-block text-gray-dark">Award</strong>
+              <b>[Jun 2019]</b> Dean's List Spring 2019.
+            </p>
+          </div>
+
+          <div class="media text-muted pt-1 mt-2 border rounded">
+            <img src="images/icons/Acdamic.png" width="64" height="64" alt="" class="mr-2 rounded">
+            <p class="media-body pb-3 mb-0 lh-125 border-gray text-center">
+              <strong class="d-block text-gray-dark">Acdamic</strong>
+              <b>[May 2019]</b> Got GPA 4.0 in the spring 2019 semester
+            </p>
+          </div>
+
+          <div class="media text-muted pt-1 mt-2 border rounded">
+            <img src="images/icons/Award.png" width="64" height="64" alt="" class="mr-2 rounded">
+            <p class="media-body pb-3 mb-0 lh-125 border-gray text-center">
+              <strong class="d-block text-gray-dark">Award</strong>
+              <b>[Dec 2018]</b> Got Best Project of CSE115
+            </p>
+          </div>
+
+          <div class="media text-muted pt-1 mt-2 border rounded">
+            <img src="images/icons/Acdamic.png" width="64" height="64" alt="" class="mr-2 rounded">
+            <p class="media-body pb-3 mb-0 lh-125 border-gray text-center">
+              <strong class="d-block text-gray-dark">Acdamic</strong>
+              <b>[Dec 2018]</b> Got GPA 4.0 in the fall 2018 semester
+            </p>
+          </div>
+
+        </div>
+      </div>
+      <a class="anchor" name="bio"></a>
+      <div class="col-md-5">
+        <h2>Biography</h2>
+        <p class="lead"><b>I am a Sophomore student at <a href="http://www.buffalo.edu/">the State University of New
+              York at Buffalo
+              (UB)</a>,
+            under the direction of <a href="http://www.cse.buffalo.edu/~wenyaoxu/">Prof. Wenyao Xu</a> at the Embedded
+            Sensing
+            and Computing (ESC) Lab.</b>
+        </p>
+        <h4>Research Interests</h4>
+        <button class="btn btn-secondary mb-2">Moblie Computing</button>
+        <button class="btn btn-secondary mb-2">Computer Graphic</button>
+        <button class="btn btn-secondary mb-2">Deep Learning</button>
+        <button class="btn btn-secondary mb-2">IOT</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="container">
+
+    <h2>Education</h2>
+    <!-- ---------- -->
+    <div class="row  no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col-auto d-none d-lg-block p-3">
+        <image src="images/Education/UB.jpg" height="150" width="150" />
+      </div>
+      <div class="col  p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary text-center">2018 ~ Present</strong>
+        <h3 class="mb-0 text-center ">State University of New York at Buffalo</h3>
+        <div class=" text-center"><br>Bachelor in Computer Science<br>Expected Graduation: May 2021</p>
+        </div>
+      </div>
+    </div>
+    <!-- ---------- -->
+  </div>
+
+  <div class="container pb-4">
+    <h2>Awards</h2>
+
+    <div class="media bg-light mt-2 border rounded">
+      <img src="images/icons/Award.png" width="64" height="64" alt="" class="mr-2 rounded">
+      <h4 class="media-body pt-3 pb-3 mb-0 lh-125 border-gray text-center align-middle"><a
+          href="http://sensys.acm.org/2019/program/" class="text-danger"><b id="sensys_pop"
+            title="<img class='img-fluid' src='images/Events/sensys19.jpg'>">Best Paper Award</b></a>, ACM SenSys, 2019
+      </h4>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $('#sensys_pop').tooltip({
+          container: 'body',
+          animated: 'fade',
+          placement: 'bottom',
+
+          html: true
+        });
+      })
+    </script>
+
+    <div class="media bg-light mt-2 border rounded">
+      <img src="images/icons/Award.png" width="64" height="64" alt="" class="mr-2 rounded">
+      <h4 class="media-body pt-3 pb-3 mb-0 lh-125 border-gray text-center align-middle">Dean's List, All semesters</h4>
+    </div>
+  </div>
+
+  <!-- <div class="container pb-4">
+    <h2>Teaching Assistant</h2>
+
+    <div class="media bg-light mt-2 border rounded">
+      <img src="images/icons/Acdamic.png" width="64" height="64" alt="" class="mr-2 rounded">
+      <h4 class="media-body pt-3 pb-3 mb-0 lh-125 border-gray text-center "> CSE220: System Programming, <div class="d-inline text-secondary">Summar 2020, SUNY Buffalo</div></h4>
+    </div>
+  </div> -->
+
+  <div class="container pb-4">
+    <h2>Service</h2>
+
+    <div class="media bg-light mt-2 border rounded">
+      <img src="images/icons/Acdamic.png" width="64" height="64" alt="" class="mr-2 rounded">
+      <h4 class="media-body pt-3 pb-3 mb-0 lh-125 border-gray text-center align-middle">UB CSE Open House Event Project
+        Demo, 2018,2019</h4>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Publications</h2>
+
+
+
+    <div
+      class="row no-gutters border rounded bg-light overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col-auto d-none d-lg-block">
+        <image src="images/Publications/Thermometer/cover.png" height="270" width="270" />
+      </div>
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">ACM Sensys 2019,(Acceptance Rate: 19.4%, 28 of 144).</strong>
+        <h3 class="mb-0">Poster: In-Ear Thermometer: Wearable Real-time CoreBody Temperature Monitoring</h3>
+        <div class="mb-1">
+          <b>Xingyu Chen</b>,
+          <a href="https://www.acsu.buffalo.edu/~zhengxio/" target="_blank">Zhengxiong Li</a>,
+          <a href="http://www.acsu.buffalo.edu/~chenhanx/" target="_blank">Chenhan Xu</a>,
+          <a href="https://baichengchen.github.io/" target="_blank">Baicheng Chen</a>,
+          <a href="https://cse.buffalo.edu/~wenyaoxu/" target="_blank">Wenyao Xu</a>
+          <p>
+          <p>
+          <p>
+            <!-- <a href="https://www.acsu.buffalo.edu/~zhengxio/Papers/Zhengxiong_Sensys19.pdf"
+            class="btn btn-primary mt-3 mr-1">Paper</a>
+          <a href="https://dl.acm.org/citation.cfm?id=3360019" class="btn btn-primary mt-3 mr-1">Link</a>
+          <a href="https://www.acsu.buffalo.edu/~zhengxio/Papers/Zhengxiong_Sensys19.txt"
+            class="btn btn-primary mt-3 mr-1">Bib</a>
+          <a href="https://youtu.be/lodkH9k-ckg" class="btn btn-primary mt-3">Video</a> -->
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <div
+      class="row no-gutters border rounded bg-light overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col-auto d-none d-lg-block">
+        <image src="images/Publications/Thermometer/cover.png" height="270" width="270" />
+      </div>
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">ACM Sensys 2019,(Acceptance Rate: 19.4%, 28 of 144).</strong>
+        <h3 class="mb-0">Poster: In-Ear Thermometer: Wearable Real-time CoreBody Temperature Monitoring</h3>
+        <div class="mb-1">
+          <b>Xingyu Chen</b>,
+          <a href="https://www.acsu.buffalo.edu/~zhengxio/" target="_blank">Zhengxiong Li</a>,
+          <a href="http://www.acsu.buffalo.edu/~chenhanx/" target="_blank">Chenhan Xu</a>,
+          <a href="https://baichengchen.github.io/" target="_blank">Baicheng Chen</a>,
+          <a href="https://cse.buffalo.edu/~wenyaoxu/" target="_blank">Wenyao Xu</a>
+          <p>
+          <p>
+          <p>
+            <!-- <a href="https://www.acsu.buffalo.edu/~zhengxio/Papers/Zhengxiong_Sensys19.pdf"
+          class="btn btn-primary mt-3 mr-1">Paper</a>
+        <a href="https://dl.acm.org/citation.cfm?id=3360019" class="btn btn-primary mt-3 mr-1">Link</a>
+        <a href="https://www.acsu.buffalo.edu/~zhengxio/Papers/Zhengxiong_Sensys19.txt"
+          class="btn btn-primary mt-3 mr-1">Bib</a>
+        <a href="https://youtu.be/lodkH9k-ckg" class="btn btn-primary mt-3">Video</a> -->
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <div
+      class="row no-gutters border rounded bg-light overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col-auto d-none d-lg-block">
+        <image src="images/Publications/Thermometer/cover.png" height="270" width="270" />
+      </div>
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">ACM Sensys 2019,(Acceptance Rate: 19.4%, 28 of 144).</strong>
+        <h3 class="mb-0">Poster: In-Ear Thermometer: Wearable Real-time CoreBody Temperature Monitoring</h3>
+        <div class="mb-1">
+          <b>Xingyu Chen</b>,
+          <a href="https://www.acsu.buffalo.edu/~zhengxio/" target="_blank">Zhengxiong Li</a>,
+          <a href="http://www.acsu.buffalo.edu/~chenhanx/" target="_blank">Chenhan Xu</a>,
+          <a href="https://baichengchen.github.io/" target="_blank">Baicheng Chen</a>,
+          <a href="https://cse.buffalo.edu/~wenyaoxu/" target="_blank">Wenyao Xu</a>
+          <p>
+          <p>
+          <p>
+            <!-- <a href="https://www.acsu.buffalo.edu/~zhengxio/Papers/Zhengxiong_Sensys19.pdf"
+              class="btn btn-primary mt-3 mr-1">Paper</a>
+            <a href="https://dl.acm.org/citation.cfm?id=3360019" class="btn btn-primary mt-3 mr-1">Link</a>
+            <a href="https://www.acsu.buffalo.edu/~zhengxio/Papers/Zhengxiong_Sensys19.txt"
+              class="btn btn-primary mt-3 mr-1">Bib</a>
+            <a href="https://youtu.be/lodkH9k-ckg" class="btn btn-primary mt-3">Video</a> -->
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div
+      class="row no-gutters border rounded bg-light overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col-auto d-none d-lg-block">
+        <image src="images/Publications/FerroTag/Icon.png" height="270" width="270" />
+      </div>
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">ACM Sensys 2019, <a href="http://sensys.acm.org/2019/program/"
+            class="text-danger">Best Paper Award </a>(Acceptance Rate: 19.4%, 28 of 144).</strong>
+        <h3 class="mb-0">FerroTag: A Paper-based mmWave-Scannable Tagging Infrastructure</h3>
+        <div class="mb-1">
+          <a href="https://www.acsu.buffalo.edu/~zhengxio/" target="_blank">Zhengxiong Li</a>,
+          <a href="https://baichengchen.github.io/" target="_blank">Baicheng Chen</a>,
+          Zhuolin Yang, Huining Li,
+          <a href="http://www.acsu.buffalo.edu/~chenhanx/" target="_blank">Chenhan Xu</a>,
+          <b>Xingyu Chen</b>,
+          Kun Wang,
+          <a href="https://cse.buffalo.edu/~wenyaoxu/" target="_blank">Wenyao Xu</a>
+          <p>
+          <p>
+          <p>
+            <a href="https://www.acsu.buffalo.edu/~zhengxio/Papers/Zhengxiong_Sensys19.pdf"
+              class="btn btn-primary mt-3 mr-1">Paper</a>
+            <a href="https://dl.acm.org/citation.cfm?id=3360019" class="btn btn-primary mt-3 mr-1">Link</a>
+            <a href="https://www.acsu.buffalo.edu/~zhengxio/Papers/Zhengxiong_Sensys19.txt"
+              class="btn btn-primary mt-3 mr-1">Bib</a>
+            <a href="https://youtu.be/lodkH9k-ckg" class="btn btn-primary mt-3">Video</a>
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <div
+      class="row no-gutters border rounded bg-light overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col-auto d-none d-lg-block">
+        <image src="images/Publications/Thermometer/cover.png" height="270" width="270" />
+      </div>
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">ACM Sensys 2019,(Acceptance Rate: 19.4%, 28 of 144).</strong>
+        <h3 class="mb-0">ThermoWave: A New Paradigm of Wireless Passive Temperature
+          Monitoring via mmWave Sensing</h3>
+        <div class="mb-1">
+
+          <a href="https://baichengchen.github.io/" target="_blank">Baicheng Chen</a>,
+          <a href="https://www.acsu.buffalo.edu/~zhengxio/" target="_blank">Zhengxiong Li</a>,
+          <a target="_blank">Huining Li</a>,
+          <b>Xingyu Chen</b>,
+          <a href="http://www.acsu.buffalo.edu/~chenhanx/" target="_blank">Chenhan Xu</a>,
+
+          <a href="https://cse.buffalo.edu/~wenyaoxu/" target="_blank">Wenyao Xu</a>
+          <p>
+          <p>
+          <p>
+            <!-- <a href="https://www.acsu.buffalo.edu/~zhengxio/Papers/Zhengxiong_Sensys19.pdf"
+            class="btn btn-primary mt-3 mr-1">Paper</a>
+          <a href="https://dl.acm.org/citation.cfm?id=3360019" class="btn btn-primary mt-3 mr-1">Link</a>
+          <a href="https://www.acsu.buffalo.edu/~zhengxio/Papers/Zhengxiong_Sensys19.txt"
+            class="btn btn-primary mt-3 mr-1">Bib</a>
+          <a href="https://youtu.be/lodkH9k-ckg" class="btn btn-primary mt-3">Video</a> -->
+
+
+        </div>
+      </div>
+    </div>
+
+    <!--googleoff: index-->
+    <div
+      class="row no-gutters border rounded bg-light overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col-auto d-none  d-lg-block">
+        <image src="images/Publications/mRehab/cover.png" height="270" width="270" />
+      </div>
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">ACM Mobisys 2020, (Acceptance Rate: 19.4%, 34 of 175).</strong>
+        <h3 class="mb-0">RehabPhone: A Sotware-Defined Tool using 3D Printing and Smartphones for Personalized
+          Home-based Rehabilitation</h3>
+        <div class="mb-1">
+          <a href="https://www.acsu.buffalo.edu/~hanbinzh/" target="_blank">Hanbin Zhang</a>,
+          Gabriel Guo, Emery Comstock,
+          <a href="https://baichengchen.github.io/" target="_blank">Baicheng Chen</a>,
+          <b>Xingyu Chen</b>, Matthew Stafford, Lora Cavuoto, Jeanne Langan,
+          <a href="https://cse.buffalo.edu/~wenyaoxu/" target="_blank">Wenyao Xu</a>
+          <p>
+          <p>
+          <p>
+            <a href="https://cse.buffalo.edu/~wenyaoxu/papers/conference/xu-mobisys2020a.pdf"
+              class="btn btn-primary  mr-1">Paper</a>
+            <a href="https://dl.acm.org/doi/abs/10.1145/3386901.3389028" class="btn btn-primary  mr-1">Link</a>
+        </div>
+      </div>
+    </div>
+    <!--googleon: index-->
+
+  </div>
+
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="row">
+
+        <!--googleoff: index-->
+        <div class="card mb-4 box-shadow">
+          <center>
+            <img class="card-img-top" src="images/Projects/VT.png" alt="Card image cap">
+            <div class="card-body">
+
+              <h4> Vtensor</h4>
+
+              <p class="card-text">An online visual editor for machine learning and neural network</p>
+              <small class="text-muted">HTML, CSS, Python, Flask, SQL, Javascript, Typescript, C++</small>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!-- <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a> -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">More</button>
+                </div>
+
+                <small class="text-muted">2020</small>
+              </div>
+            </div>
+          </center>
+        </div>
+        <!--googleon: index-->
+
+
+        <div class="card mb-4 box-shadow">
+          <center>
+            <img class="card-img-top mt-5"
+              src="https://raw.githubusercontent.com/Asixa/Dragonfly-docs/master/misc/images/banner.jpg"
+              style="width: 60%;" alt="Card image cap">
+
+
+            <div class="card-body">
+              <h4 class="card-text">A <s>Differentiable, GPU-Friendly</s> Programming Language</p>
+              </h4>
+              <small class="text-muted">C/C++, CUDA, LLVM, Assembly</small>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="https://github.com/Asixa/Dragonfly" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                  <a href="http://www.dragonfly-lang.org/#/" class="btn btn-sm btn-outline-secondary">Website</a>
+                </div>
+
+                <small class="text-muted">2020</small>
+              </div>
+            </div>
+          </center>
+        </div>
+
+
+
+
+        <!-- ALight renderer Complex -->
+        <div class="jumbotron p-4 p-md-5 border rounded shadow-sm">
+          <div class=" px-0">
+            <h1 class="font-italic">ALight Renderer Complex</h1>
+            <p class="lead my-3">ALight Renderer Complex is a combination of various rendering technologies, which is
+              used for research and self-education purpose..</p>
+
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top" src="images/Creator.png" alt="Card image cap">
+              <div class="card-body">
+                <center>
+                  <h5><b>[Updating]</b> ALight-Creator</h5>
+                  <p class="card-text">A realtime CPU rasterizer with programmable rendering pipeline for research and
+                    self-education purpose.</p>
+                  <small class="text-muted">C++, ImGUI, OpenGL, Vulkan</small>
+                </center>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">More</button>
+                  </div>
+                  <small class="text-muted">2019</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- CPU Raster -->
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="images/Projects/Raster-min.gif" alt="Card image cap">
+                  <div class="card-body">
+                    <h5><b>[Archived]</b> ALight-Rasterizer</h5>
+                    <p class="card-text">A realtime CPU rasterizer with programmable rendering pipeline for research and
+                      self-education purpose.</p>
+                    <center><small class="text-muted">C# .NET Core</small> </center>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">More</button>
+                      </div>
+                      <small class="text-muted">2018</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- CPU Ray -->
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="images/Projects/RT-min.gif" alt="Card image cap">
+                  <div class="card-body">
+                    <h5><b>[Archived] </b>ALight-Ray</h5>
+                    <p class="card-text">A physical based offline path tracking CPU renderer for research and
+                      self-education purpose.<br> </p>
+                    <center><small class="text-muted">C#</small> </center>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                      </div>
+                      <small class="text-muted">2018</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="images/Projects/GPU-min.gif" alt="Card image cap">
+                  <div class="card-body">
+                    <h5><b>[Updating] </b>ALightGPU</h5>
+                    <p class="card-text">A simple GPU path tracing renderer using CUDA for research and self-education
+                      purpose.<br> </p>
+                    <center><small class="text-muted">C++, GPU, CUDA</small> </center>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                      </div>
+                      <small class="text-muted">2019</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="images/Icon.png" alt="Card image cap">
+                  <div class="card-body">
+                    <h5>ALight Rendering Pipline</h5>
+                    <p class="card-text">A simple rendering pipeline for Unity Engine with Many real-time rendering techniques <br> </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="" class="btn btn-sm btn-outline-secondary">GitHub</a> 
+                      </div>
+                      <small class="text-muted">2019</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="images/Icon.png" alt="Card image cap">
+                  <div class="card-body">
+                    <h5>ALight OpenGL</h5>
+                    <p class="card-text">OpenGL renderer for ALight.<br> </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                      </div>
+                      <small class="text-muted">2019</small>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+
+            </div>
+          </div>
+        </div>
+        <!-- ALight renderer Complex -->
+
+
+
+
+
+
+
+        <div
+          class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col-auto d-none d-lg-block p-5">
+            <image src="images/Projects/mrehablogo.png" height="200" width="200" />
+          </div>
+
+          <div class="col  p-4 d-flex flex-column position-static">
+
+            <h3><b>mRehab</b> </h3>
+            <div class="mb-1">
+
+              <p class="card-text mb-auto">mRehab is a novel in-home rehabilitation system, using 3D printing
+                technologies, smart devices and machine learning algorithms to provide feedback in long-term
+                rehabilitation and advances the current standard of care<br> <br> <br> </p>
+              <div class="btn-group mt-5">
+                <a href="https://cse.buffalo.edu/~wenyaoxu/project/mrehab.html"
+                  class="btn btn-sm btn-outline-secondary">Website</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+        <div
+          class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col-auto  d-lg-block p-3">
+            <image src="images/Projects/Unity-Steam.jpg" width="500" />
+          </div>
+
+          <div class="col  p-4 d-flex flex-column position-static">
+
+            <h3><b>Unity-Steam Networking System</b> </h3>
+            <div class="mb-1">
+
+              <p class="card-text mb-auto">It is a solution for Unity and steam networking, based on the low level
+                Steamwork Peer-2-Peer API, it simply encapsulates the Unity component system</p><br>
+              <center><small class="text-muted">C#, Unity, Steanwork API, Networking</small> </center>
+              <div class="btn-group mt-1">
+                <a href="https://github.com/Asixa/Steam-Multiplayer-for-Unity"
+                  class="btn btn-sm btn-outline-secondary">GitHub</a>
+              </div>
+
+              <small class="text-muted float-right">2017</small>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div
+          class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col-auto  d-lg-block p-3">
+            <image src="images/Projects/SD.jpg" width="500" />
+          </div>
+
+          <div class="col  p-4 d-flex flex-column position-static">
+
+            <div class="mb-1">
+
+              <p class="card-text mb-auto">I taught myself Unity when I was 13 and started developing my first game when
+                I was 14. This game was finally released on <a href="https://store.steampowered.com/">Steam</a>
+                (video game platform). This is the first <b>failure</b> for me in the field of game development. This is
+                not a
+                good game from any angle. It can’t even be called a game. But
+                this is the first time I have completed as a large-scale project
+                alone, handling PR and business by myself. Developing this game is also what led me to study further on
+                Computer Grapihcs </p>
+              <br>
+              <center><small class="text-muted">C#, Unity</small> </center>
+              <small class="text-muted float-right">2013 ~ 2015</small>
+              <!-- <div class="btn-group mt-5">
+                <a href="https://cse.buffalo.edu/~wenyaoxu/project/mrehab.html"
+                  class="btn btn-sm btn-outline-secondary">Website</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+      <!-- <iframe src="https://store.steampowered.com/widget/477140/" style="border:none;height:190px;width:100%;"></iframe> -->
+    </div>
+  </div>
+
+  <footer class="blog-footer p-3 border">
+    <div class="container">
+      <p class="m-0 text-center">Copyright &copy; Xingyu Chen 2019</p>
+    </div>
+  </footer>
+</body>
+
+
+</html>
