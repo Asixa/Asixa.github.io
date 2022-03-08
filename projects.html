@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- <link rel="icon" href="../../../../favicon.ico"> -->
+  <title>Xingyu Chen</title>
+  <meta name="description"
+    content="Xingyu Chen is currently in gap year.  He is a research assistant in CU Denver META Lab and University at Buffalo ESC Group.">
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="bootstrap/css/docs.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/highlight/styles/default.css">
+</head>
+
+<style>
+  .vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .tooltip-inner {
+    max-width: 500px;
+    /* If max-width does not work, try using width instead */
+    width: 500px;
+  }
+
+  .tooltip.show {
+    opacity: 1;
+    background: rgb(255, 255, 255);
+  }
+
+  img:hover>.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #000;
+    opacity: 0.5;
+    border-radius: 30px;
+  }
+</style>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.0/assets/js/docs.min.js"></script>
+<script src="assets/highlight/js/highlight.pack.js"></script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-132051884-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-132051884-1');
+</script>
+
+<body>
+
+  <nav class="navbar navbar-dark navbar-expand-lg fixed-top"
+    style="background-color: #182B49;  border-color:#FFCD00 !important;">
+    <div class="container ">
+      <a class="navbar-brand" href="index.html">Xingyu Chen</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-dark" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="index.html">Home
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#biography">Bio</a>
+          </li> -->
+          <li class="nav-item active">
+            <a class="nav-link" href="projects.html">Projects</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="publications.html">Publications</a>
+            <span class="sr-only">(current)</span>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Begin page content -->
+
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <h2 class="my-3">Projects</h2>
+      <div class="row">
+
+
+
+        <!--googleon: index-->
+
+
+
+        <div
+          class="row card no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative w-100">
+          <div class="col-auto d-none d-lg-block ">
+            <image src="images/Projects/VTsm.png" width="300" />
+          </div>
+          <div class="col  p-4 d-flex flex-column position-static">
+            <h3><b>VTensor</b> </h3>
+            <div class="mb-1">
+              <p class="card-text mb-auto">VTensor is an online visual editor for machine learning and neural
+                networks.<br> <br>
+                <br>
+                <center><small class="text-muted">HTML, CSS, Python, Flask, SQL, Javascript, Typescript, C++</small>
+                </center>
+                <div class="btn-group mt-1">
+                  <a href="https://github.com/Asixa/Steam-Multiplayer-for-Unity"
+                    class="btn btn-sm btn-outline-secondary">GitHub</a>
+                </div>
+                <small class="text-muted float-right">2020</small>
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4 box-shadow">
+          <center>
+            <img class="card-img-top  mt-3"
+              src="https://raw.githubusercontent.com/Asixa/Dragonfly-docs/master/misc/images/banner.jpg"
+              style="width: 40%;" alt="Card image cap">
+
+
+            <div class="card-body">
+              <h4 class="card-text">A <s>Differentiable, GPU-Friendly</s> Programming Language</p>
+              </h4>
+              <small class="text-muted">C/C++, CUDA, LLVM, Assembly</small>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="https://github.com/Asixa/Dragonfly" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                  <a href="http://www.dragonfly-lang.org/#/" class="btn btn-sm btn-outline-secondary">Website</a>
+                </div>
+
+                <small class="text-muted">2020</small>
+              </div>
+            </div>
+          </center>
+        </div>
+
+
+
+
+        <!-- ALight renderer Complex -->
+        <div class="jumbotron p-4 p-md-5 border rounded shadow-sm">
+          <div class=" px-0">
+            <h1 class="font-italic">ALight Renderer Combo</h1>
+            <p class="lead my-3">ALight Renderer Combo is a combination of various rendering technologies for research
+              and study use.</p>
+
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top" src="images/Creator.png" alt="Card image cap">
+              <div class="card-body">
+                <center>
+                  <h5><b>[Updating]</b> ALight-Creator</h5>
+                  <p class="card-text">A 3D scene editor developed using ImGUI.</p>
+                  <small class="text-muted">C++, ImGUI, OpenGL, Vulkan</small>
+                </center>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">More</button>
+                  </div>
+                  <small class="text-muted">2019</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- CPU Raster -->
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="images/Projects/Raster-min.gif" alt="Card image cap">
+                  <div class="card-body">
+                    <h5><b>[Archived]</b> ALight-Rasterizer</h5>
+                    <p class="card-text">A realtime CPU rasterizer with programmable rendering pipeline for research and
+                      study use.</p>
+                    <center><small class="text-muted">C# .NET Core</small> </center>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="https://github.com/Asixa/ALight/tree/master/ALightRaster.DotNetCore"
+                          class="btn btn-sm btn-outline-secondary">GitHub</a>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">More</button>
+                      </div>
+                      <small class="text-muted">2018</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- CPU Ray -->
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="images/Projects/RT-min.gif" alt="Card image cap">
+                  <div class="card-body">
+                    <h5><b>[Archived] </b>ALight-Ray</h5>
+                    <p class="card-text">A physical based offline path tracing CPU renderer for research and study
+                      use.<br> </p>
+                    <center><small class="text-muted">C#</small> </center>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="http://xingyuchen.me/ALight/" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                      </div>
+                      <small class="text-muted">2018</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="images/Projects/GPU-min.gif" alt="Card image cap">
+                  <div class="card-body">
+                    <h5><b>[Updating] </b>ALightGPU</h5>
+                    <p class="card-text">A simple GPU path tracing renderer developed using CUDA for research and study
+                      use.<br> </p>
+                    <center><small class="text-muted">C++, GPU, CUDA</small> </center>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="https://github.com/Asixa/ALightGPU" class="btn btn-sm btn-outline-secondary">GitHub</a>
+                      </div>
+                      <small class="text-muted">2019</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+        <!-- ALight renderer Complex -->
+
+
+
+
+
+
+
+        <div
+          class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col-auto d-none d-lg-block p-5">
+            <image src="images/Projects/mrehablogo.png" height="200" width="200" />
+          </div>
+
+          <div class="col  p-4 d-flex flex-column position-static">
+
+            <h3><b>mRehab</b> </h3>
+            <div class="mb-1">
+
+              <p class="card-text mb-auto">mRehab is a novel in-home rehabilitation system, using 3D printing
+                technologies, smart devices and machine learning algorithms to provide feedback in long-term
+                rehabilitation and advances the current standard of care<br> <br> <br> </p>
+              <div class="btn-group mt-5">
+                <a href="https://cse.buffalo.edu/~wenyaoxu/project/mrehab.html"
+                  class="btn btn-sm btn-outline-secondary">Website</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+        <div
+          class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col-auto d-none  d-lg-block ">
+            <image src="images/Projects/Unity-Steam.png" height="240px" />
+          </div>
+
+          <div class="col  p-4 d-flex flex-column position-static">
+
+            <h3><b>Unity-Steam Networking System</b> </h3>
+            <div class="mb-1">
+
+              <p class="card-text mb-auto">One of the first few solutions of Steam multiplayer networking for Unity
+                Engine. It was developed entirely by me solely. It is a low-level networking framework to connect Unity
+                Component System and Steam P2P network services. It is used by commercial games such us <a
+                  href="https://store.steampowered.com/app/805940/RUSSIA_BATTLEGROUNDS/">RUSSIA BATTLEGROUNDS</a>, a
+                battle royale game that supports up to 32 players at the same time. </p><br>
+              <center><small class="text-muted">C#, Unity, Steanwork API, Networking</small> </center>
+              <div class="btn-group mt-1">
+                <a href="https://github.com/Asixa/Steam-Multiplayer-for-Unity"
+                  class="btn btn-sm btn-outline-secondary">GitHub</a>
+              </div>
+
+              <small class="text-muted float-right">2017</small>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div
+          class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col-auto d-none d-lg-block ">
+            <image src="images/Projects/SD.jpg" width="500" />
+          </div>
+
+          <div class="col  p-4 d-flex flex-column position-static">
+
+            <div class="mb-1">
+
+              <p class="card-text mb-auto">A 3D sandbox video game developed entirely by me solely when I was 14 years
+                old (2014). It was the first time I have completed a large-scale project, handling PR and do business
+                alone. Develop this game is what led me to study further on Computer Graphics </p>
+              <br>
+              <center><small class="text-muted">C#, Unity</small> </center>
+              <small class="text-muted float-right">2013 ~ 2015</small>
+              <!-- <div class="btn-group mt-5">
+                <a href="https://cse.buffalo.edu/~wenyaoxu/project/mrehab.html"
+                  class="btn btn-sm btn-outline-secondary">Website</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+      <!-- <iframe src="https://store.steampowered.com/widget/477140/" style="border:none;height:190px;width:100%;"></iframe> -->
+    </div>
+  </div>
+
+
+
+  <footer class="blog-footer p-3 " style="background-color: #182B49;">
+    <div class="container ">
+      <p class="m-0 text-center text-white"> Copyright &copy; Xingyu Chen 2022</p>
+    </div>
+  </footer>
+</body>
+
+
+</html>
