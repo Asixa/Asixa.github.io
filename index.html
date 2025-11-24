@@ -4,48 +4,134 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="Xingyu Chen - PhD Student at UCSD">
+  <meta name="author" content="Xingyu Chen">
   <link rel="icon" type="image/png" href="images/UCSD.png">
-  <title>Xingyu Chen</title>
-  <meta name="description"
-    content="Xingyu Chen is 3rd year PhD student in Computer Science at University of California, San Diego. Research interests include mobile computing, computer graphics, and machine learning.">
+  <title>Xingyu Chen | UCSD</title>
 
-  <!-- Remove Bootstrap and add Tailwind CSS -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Keep Font Awesome -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/highlight/styles/default.css">
 
-  <!-- Custom styles can be moved to Tailwind config -->
+  <!-- Tailwind Config -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
+            'ag-light': '#f8fafc', // Slate-50
+            'ag-blue': '#1d4ed8', // Blue-700 (Darker Tech Blue)
+            'ag-blue-dark': '#1e3a8a', // Blue-900
+            'ag-text-main': '#0f172a', // Slate-900 (Deep Black)
+            'ag-text-sub': '#334155', // Slate-700 (Dark Grey)
             'ucsd-navy': '#182B49',
             'ucsd-gold': '#FFCD00',
           },
           fontFamily: {
             'manrope': ['Manrope', 'sans-serif'],
+          },
+          backdropBlur: {
+            'xs': '2px',
+            'xl': '24px',
           }
         }
       }
     }
   </script>
 
-  <!-- Import Google Fonts -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- jQuery for tooltips -->
-  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-  <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+  <!-- Global Styles -->
+  <style>
+    body {
+      background-color: #f8fafc;
+      color: #0f172a;
+      /* Deep Black */
+      font-family: 'Manrope', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Particle Canvas Background */
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 1;
+      /* Full opacity, controlled in canvas */
+    }
+
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      transition: all 0.2s ease;
+    }
+
+    /* Stronger glass for profile */
+    .glass-panel-strong {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    }
+
+    .glass-panel:hover {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(29, 78, 216, 0.2);
+      /* Adjusted for darker blue */
+    }
+
+    /* Smooth reveal animation for acceptance rate */
+    .reveal-content {
+      max-width: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-width 0.5s ease-out, opacity 0.5s ease-out;
+      white-space: nowrap;
+    }
+
+    .group:hover .reveal-content {
+      max-width: 150px;
+      opacity: 1;
+      margin-left: 0.25rem;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f8fafc;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132051884-1"></script>
@@ -59,25 +145,33 @@
   </script>
 </head>
 
-<body class="font-manrope">
+<body class="antialiased selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- Dynamic Background -->
+  <div id="canvas-container">
+    <canvas id="particles"></canvas>
+  </div>
+
   <!-- Navigation -->
-  <nav class="bg-ucsd-navy border-b-2 border-ucsd-gold fixed w-full z-10">
-    <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-      <div class="flex justify-between h-16">
+  <nav class="glass-nav fixed w-full z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+      <div class="flex justify-between h-20">
         <div class="flex items-center">
-          <a href="#" class="text-white text-xl font-bold">Xingyu Chen</a>
+          <a href="#"
+            class="text-slate-900 text-2xl font-extrabold tracking-tight hover:text-ag-blue transition-colors">Xingyu
+            Chen</a>
         </div>
         <div class="hidden md:flex items-center">
-          <div class="ml-10 flex items-baseline space-x-4">
-            <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="#" class="text-ag-blue px-3 py-2 rounded-md text-sm font-bold">Home</a>
             <a href="projects.html"
-              class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+              class="text-slate-700 hover:text-ag-blue px-3 py-2 rounded-md text-sm font-bold transition-all">Projects</a>
             <a href="publications.html"
-              class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Publications</a>
+              class="text-slate-700 hover:text-ag-blue px-3 py-2 rounded-md text-sm font-bold transition-all">Publications</a>
           </div>
         </div>
         <div class="md:hidden flex items-center">
-          <button type="button" class="text-gray-400 hover:text-white focus:outline-none" id="mobile-menu-button">
+          <button type="button" class="text-slate-600 hover:text-ag-blue focus:outline-none" id="mobile-menu-button">
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
               stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -87,53 +181,78 @@
       </div>
     </div>
 
-    <!-- Mobile menu, show/hide based on menu state -->
-    <div class="hidden md:hidden" id="mobile-menu">
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden glass-panel border-t-0" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <a href="#" class="text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+        <a href="#" class="text-ag-blue block px-3 py-2 rounded-md text-base font-bold bg-blue-50">Home</a>
         <a href="projects.html"
-          class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+          class="text-slate-700 hover:text-ag-blue block px-3 py-2 rounded-md text-base font-bold hover:bg-slate-50">Projects</a>
         <a href="publications.html"
-          class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Publications</a>
+          class="text-slate-700 hover:text-ag-blue block px-3 py-2 rounded-md text-base font-bold hover:bg-slate-50">Publications</a>
       </div>
     </div>
   </nav>
 
   <!-- Main profile section -->
-  <main class="pt-20 pb-10">
-    <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-      <div class="md:flex md:items-center">
+  <main class="pt-32 pb-10 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 relative z-10">
+      <div class="md:flex md:items-center gap-12">
         <!-- Profile image -->
-        <div class="md:w-1/2 text-center mb-8 md:mb-0">
-          <img id="avator" class="inline-block rounded-lg shadow border border-gray-200" src="images/A2024_2.jpg"
-            width="300" height="300" alt="Xingyu Chen">
+        <div class="md:w-1/3 text-center mb-8 md:mb-0">
+          <div class="relative inline-block group">
+            <img id="avator"
+              class="relative rounded-2xl shadow-lg border-2 border-white w-full max-w-[300px] mx-auto transform transition duration-500"
+              src="images/A2024_2.jpg" alt="Xingyu Chen">
+          </div>
         </div>
 
         <!-- Profile info -->
-        <div class="md:w-1/2 text-center md:text-left">
-          <h2 class="text-3xl font-bold mb-2">Xingyu Chen | <span class="font-sans">陈星宇</span></h2>
+        <div class="md:w-2/3 text-center md:text-left">
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900 tracking-tight">Xingyu Chen <span
+              class="text-4xl md:text-5xl text-slate-600 font-normal ml-2">| 陈星宇</span></h2>
 
-          <p class="text-lg font-semibold mb-4">
-            Ph.D. student.<br>
-            Department of Computer Science and Engineering<br>
-            University of California, San Diego (UCSD).
-          </p>
+          <!-- Stronger glass effect applied here -->
+          <div class="glass-panel-strong p-6 rounded-2xl mb-6 inline-block w-full">
+            <p class="text-xl text-slate-800 font-semibold mb-4 leading-relaxed">
+              Ph.D. Student in <span class="text-ag-blue font-bold">Computer Science and Engineering</span><br>
+              University of California, San Diego (UCSD)
+            </p>
 
-          <p class="text-lg font-semibold mb-6">
-            Email: <a href="mailto:xic063@ucsd.edu" class="text-blue-600 hover:text-blue-800">xic063 (AT) ucsd (DOT)
-              edu</a>
-          </p>
+            <p class="text-slate-700 font-medium mb-0 flex items-center justify-center md:justify-start gap-2">
+              <i class="fa fa-envelope text-ag-blue"></i>
+              <a href="mailto:xic063@ucsd.edu"
+                class="text-slate-800 hover:text-ag-blue transition-colors border-b-2 border-transparent hover:border-ag-blue/30">xic063
+                (AT) ucsd (DOT) edu</a>
+            </p>
+          </div>
 
-          <div class="flex justify-center md:justify-start space-x-4">
-            <a href="files/CV2025_Spring.pdf" class="transition transform hover:scale-110">
-              <img class="h-12" src="images/icons/cv2.png" alt="CV">
+          <div class="flex justify-center md:justify-start space-x-6">
+            <a href="files/CV2025_Spring.pdf" class="group flex flex-col items-center">
+              <div
+                class="w-14 h-14 bg-white rounded-xl flex items-center justify-center border border-slate-200 shadow-sm group-hover:border-ag-blue/30 transition-all duration-300">
+                <img class="h-7 w-7 opacity-80 group-hover:opacity-100 transition-opacity" src="images/icons/cv2.png"
+                  alt="CV">
+              </div>
+              <span class="text-xs font-bold text-slate-600 mt-2 group-hover:text-ag-blue transition-colors">CV</span>
             </a>
-            <a href="https://github.com/asixa" class="transition transform hover:scale-110">
-              <img class="h-12" src="images/icons/github.png" alt="GitHub">
+            <a href="https://github.com/asixa" class="group flex flex-col items-center">
+              <div
+                class="w-14 h-14 bg-white rounded-xl flex items-center justify-center border border-slate-200 shadow-sm group-hover:border-ag-blue/30 transition-all duration-300">
+                <img class="h-7 w-7 opacity-80 group-hover:opacity-100 transition-opacity" src="images/icons/github.png"
+                  alt="GitHub">
+              </div>
+              <span
+                class="text-xs font-bold text-slate-600 mt-2 group-hover:text-ag-blue transition-colors">GitHub</span>
             </a>
             <a href="https://scholar.google.com/citations?user=S4h-eTMAAAAJ&hl=en"
-              class="transition transform hover:scale-110">
-              <img class="h-12" src="images/icons/google-scholar.png" alt="Google Scholar">
+              class="group flex flex-col items-center">
+              <div
+                class="w-14 h-14 bg-white rounded-xl flex items-center justify-center border border-slate-200 shadow-sm group-hover:border-ag-blue/30 transition-all duration-300">
+                <img class="h-7 w-7 opacity-80 group-hover:opacity-100 transition-opacity"
+                  src="images/icons/google-scholar.png" alt="Scholar">
+              </div>
+              <span
+                class="text-xs font-bold text-slate-600 mt-2 group-hover:text-ag-blue transition-colors">Scholar</span>
             </a>
           </div>
         </div>
@@ -142,68 +261,74 @@
   </main>
 
   <!-- News and Biography section -->
-  <section class="py-8 bg-gray-100">
+  <section class="py-12">
     <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-      <div class="md:flex md:space-x-8">
+      <div class="md:flex md:space-x-12">
         <!-- News section -->
-        <div class="md:w-1/2 mb-8 md:mb-0">
-          <h2 class="text-2xl font-bold mb-4">News</h2>
+        <div class="md:w-1/2 mb-12 md:mb-0">
+          <h2 class="text-2xl font-bold mb-6 text-slate-900 flex items-center">
+            <span class="bg-ag-blue w-2 h-8 rounded-full mr-3"></span>
+            News
+          </h2>
 
-          <div class="space-y-3">
-
+          <div class="space-y-4">
             <!-- News item -->
-            <div class="bg-white rounded-lg border border-gray-200 p-3">
-              <div class="flex items-center">
-                <img src="images/icons/Academic.png" class="w-8 h-8 rounded mr-3" alt="Academic icon">
-                <div>
-                  <p><span class="font-semibold">[Mar 2025]</span> <em><b>YORO</b></em> is accepted by <em>MobiSys
-                      2025</em>.</p>
-                </div>
+            <div class="glass-panel p-4 rounded-xl flex items-start group hover:border-ag-blue/30">
+              <div class="flex-shrink-0 mt-1.5">
+                <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
+              </div>
+              <div class="ml-4">
+                <p class="text-slate-800 text-sm font-medium"><span class="text-ag-blue font-bold">[Mar 2025]</span>
+                  <em><b>YORO</b></em> is accepted by <em>MobiSys 2025</em>.
+                </p>
               </div>
             </div>
 
             <!-- News item -->
-            <div class="bg-white rounded-lg border border-gray-200 p-3">
-              <div class="flex items-center">
-                <img src="images/icons/Academic.png" class="w-8 h-8 rounded mr-3" alt="Academic icon">
-                <div>
-                  <p><span class="font-semibold">[Feb 2025]</span> <em><b>RFScape</b></em> is accepted by <em>CVPR
-                      2025</em>.</p>
-                </div>
+            <div class="glass-panel p-4 rounded-xl flex items-start group hover:border-ag-blue/30">
+              <div class="flex-shrink-0 mt-1.5">
+                <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
               </div>
-            </div>
-
-
-            <!-- News item -->
-            <div class="bg-white rounded-lg border border-gray-200 p-3">
-              <div class="flex items-center">
-                <img src="images/icons/Academic.png" class="w-8 h-8 rounded mr-3" alt="Academic icon">
-                <div>
-                  <p><span class="font-semibold">[Sept 2024]</span> <em><b>RFCanvas</b></em> is accepted by <em>SenSys
-                      2024</em>.</p>
-                </div>
+              <div class="ml-4">
+                <p class="text-slate-800 text-sm font-medium"><span class="text-ag-blue font-bold">[Feb 2025]</span>
+                  <em><b>RFScape</b></em> is accepted by <em>CVPR 2025</em>.
+                </p>
               </div>
             </div>
 
             <!-- News item -->
-            <div class="bg-white rounded-lg border border-gray-200 p-3">
-              <div class="flex items-center">
-                <img src="images/icons/Academic.png" class="w-8 h-8 rounded mr-3" alt="Academic icon">
-                <div>
-                  <p><span class="font-semibold">[Sept 2023]</span> <em><b>RFGenesis</b></em> is accepted by <em>SenSys
-                      2023</em>.</p>
-                </div>
+            <div class="glass-panel p-4 rounded-xl flex items-start group hover:border-ag-blue/30">
+              <div class="flex-shrink-0 mt-1.5">
+                <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
+              </div>
+              <div class="ml-4">
+                <p class="text-slate-800 text-sm font-medium"><span class="text-ag-blue font-bold">[Sept 2024]</span>
+                  <em><b>RFCanvas</b></em> is accepted by <em>SenSys 2024</em>.
+                </p>
               </div>
             </div>
 
-            <div class="bg-white rounded-lg border border-gray-200 p-3 transition hover:border-gray-300">
-              <div class="flex items-center">
-                <img src="images/icons/Academic.png" class="w-8 h-8 rounded mr-3" alt="Academic icon">
-                <div>
-                  <p><span class="font-semibold">[Sept 2023]</span> I had a wonderful internship at <em><a
-                        href="https://www.microsoft.com/en-us/research/group/msr-asia-shanghai/"
-                        class="text-blue-600 hover:underline">Microsoft Research Asia</a></em>.</p>
-                </div>
+            <!-- News item -->
+            <div class="glass-panel p-4 rounded-xl flex items-start group hover:border-ag-blue/30">
+              <div class="flex-shrink-0 mt-1.5">
+                <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
+              </div>
+              <div class="ml-4">
+                <p class="text-slate-800 text-sm font-medium"><span class="text-ag-blue font-bold">[Sept 2023]</span>
+                  <em><b>RFGenesis</b></em> is accepted by <em>SenSys 2023</em>.
+                </p>
+              </div>
+            </div>
+
+            <div class="glass-panel p-4 rounded-xl flex items-start group hover:border-ag-blue/30">
+              <div class="flex-shrink-0 mt-1.5">
+                <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
+              </div>
+              <div class="ml-4">
+                <p class="text-slate-800 text-sm font-medium"><span class="text-ag-blue font-bold">[Sept 2023]</span> I
+                  had a wonderful internship at <em><a
+                      href="https://www.microsoft.com/en-us/research/group/msr-asia-shanghai/"
+                      class="text-ag-blue hover:text-ag-blue-dark hover:underline">Microsoft Research Asia</a></em>.</p>
               </div>
             </div>
           </div>
@@ -211,42 +336,57 @@
 
         <!-- Biography section -->
         <div class="md:w-1/2">
-          <h2 class="text-2xl font-bold mb-2">Biography</h2>
+          <h2 class="text-2xl font-bold mb-6 text-slate-900 flex items-center">
+            <span class="bg-ag-blue w-2 h-8 rounded-full mr-3"></span>
+            Biography
+          </h2>
 
-          <p class="text-lg mb-4 font-medium">
-            I am a forth year Ph.D. student in <a href="https://cse.ucsd.edu/"
-              class="text-blue-600 hover:underline">Computer Science and Engineering</a>
-            at the <a href="https://ucsd.edu/" class="text-blue-600 hover:underline">University of California, San Diego
-              (UCSD)</a>,
-            advised by <a href="http://xyzhang.ucsd.edu/index.html" class="text-blue-600 hover:underline">Prof. Xinyu
-              Zhang</a>.
-          </p>
+          <div class="glass-panel p-6 rounded-xl mb-8">
+            <p class="text-slate-800 mb-4 leading-relaxed font-medium">
+              I am a fourth year Ph.D. student in <a href="https://cse.ucsd.edu/"
+                class="text-ag-blue hover:text-ag-blue-dark hover:underline font-bold">Computer Science and
+                Engineering</a> at the <a href="https://ucsd.edu/"
+                class="text-ag-blue hover:text-ag-blue-dark hover:underline font-bold">University of California, San
+                Diego (UCSD)</a>, advised by <a href="http://xyzhang.ucsd.edu/index.html"
+                class="text-ag-blue hover:text-ag-blue-dark hover:underline font-bold">Prof. Xinyu Zhang</a>.
+            </p>
+            <p class="text-slate-800 leading-relaxed font-medium">
+              I earned my bachelor's degree in computer science with honor in 3 years from <a
+                href="http://www.buffalo.edu/"
+                class="text-ag-blue hover:text-ag-blue-dark hover:underline font-bold">University at Buffalo</a>. I was
+              a research assistant advised by <a href="http://www.cse.buffalo.edu/~wenyaoxu"
+                class="text-ag-blue hover:text-ag-blue-dark hover:underline font-bold">Prof. Wenyao Xu</a>. After
+              graduating, I worked with <a href="https://cse.ucdenver.edu/~lizheng/"
+                class="text-ag-blue hover:text-ag-blue-dark hover:underline font-bold">Prof. Zhengxiong Li</a> at
+              University of Colorado Denver META Lab.
+            </p>
+          </div>
 
-          <p class="text-lg mb-8 font-medium">
-            I earned my bachelor's degree in computer science with honor in 3 years from
-            <a href="http://www.buffalo.edu/" class="text-blue-600 hover:underline">University at Buffalo</a>.
-            I was a research assistant advised by <a href="http://www.cse.buffalo.edu/~wenyaoxu"
-              class="text-blue-600 hover:underline">Prof. Wenyao Xu</a>
-            at <a href="http://www.cse.buffalo.edu/~wenyaoxu/esc.html" class="text-blue-600 hover:underline">UB ESC
-              Group</a>.
-            After graduated from UB in 2021, I took a gap year and worked with
-            <a href="https://cse.ucdenver.edu/~lizheng/" class="text-blue-600 hover:underline">Prof. Zhengxiong Li</a>
-            at
-            <a href="https://cse.ucdenver.edu/~lizheng/team/index.html" class="text-blue-600 hover:underline">University
-              of Colorado Denver META Lab</a>.
-          </p>
-
-          <h3 class="text-xl font-bold mb-4">Research Interests</h3>
+          <h3 class="text-xl font-bold mb-4 text-slate-900">Research Interests</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm">RF Simulation</span>
-            <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm">Rendering</span>
-            <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm">Computer Vision / Graphics</span>
-            <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm">Mobile Computing</span>
-            <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm">Ray Tracing</span>
-            <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm">Digital Twin</span>
-            <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm">Virtual Reality</span>
-            <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm">Differentiable Simulation &
-              Rendering</span>
+            <span
+              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">RF
+              Simulation</span>
+            <span
+              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Rendering</span>
+            <span
+              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Computer
+              Vision / Graphics</span>
+            <span
+              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Mobile
+              Computing</span>
+            <span
+              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Ray
+              Tracing</span>
+            <span
+              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Digital
+              Twin</span>
+            <span
+              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Virtual
+              Reality</span>
+            <span
+              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Differentiable
+              Simulation</span>
           </div>
         </div>
       </div>
@@ -254,217 +394,76 @@
   </section>
 
   <!-- Education and Experience section -->
-  <section class="py-12 bg-white">
+  <section class="py-12 relative">
     <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-      <div class="md:flex md:space-x-8">
-        <!-- Education and Experience -->
-        <div class="md:w-1/2 mb-8 md:mb-0">
-          <h2 class="text-2xl font-bold mb-2">Education</h2>
+      <div class="md:flex md:space-x-12">
+        <!-- Education -->
+        <div class="md:w-1/2 mb-12 md:mb-0">
+          <h2 class="text-2xl font-bold mb-6 text-slate-900 flex items-center">
+            <span class="bg-ag-blue w-2 h-8 rounded-full mr-3"></span>
+            Education
+          </h2>
 
-          <div class="space-y-4">
+          <div class="space-y-6">
             <!-- Education item -->
-            <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-              <div class="flex">
-                <img src="images/Education/UCSD.png" class="w-24 h-24 object-contain rounded mr-4" alt="UCSD logo">
-                <div>
-                  <p class="text-blue-600 font-semibold">[Fall 2022 ~ Present]</p>
-                  <h3 class="font-bold text-gray-800">University of California San Diego</h3>
-                  <p>Ph.D. in Computer Science and Engineering</p>
-                </div>
+            <div class="glass-panel p-5 rounded-2xl flex items-center gap-6 hover:border-ag-blue/30 group">
+              <!-- Clean logo: removed border, shadow, and hover shadow -->
+              <div class="w-24 h-24 bg-white rounded-xl p-2 flex-shrink-0 flex items-center justify-center">
+                <img src="images/Education/UCSD.png" class="w-full h-full object-contain" alt="UCSD logo">
               </div>
-            </div>
-
-            <!-- Education item -->
-            <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-              <div class="flex">
-                <img src="images/Education/UB.jpg" class="w-24 h-24 object-contain rounded mr-4" alt="UB logo">
-                <div>
-                  <p class="text-blue-600 font-semibold">[August 2018 ~ June 2021]</p>
-                  <h3 class="font-bold text-gray-800">State University of New York at Buffalo</h3>
-                  <p>Bachelor in Computer Science with Distinction</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <h2 class="text-2xl font-bold mt-4 mb-2">Experiences</h2>
-
-          <div class="space-y-4">
-            <!-- Experience item -->
-            <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-              <div class="flex">
-                <img src="images/Internship/Microsoft.png" class="w-24 h-24 object-contain rounded mr-4"
-                  alt="Microsoft logo">
-                <div>
-                  <p class="text-blue-600 font-semibold">[June 2023 ~ September 2023]</p>
-                  <h3 class="font-bold text-gray-800">Microsoft Research Asia</h3>
-                  <p><a href="https://www.microsoft.com/en-us/research/group/msr-asia-shanghai/areas/"
-                      class="text-blue-600 hover:underline">Wireless Group (ShangHai)</a></p>
-                  <p>Research Intern, Mentored by <a href="https://www.microsoft.com/en-us/research/people/liliqiu/"
-                      class="text-blue-600 hover:underline">Prof. Lili Qiu</a></p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Experience item -->
-            <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-              <div class="flex">
-                <img src="images/Education/CUDenver.jpg" class="w-24 h-24 object-contain rounded mr-4"
-                  alt="CU Denver logo">
-                <div>
-                  <p class="text-blue-600 font-semibold">[August 2021 ~ August 2022]</p>
-                  <h3 class="font-bold text-gray-800">Mobile Emerging Technology Application (<a
-                      href="https://cse.ucdenver.edu/~lizheng/team/index.html"
-                      class="text-blue-600 hover:underline">META</a>) Lab</h3>
-                  <p>University of Colorado Denver</p>
-                  <p>Research Assistant</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Experience item -->
-            <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-              <div class="flex">
-                <img src="images/Education/UB.jpg" class="w-24 h-24 object-contain rounded mr-4" alt="UB logo">
-                <div>
-                  <p class="text-blue-600 font-semibold">[August 2018 ~ August 2021]</p>
-                  <h3 class="font-bold text-gray-800">The Embedded Sensing and Computing (<a
-                      href="https://cse.buffalo.edu/~wenyaoxu/esc.html" class="text-blue-600 hover:underline">ESC</a>)
-                    Group</h3>
-                  <p>State University of New York at Buffalo</p>
-                  <p>Undergraduate Research Assistant</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <h2 class="text-2xl font-bold mt-4 mb-2">Teaching Assistant</h2>
-
-          <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-            <div class="flex">
-              <img src="images/icons/Academic.png" class="w-16 h-16 rounded mr-4" alt="Academic icon">
               <div>
-                <h3 class="font-bold text-gray-800">University of Colorado Denver</h3>
-                <p>[Fall 2021] CSCI 4771 Intro to Mobile Computing.</p>
-                <p>[Spring 2022] CSCI 4773 Intro to Emerging System Security.</p>
+                <p class="text-ag-blue text-sm font-bold mb-1">[Fall 2022 ~ Present]</p>
+                <h3 class="font-bold text-slate-900 text-xl">UC San Diego</h3>
+                <p class="text-slate-700 font-medium">Ph.D. in Computer Science</p>
+              </div>
+            </div>
+
+            <!-- Education item -->
+            <div class="glass-panel p-5 rounded-2xl flex items-center gap-6 hover:border-ag-blue/30 group">
+              <!-- Clean logo -->
+              <div class="w-24 h-24 bg-white rounded-xl p-2 flex-shrink-0 flex items-center justify-center">
+                <img src="images/Education/UB.jpg" class="w-full h-full object-contain" alt="UB logo">
+              </div>
+              <div>
+                <p class="text-ag-blue text-sm font-bold mb-1">[Aug 2018 ~ June 2021]</p>
+                <h3 class="font-bold text-slate-900 text-xl">University at Buffalo</h3>
+                <p class="text-slate-700 font-medium">B.S. in Computer Science</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Awards and Service -->
+        <!-- Experiences -->
         <div class="md:w-1/2">
-          <h2 class="text-2xl font-bold mb-2">Awards</h2>
+          <h2 class="text-2xl font-bold mb-6 text-slate-900 flex items-center">
+            <span class="bg-ag-blue w-2 h-8 rounded-full mr-3"></span>
+            Experiences
+          </h2>
 
-          <div class="space-y-4">
-            <!-- Award item -->
-            <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-              <div class="flex">
-                <img src="images/icons/ucsd.svg" class="w-14 h-14 object-contain rounded mr-4" alt="UCSD logo">
-                <div>
-                  <h3 class="font-bold text-gray-800">Travel Grants</h3>
-                  <p>UC San Diego GPSA Travel Grant Award.</p>
-                  <p>SenSys'23 NSF Travel Grant Award</p>
-                </div>
+          <div class="space-y-6">
+            <!-- Experience item -->
+            <div class="glass-panel p-5 rounded-2xl flex items-center gap-6 hover:border-ag-blue/30 group">
+              <!-- Clean logo -->
+              <div class="w-24 h-24 bg-white rounded-xl p-2 flex-shrink-0 flex items-center justify-center">
+                <img src="images/Internship/Microsoft.png" class="w-full h-full object-contain" alt="Microsoft logo">
+              </div>
+              <div>
+                <p class="text-ag-blue text-sm font-bold mb-1">[June 2023 ~ Sept 2023]</p>
+                <h3 class="font-bold text-slate-900 text-xl">Microsoft Research Asia</h3>
+                <p class="text-slate-700 font-medium">Research Intern, Wireless Group</p>
               </div>
             </div>
 
-            <!-- Award item -->
-            <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-              <div class="flex">
-                <img src="images/icons/ieee.webp" class="w-16 h-16 rounded mr-4" alt="IEEE logo">
-                <div>
-                  <h3 class="font-bold text-gray-800">[2022]</h3>
-                  <p>IEEE International Conference on Health Informatics</p>
-                  <p>Best Student Paper Award.</p>
-                </div>
+            <!-- Experience item -->
+            <div class="glass-panel p-5 rounded-2xl flex items-center gap-6 hover:border-ag-blue/30 group">
+              <!-- Clean logo -->
+              <div class="w-24 h-24 bg-white rounded-xl p-2 flex-shrink-0 flex items-center justify-center">
+                <img src="images/Education/CUDenver.jpg" class="w-full h-full object-contain" alt="CU Denver logo">
               </div>
-            </div>
-
-            <!-- Award item -->
-            <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-              <div class="flex">
-                <img src="images/icons/ieee.webp" class="w-16 h-16 rounded mr-4" alt="IEEE logo">
-                <div>
-                  <h3 class="font-bold text-gray-800">[Oct 2021]</h3>
-                  <p>IEEE COVID-19 Sensor Informatics Challenge</p>
-                  <p><a href="https://healthcaresummit.ieee.org/data-hackathon/2021-data-hackathon-phase-1/"
-                      class="text-blue-600 hover:underline">Runner-up (2nd place).</a></p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Award item -->
-            <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-              <div class="flex">
-                <img src="images/icons/acm.png" class="w-16 h-16 rounded mr-4" alt="ACM logo">
-                <div>
-                  <h3 class="font-bold text-gray-800">[Nov 2019]</h3>
-                  <p><a class="text-red-600 font-bold"
-                      title="<img class='img-fluid' src='images/Events/sensys19.jpg'>">Best Paper Award</a> ACM SenSys,
-                    2019</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <h2 class="text-2xl font-bold mt-4 mb-2">Service</h2>
-
-          <div class="space-y-4">
-            <!-- Service item -->
-            <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-              <div class="flex">
-                <img src="images/icons/Academic.png" class="w-16 h-16 rounded mr-4" alt="Academic icon">
-                <div>
-                  <h3 class="font-bold text-gray-800">Invited Reviewer</h3>
-                  <p><a
-                      href="https://www.itsoc.org/event/globecom23-main-symposium-communication-and-information-system-security-ciss"
-                      class="text-blue-600 hover:underline">IEEE GlobeCom 2023 CISS</a>.</p>
-                  <p><a href="https://ieee-cas.org/publication/ieee-transactions-mobile-computing"
-                      class="text-blue-600 hover:underline">IEEE Transaction on Mobile Computing</a>.</p>
-                  <p>IEEE Transaction on Services Computing.</p>
-                  <p>IEEE Transactions on Communications.</p>
-                  <p>IEEE Network Magazine.</p>
-                  <p>IMWUT UbiComp 2024.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Service item -->
-            <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-              <div class="flex">
-                <img src="images/icons/Academic.png" class="w-16 h-16 rounded mr-4" alt="Academic icon">
-                <div>
-                  <h3 class="font-bold text-gray-800">Artifact Evaluation Committee</h3>
-                  <p><a href="https://www.sigmobile.org/mobicom/2023/index.html"
-                      class="text-blue-600 hover:underline">ACM MobiCom 2023</a>.</p>
-                  <p><a href="https://www.sigmobile.org/mobisys/2023/artifact.html"
-                      class="text-blue-600 hover:underline">ACM MobiSys 2022</a>.</p>
-                  <p><a href="https://data-workshop.github.io/DATA2022/" class="text-blue-600 hover:underline">ACM
-                      SenSys/BuildSys Data Workshop 2022</a>.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Service item -->
-            <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-              <div class="flex">
-                <img src="images/icons/Academic.png" class="w-16 h-16 rounded mr-4" alt="Academic icon">
-                <div>
-                  <h3 class="font-bold text-gray-800">[January 2023] Workshop Review</h3>
-                  <p>Workshop on Deep Learning for Wireless Communications, Sensing, and Security (DeepWireless).</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Service item -->
-            <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
-              <div class="flex">
-                <img src="images/icons/Academic.png" class="w-16 h-16 rounded mr-4" alt="Academic icon">
-                <div>
-                  <h3 class="font-bold text-gray-800">[February 2022] Volunteer Judge</h3>
-                  <p>CoorsTek Denver Metro Regional Science and Engineering Fair.</p>
-                </div>
+              <div>
+                <p class="text-ag-blue text-sm font-bold mb-1">[Aug 2021 ~ Aug 2022]</p>
+                <h3 class="font-bold text-slate-900 text-xl">META Lab, CU Denver</h3>
+                <p class="text-slate-700 font-medium">Research Assistant</p>
               </div>
             </div>
           </div>
@@ -473,278 +472,345 @@
     </div>
   </section>
 
-  <!-- Publications section -->
-  <section class="py-12 bg-gray-100">
-    <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-      <div class="flex items-center mb-8">
-        <h2 class="text-2xl font-bold">Selected Publications</h2>
-        <a href="publications.html" class="ml-4 text-blue-600 font-bold hover:underline">(See All Publications)</a>
-      </div>
-
-      <div class="space-y-3">
-        <!-- Publication item -->
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-          <div class="md:flex">
-            <div class="md:w-1/4 p-4">
-              <img src="images/Publications/YORO/pull.png" class="w-full h-40 object-contain" alt="YORO publication">
-            </div>
-            <div class="p-6 md:w-3/4">
-              <p class="text-blue-600 font-semibold">MobiSys 2025, (Acceptance Rate: 18%, 42 of 233).</p>
-              <h3 class="text-xl font-bold mb-2">You Only Render Once: Enhancing Energy and Computation Efficiency of
-                Mobile Virtual Reality</h3>
-              <p class="mb-4">
-                <b>Xingyu Chen</b>,
-                <a href="" class="text-blue-600 hover:underline">Xinmin Fang</a>, Shuting Zhang,
-                <a href="http://xyzhang.ucsd.edu/" class="text-blue-600 hover:underline">Xinyu Zhang</a>,
-                Liang He,
-                <a href="" class="text-blue-600 hover:underline">Zhengxiong Li</a>
-              </p>
-              <div class="flex space-x-2">
-                <a href="https://yoro-vr.github.io/"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Page</a>
-                <a href="https://arxiv.org/abs/2506.15183"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">ArXiv</a>
-                <!-- <a href="https://arxiv.org/pdf/2506.15183" class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Code</a> -->
-              </div>
-            </div>
-          </div>
+  <!-- Publications section with extended semi-transparent gradient background -->
+  <div class="bg-gradient-to-b from-slate-50/90 to-slate-200/90">
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div class="flex items-center mb-8">
+          <h2 class="text-2xl font-bold text-slate-900 flex items-center">
+            <span class="bg-ag-blue w-2 h-8 rounded-full mr-3"></span>
+            Selected Publications
+          </h2>
+          <a href="publications.html" class="ml-4 text-slate-600 font-bold hover:text-ag-blue transition-colors">(See
+            All)</a>
         </div>
 
-        <!-- Publication item -->
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-          <div class="md:flex">
-            <div class="md:w-1/4 p-4">
-              <img src="images/Publications/RFScape/pull.png" class="w-full h-40 object-contain"
-                alt="RFScape publication">
-            </div>
-            <div class="p-6 md:w-3/4">
-              <p class="text-blue-600 font-semibold">CVPR 2025, (Acceptance Rate: 22.1%, 2878 of 13008).</p>
-              <h3 class="text-xl font-bold mb-2">Radio Frequency Ray Tracing with Neural Object Representation</h3>
-              <p class="mb-4">
-                <b>Xingyu Chen</b>,
-                <a href="https://zihaofeng.com/" class="text-blue-600 hover:underline">Zihao Feng</a>,
-                <a href="https://kunqian.info/" class="text-blue-600 hover:underline">Kun Qian</a>,
-                <a href="http://xyzhang.ucsd.edu/" class="text-blue-600 hover:underline">Xinyu Zhang</a>
-              </p>
-              <div class="flex space-x-2">
-                <a href="https://cvpr.thecvf.com/virtual/2025/poster/33757"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Page</a>
-                <a href="https://arxiv.org/abs/2411.18635"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">ArXiv</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Publication item -->
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-          <div class="md:flex">
-            <div class="md:w-1/4 p-4">
-              <img src="images/Publications/RFCanvas/pull.png" class="w-full h-40 object-contain"
-                alt="RFCanvas publication">
-            </div>
-            <div class="p-6 md:w-3/4">
-              <p class="text-blue-600 font-semibold">SenSys 2024, (Acceptance Rate: 18.5%, 58 of 313).</p>
-              <h3 class="text-xl font-bold mb-2">RFCanvas: Modeling RF Channel by Fusing Visual Priors and Few-shot RF
-                measurements</h3>
-              <p class="mb-4">
-                <b>Xingyu Chen</b>,
-                <a href="https://zihaofeng.com/" class="text-blue-600 hover:underline">Zihao Feng</a>,
-                <a href="https://samsonsjarkal.github.io/KeSun/" class="text-blue-600 hover:underline">Ke Sun</a>,
-                <a href="https://kunqian.info/" class="text-blue-600 hover:underline">Kun Qian</a>,
-                <a href="http://xyzhang.ucsd.edu/" class="text-blue-600 hover:underline">Xinyu Zhang</a>
-              </p>
-              <div class="flex space-x-2">
-                <a href="https://dl.acm.org/doi/abs/10.1145/3666025.3699351"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">PDF</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Publication item -->
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-          <div class="md:flex">
-            <div class="md:w-1/4 p-4">
-              <img src="images/Publications/RFGen/pull_wide.png" class="w-full h-40 object-contain"
-                alt="RFGen publication">
-            </div>
-            <div class="p-6 md:w-3/4">
-              <p class="text-blue-600 font-semibold">SenSys 2023, (Acceptance Rate: 19.0%, 34 of 179).</p>
-              <h3 class="text-xl font-bold mb-2">RF Genesis: Zero-Shot Generalization of mmWave Sensing through
-                Simulation-Based Data Synthesis and Generative Diffusion Models</h3>
-              <p class="mb-4">
-                <b>Xingyu Chen</b>,
-                <a href="http://xyzhang.ucsd.edu/" class="text-blue-600 hover:underline">Xinyu Zhang</a>
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <a href="https://rfgen.xingyuchen.me/"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Page</a>
-                <a href="files/Xingyu.Chen_SenSys23_RFGen.pdf"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">PDF</a>
-                <a href="files/Xingyu_RFGen_Poster.pdf"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Poster</a>
-                <a href="files/Xingyu_RF_Genesis_Presentation.pptx"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Slides</a>
-                <a href="https://github.com/Asixa/RF-Genesis"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Code</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Publication item -->
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-          <div class="md:flex">
-            <div class="md:w-1/4 p-4">
-              <img src="images/Publications/Metawave/pull_wide.png" class="w-full h-40 object-contain"
-                alt="Metawave publication">
-            </div>
-            <div class="p-6 md:w-3/4">
-              <p class="text-blue-600 font-semibold">NDSS 2023, (Acceptance Rate: 16.2%, 94 of 581).</p>
-              <h3 class="text-xl font-bold mb-2">MetaWave: Attacking mmWave Sensing with Meta-material-enhanced Tags
-              </h3>
-              <p class="mb-4">
-                <b>Xingyu Chen</b>,
-                <a href="https://cse.ucdenver.edu/~lizheng/" class="text-blue-600 hover:underline">Zhengxiong Li</a>,
-                <a href="https://baichengchen.github.io/" class="text-blue-600 hover:underline">Baicheng Chen</a>,
-                Yi Zhu, Chris Xiaoxuan Lu, Zhengyu Peng, Feng Lin,
-                <a href="https://cse.buffalo.edu/~wenyaoxu/" class="text-blue-600 hover:underline">Wenyao Xu</a>,
-                Kui Ren, Chunming Qiao
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <a href="https://www.ndss-symposium.org/ndss-paper/metawave-attacking-mmwave-sensing-with-meta-material-enhanced-tags/"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Link</a>
-                <a href="files/ndss23-fall-final348.pdf"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">PDF(Hi-Res, 21.5 Mb)</a>
-                <a href="https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_f348_paper.pdf"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">PDF(Lo-Res,1.65 Mb)</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Publication item -->
-        <!-- <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="space-y-6">
+          <!-- Publication item -->
+          <div class="glass-panel rounded-2xl overflow-hidden hover:bg-white transition-all duration-300 group">
             <div class="md:flex">
-              <div class="md:w-1/4 p-4">
-                <img src="images/Publications/DiffSBR/pull_wide.png" class="w-full h-40 object-contain"
-                  alt="DiffSBR publication">
+              <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
+                <img src="images/Publications/YORO/pull.png"
+                  class="w-full h-auto max-h-40 object-contain rounded mix-blend-multiply" alt="YORO publication">
               </div>
               <div class="p-6 md:w-3/4">
-                <p class="text-blue-600 font-semibold">ArXiv, 2023.</p>
-                <h3 class="text-xl font-bold mb-2">DiffSBR: Differentiable Radio Frequency Ray Tracing for Millimeter-Wave
-                  Sensing</h3>
-                <p class="mb-4">
-                  <b>Xingyu Chen</b>,
-                  <a href="http://xyzhang.ucsd.edu/" class="text-blue-600 hover:underline">Xinyu Zhang</a>,
-                  Qiyue Xia, Xinmin Fang, Chris Xiaoxuan Lu,
-                  <a href="https://cse.ucdenver.edu/~lizheng/" class="text-blue-600 hover:underline">Zhengxiong Li</a>
+                <div class="flex justify-between items-start mb-2">
+                  <p class="text-ag-blue font-black text-lg tracking-tight">MobiSys 2025</p>
+                  <span
+                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
+                    Acceptance Rate: 18% <span class="reveal-content">(42 of 233)</span>
+                  </span>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-slate-900 group-hover:text-ag-blue transition-colors">You Only
+                  Render Once: Enhancing Energy and Computation Efficiency of Mobile Virtual Reality</h3>
+                <p class="mb-4 text-slate-700 text-sm font-medium">
+                  <b class="text-slate-900">Xingyu Chen</b>, Xinmin Fang, Shuting Zhang, Xinyu Zhang, Liang He,
+                  Zhengxiong Li
                 </p>
-                <div class="flex space-x-2">
-                  <a href="https://arxiv.org/abs/2311.13182"
-                    class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">arXiv</a>
+                <div class="flex space-x-3">
+                  <a href="https://yoro-vr.github.io/"
+                    class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">Page</a>
+                  <a href="https://arxiv.org/abs/2506.15183"
+                    class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">ArXiv</a>
                 </div>
               </div>
             </div>
           </div>
 
-
-
-         
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-          <div class="md:flex">
-            <div class="md:w-1/4 p-4">
-              <img src="images/Publications/VoiceBiometric/cover.jpg" class="w-full h-40 object-contain"
-                alt="Voice Biometric publication">
+          <!-- Publication item -->
+          <div class="glass-panel rounded-2xl overflow-hidden hover:bg-white transition-all duration-300 group">
+            <div class="md:flex">
+              <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
+                <img src="images/Publications/RFScape/pull.png"
+                  class="w-full h-auto max-h-40 object-contain rounded mix-blend-multiply" alt="RFScape publication">
+              </div>
+              <div class="p-6 md:w-3/4">
+                <div class="flex justify-between items-start mb-2">
+                  <p class="text-ag-blue font-black text-lg tracking-tight">CVPR 2025</p>
+                  <span
+                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
+                    Acceptance Rate: 22.1% <span class="reveal-content">(2878 of 13008)</span>
+                  </span>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-slate-900 group-hover:text-ag-blue transition-colors">Radio
+                  Frequency Ray Tracing with Neural Object Representation</h3>
+                <p class="mb-4 text-slate-700 text-sm font-medium">
+                  <b class="text-slate-900">Xingyu Chen</b>, Zihao Feng, Kun Qian, Xinyu Zhang
+                </p>
+                <div class="flex space-x-3">
+                  <a href="https://cvpr.thecvf.com/virtual/2025/poster/33757"
+                    class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">Page</a>
+                  <a href="https://arxiv.org/abs/2411.18635"
+                    class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">ArXiv</a>
+                </div>
+              </div>
             </div>
-            <div class="p-6 md:w-3/4">
-              <p class="text-blue-600 font-semibold">Scientific Reports 2022.</p>
-              <h3 class="text-xl font-bold mb-2">Exploring Racial and Gender Disparities in Voice Biometrics</h3>
-              <p class="mb-4">
-                <b>Xingyu Chen*</b>,
-                <a href="https://cse.ucdenver.edu/~lizheng/" class="text-blue-600 hover:underline">Zhengxiong Li*</a>,
-                Srirangaraj Setlur,
-                <a href="https://cse.buffalo.edu/~wenyaoxu/" class="text-blue-600 hover:underline">Wenyao Xu</a>
-              </p>
-              <div class="flex space-x-2">
-                <a href="https://www.nature.com/articles/s41598-022-06673-y"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Link</a>
-                <a href="https://www.nature.com/articles/s41598-022-06673-y.pdf"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">PDF</a>
+          </div>
+
+          <!-- Publication item -->
+          <div class="glass-panel rounded-2xl overflow-hidden hover:bg-white transition-all duration-300 group">
+            <div class="md:flex">
+              <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
+                <img src="images/Publications/RFCanvas/pull.png"
+                  class="w-full h-auto max-h-40 object-contain rounded mix-blend-multiply" alt="RFCanvas publication">
+              </div>
+              <div class="p-6 md:w-3/4">
+                <div class="flex justify-between items-start mb-2">
+                  <p class="text-ag-blue font-black text-lg tracking-tight">SenSys 2024</p>
+                  <span
+                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
+                    Acceptance Rate: 18.5% <span class="reveal-content">(58 of 313)</span>
+                  </span>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-slate-900 group-hover:text-ag-blue transition-colors">RFCanvas:
+                  Modeling RF Channel by Fusing Visual Priors and Few-shot RF measurements</h3>
+                <p class="mb-4 text-slate-700 text-sm font-medium">
+                  <b class="text-slate-900">Xingyu Chen</b>, Zihao Feng, Ke Sun, Kun Qian, Xinyu Zhang
+                </p>
+                <div class="flex space-x-3">
+                  <a href="https://dl.acm.org/doi/abs/10.1145/3666025.3699351"
+                    class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">PDF</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Publication item -->
+          <div class="glass-panel rounded-2xl overflow-hidden hover:bg-white transition-all duration-300 group">
+            <div class="md:flex">
+              <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
+                <img src="images/Publications/RFGen/pull_wide.png"
+                  class="w-full h-auto max-h-40 object-contain rounded mix-blend-multiply" alt="RFGen publication">
+              </div>
+              <div class="p-6 md:w-3/4">
+                <div class="flex justify-between items-start mb-2">
+                  <p class="text-ag-blue font-black text-lg tracking-tight">SenSys 2023</p>
+                  <span
+                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
+                    Acceptance Rate: 19.0% <span class="reveal-content">(34 of 179)</span>
+                  </span>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-slate-900 group-hover:text-ag-blue transition-colors">RF Genesis:
+                  Zero-Shot Generalization of mmWave Sensing through Simulation-Based Data Synthesis</h3>
+                <p class="mb-4 text-slate-700 text-sm font-medium">
+                  <b class="text-slate-900">Xingyu Chen</b>, Xinyu Zhang
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <a href="https://rfgen.xingyuchen.me/"
+                    class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">Page</a>
+                  <a href="files/Xingyu.Chen_SenSys23_RFGen.pdf"
+                    class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">PDF</a>
+                  <a href="https://github.com/Asixa/RF-Genesis"
+                    class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Publication item (MetaWave) -->
+          <div class="glass-panel rounded-2xl overflow-hidden hover:bg-white transition-all duration-300 group">
+            <div class="md:flex">
+              <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
+                <img src="images/Publications/Metawave/pull_wide.png"
+                  class="w-full h-auto max-h-40 object-contain rounded mix-blend-multiply" alt="MetaWave publication">
+              </div>
+              <div class="p-6 md:w-3/4">
+                <div class="flex justify-between items-start mb-2">
+                  <p class="text-ag-blue font-black text-lg tracking-tight">NDSS 2023</p>
+                  <span
+                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
+                    Acceptance Rate: 16.2% <span class="reveal-content">(94 of 581)</span>
+                  </span>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-slate-900 group-hover:text-ag-blue transition-colors">MetaWave:
+                  Attacking mmWave Sensing with Meta-material-enhanced Tags</h3>
+                <p class="mb-4 text-slate-700 text-sm font-medium">
+                  <b class="text-slate-900">Xingyu Chen</b>,
+                  <a href="https://cse.ucdenver.edu/~lizheng/"
+                    class="text-slate-700 hover:text-ag-blue hover:underline">Zhengxiong Li</a>,
+                  <a href="https://baichengchen.github.io/"
+                    class="text-slate-700 hover:text-ag-blue hover:underline">Baicheng Chen</a>,
+                  Yi Zhu, Chris Xiaoxuan Lu, Zhengyu Peng, Feng Lin,
+                  <a href="https://cse.buffalo.edu/~wenyaoxu/"
+                    class="text-slate-700 hover:text-ag-blue hover:underline">Wenyao Xu</a>,
+                  Kui Ren, Chunming Qiao
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <a href="https://www.ndss-symposium.org/ndss-paper/metawave-attacking-mmwave-sensing-with-meta-material-enhanced-tags/"
+                    class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">Link</a>
+                  <a href="files/ndss23-fall-final348.pdf"
+                    class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">PDF(Hi-Res)</a>
+                  <a href="https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_f348_paper.pdf"
+                    class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">PDF(Lo-Res)</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-          <div class="md:flex">
-            <div class="md:w-1/4 p-4">
-              <img src="images/Publications/FerroTag/Icon.png" class="w-full h-40 object-contain"
-                alt="FerroTag publication">
-            </div>
-            <div class="p-6 md:w-3/4">
-              <p class="text-blue-600 font-semibold">ACM SenSys 2019, <a href="http://sensys.acm.org/2019/program/"
-                  class="text-red-600 font-bold">Best Paper Award</a> (Acceptance Rate: 19.4%, 28 of 144).</p>
-              <h3 class="text-xl font-bold mb-2">FerroTag: A Paper-based mmWave-Scannable Tagging Infrastructure</h3>
-              <p class="mb-4">
-                <a href="https://cse.ucdenver.edu/~lizheng/" class="text-blue-600 hover:underline">Zhengxiong Li</a>,
-                <a href="https://baichengchen.github.io/" class="text-blue-600 hover:underline">Baicheng Chen</a>,
-                Zhuolin Yang, Huining Li,
-                <a href="http://www.acsu.buffalo.edu/~chenhanx/" class="text-blue-600 hover:underline">Chenhan Xu</a>,
-                <b>Xingyu Chen</b>,
-                Kun Wang,
-                <a href="https://cse.buffalo.edu/~wenyaoxu/" class="text-blue-600 hover:underline">Wenyao Xu</a>
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <a href="https://cse.ucdenver.edu/~lizheng/Papers/Zhengxiong_Sensys19.pdf"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Paper</a>
-                <a href="https://dl.acm.org/citation.cfm?id=3360019"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Link</a>
-                <a href="https://cse.ucdenver.edu/~lizheng/Papers/Zhengxiong_Sensys19.txt"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Bib</a>
-                <a href="https://youtu.be/lodkH9k-ckg"
-                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Video</a>
+    <!-- Awards and Service (Combined for compactness) -->
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div class="md:flex md:space-x-12">
+          <div class="md:w-1/2">
+            <h2 class="text-2xl font-bold mb-6 text-slate-900 flex items-center">
+              <span class="bg-ag-blue w-2 h-8 rounded-full mr-3"></span>
+              Awards
+            </h2>
+            <div class="space-y-4">
+              <div class="glass-panel p-4 rounded-xl flex items-center gap-4 hover:border-ag-blue/30 transition-colors">
+                <img src="images/icons/ucsd.svg" class="w-10 h-10 object-contain" alt="UCSD">
+                <div>
+                  <h3 class="font-bold text-slate-900">Travel Grants</h3>
+                  <p class="text-slate-700 text-sm font-medium">UC San Diego GPSA & SenSys'23 NSF</p>
+                </div>
+              </div>
+              <div class="glass-panel p-4 rounded-xl flex items-center gap-4 hover:border-ag-blue/30 transition-colors">
+                <img src="images/icons/ieee.webp" class="w-10 h-10 rounded" alt="IEEE">
+                <div>
+                  <h3 class="font-bold text-slate-900">Best Student Paper Award</h3>
+                  <p class="text-slate-700 text-sm font-medium">IEEE ICHI 2022</p>
+                </div>
+              </div>
+              <div class="glass-panel p-4 rounded-xl flex items-center gap-4 hover:border-ag-blue/30 transition-colors">
+                <img src="images/icons/acm.png" class="w-10 h-10 rounded" alt="ACM">
+                <div>
+                  <h3 class="font-bold text-slate-900">Best Paper Award</h3>
+                  <p class="text-slate-700 text-sm font-medium">ACM SenSys 2019</p>
+                </div>
               </div>
             </div>
           </div>
-        </div> -->
 
+          <div class="md:w-1/2 mt-8 md:mt-0">
+            <h2 class="text-2xl font-bold mb-6 text-slate-900 flex items-center">
+              <span class="bg-ag-blue w-2 h-8 rounded-full mr-3"></span>
+              Service
+            </h2>
+            <div class="glass-panel p-6 rounded-xl hover:border-ag-blue/30 transition-colors">
+              <h3 class="font-bold text-slate-900 mb-2">Invited Reviewer</h3>
+              <p class="text-slate-700 text-sm mb-4 font-medium">IEEE GlobeCom, IEEE TMC, IEEE TSC, IEEE Network, IMWUT
+                UbiComp</p>
+
+              <h3 class="font-bold text-slate-900 mb-2">Artifact Evaluation</h3>
+              <p class="text-slate-700 text-sm font-medium">ACM MobiCom 2023, ACM MobiSys 2022, ACM SenSys Data Workshop
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="bg-ucsd-navy py-6">
-    <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-      <p class="text-white text-center">Copyright &copy; Xingyu Chen 2025</p>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer class="border-t border-slate-300 py-8 mt-12 bg-slate-200/90">
+      <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+        <p class="text-slate-600 text-sm">Copyright &copy; Xingyu Chen 2025.</p>
+      </div>
+    </footer>
+  </div>
 
-  <!-- JavaScript for mobile menu toggle -->
+  <!-- Scripts -->
   <script>
     document.getElementById('mobile-menu-button').addEventListener('click', function () {
       const menu = document.getElementById('mobile-menu');
       menu.classList.toggle('hidden');
     });
 
-    // Keep the existing scripts for avatar change and tooltips
+    // Avatar easter egg
     const urlParams = new URLSearchParams(window.location.search);
     const avator = urlParams.get('avator')
     if (avator == "robot")
       document.getElementById("avator").src = "images/A-R.jpg"
 
-    // Keep jQuery for existing functionality
-    $(document).ready(function () {
-      $('#image_pop').tooltip({
-        container: 'body',
-        animated: 'fade',
-        placement: 'bottom',
-        html: true
+    // Subtle Particle Animation
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.5; // Very slow velocity
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2 + 1;
+        this.color = `rgba(29, 78, 216, ${Math.random() * 0.1 + 0.05})`; // Faint blue
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Wrap around screen
+        if (this.x < 0) this.x = width;
+        if (this.x > width) this.x = 0;
+        if (this.y < 0) this.y = height;
+        if (this.y > height) this.y = 0;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const particleCount = Math.floor(width * height / 15000); // Density based on screen size
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach(p => {
+        p.update();
+        p.draw();
       });
 
+      // Draw faint connections
+      ctx.strokeStyle = 'rgba(29, 78, 216, 0.03)';
+      ctx.lineWidth = 0.5;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
 
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      resize();
+      initParticles();
     });
+
+    resize();
+    initParticles();
+    animate();
   </script>
 </body>
 

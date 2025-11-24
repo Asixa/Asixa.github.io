@@ -4,43 +4,110 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <!-- <link rel="icon" href="../../../../favicon.ico"> -->
+  <meta name="description" content="Xingyu Chen - Projects">
+  <meta name="author" content="Xingyu Chen">
   <link rel="icon" type="image/png" href="images/UCSD.png">
-  <title>Xingyu Chen</title>
-  <meta name="description"
-  content="Xingyu Chen is 3rd year PhD student in Computer Science at University of California, San Diego. Research interests include mobile computing, computer graphics, and machine learning.">
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="bootstrap/css/docs.min.css" rel="stylesheet">
+  <title>Projects | Xingyu Chen</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/highlight/styles/default.css">
-  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
+            'ag-light': '#f8fafc', // Slate-50
+            'ag-blue': '#1d4ed8', // Blue-700 (Darker Tech Blue)
+            'ag-blue-dark': '#1e3a8a', // Blue-900
+            'ag-text-main': '#0f172a', // Slate-900 (Deep Black)
+            'ag-text-sub': '#334155', // Slate-700 (Dark Grey)
             'ucsd-navy': '#182B49',
             'ucsd-gold': '#FFCD00',
           },
           fontFamily: {
             'manrope': ['Manrope', 'sans-serif'],
+          },
+          backdropBlur: {
+            'xs': '2px',
+            'xl': '24px',
           }
         }
       }
     }
   </script>
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-  <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-  <script src="https://getbootstrap.com/docs/4.0/assets/js/docs.min.js"></script>
-  <script src="assets/highlight/js/highlight.pack.js"></script>
+
+  <!-- Global Styles -->
+  <style>
+    body {
+      background-color: #f8fafc;
+      color: #0f172a;
+      /* Deep Black */
+      font-family: 'Manrope', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Particle Canvas Background */
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 1;
+    }
+
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      transition: all 0.2s ease;
+    }
+
+    .glass-panel:hover {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(29, 78, 216, 0.2);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f8fafc;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132051884-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -52,295 +119,393 @@
   </script>
 </head>
 
-<style>
-  .vertical-center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
+<body class="antialiased selection:bg-blue-100 selection:text-blue-900">
 
- 
-  .rounded{
-    border-radius:0.5rem !important;
-  }
+  <!-- Dynamic Background -->
+  <div id="canvas-container">
+    <canvas id="particles"></canvas>
+  </div>
 
-  .tooltip-inner {
-    max-width: 500px;
-    /* If max-width does not work, try using width instead */
-    width: 500px;
-  }
-
-  .tooltip.show {
-    opacity: 1;
-    background: rgb(255, 255, 255);
-  }
-
-  img:hover>.overlay {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: #000;
-    opacity: 0.5;
-    border-radius: 30px;
-  }
-
-  .btn-blue {
-    background-color: #3b82f6;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 0.375rem;
-    transition: background-color 0.2s;
-  }
-  .btn-blue:hover {
-    background-color: #2563eb;
-  }
-</style>
-
-<body class="font-manrope bg-gray-100">
-  <nav class="bg-ucsd-navy border-b-2 border-ucsd-gold fixed w-full z-10">
-    <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-      <div class="flex justify-between h-16">
+  <!-- Navigation -->
+  <nav class="glass-nav fixed w-full z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+      <div class="flex justify-between h-20">
         <div class="flex items-center">
-          <a href="index.html" class="text-white text-xl font-bold">Xingyu Chen</a>
+          <a href="index.html"
+            class="text-slate-900 text-2xl font-extrabold tracking-tight hover:text-ag-blue transition-colors">Xingyu
+            Chen</a>
         </div>
         <div class="hidden md:flex items-center">
-          <div class="ml-10 flex items-baseline space-x-4">
-            <a href="index.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
-            <a href="projects.html" class="text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-            <a href="publications.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Publications</a>
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="index.html"
+              class="text-slate-700 hover:text-ag-blue px-3 py-2 rounded-md text-sm font-bold transition-all">Home</a>
+            <a href="#" class="text-ag-blue px-3 py-2 rounded-md text-sm font-bold">Projects</a>
+            <a href="publications.html"
+              class="text-slate-700 hover:text-ag-blue px-3 py-2 rounded-md text-sm font-bold transition-all">Publications</a>
           </div>
         </div>
         <div class="md:hidden flex items-center">
-          <button type="button" class="text-gray-400 hover:text-white focus:outline-none" id="mobile-menu-button">
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button type="button" class="text-slate-600 hover:text-ag-blue focus:outline-none" id="mobile-menu-button">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
       </div>
     </div>
-    
-    <div class="hidden md:hidden" id="mobile-menu">
+
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden glass-panel border-t-0" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <a href="index.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
-        <a href="projects.html" class="text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
-        <a href="publications.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Publications</a>
+        <a href="index.html"
+          class="text-slate-700 hover:text-ag-blue block px-3 py-2 rounded-md text-base font-bold hover:bg-slate-50">Home</a>
+        <a href="#" class="text-ag-blue block px-3 py-2 rounded-md text-base font-bold bg-blue-50">Projects</a>
+        <a href="publications.html"
+          class="text-slate-700 hover:text-ag-blue block px-3 py-2 rounded-md text-base font-bold hover:bg-slate-50">Publications</a>
       </div>
     </div>
   </nav>
-  
-  <main class="pt-20 pb-10">
+
+  <!-- Main Content -->
+  <main class="pt-32 pb-10 relative">
     <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-      <h2 class="text-3xl font-bold mb-6">Projects</h2>
+      <div class="flex items-center mb-8">
+        <h2 class="text-3xl font-extrabold text-slate-900 flex items-center">
+          <span class="bg-ag-blue w-2 h-10 rounded-full mr-4"></span>
+          Projects
+        </h2>
+      </div>
 
-
-      <div class="bg-gray-50 rounded-lg border border-gray-200 mb-6">
+      <!-- RF Creator -->
+      <div class="glass-panel rounded-2xl overflow-hidden mb-8 hover:bg-white transition-all duration-300 group">
+        <!-- Reverted: Image full width, object contain, no extra padding container around image -->
         <img src="images/Creator2.png" class="w-full object-contain mb-4" alt="ALight Creator">
-        <div class="p-4 text-center">
-          <h4 class="text-xl font-bold mb-2"><b>[Updating]</b> RF Creator</h4>
-          <p class="mb-4">Next Generation Radio Simulatior .</p>
-          <div class="flex flex-wrap justify-center gap-2 mb-4">
-            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">C++</span>
-            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">CUDA</span>
-            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Pytorch</span>
-            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Slang</span>
-            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">ImGUI</span>
-            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">OpenGL</span>
-            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Vulkan</span>
+        <div class="p-8 text-center">
+          <h4 class="text-2xl font-bold mb-3 text-slate-900"><span class="text-ag-blue">[Updating]</span> RF Creator
+          </h4>
+          <p class="mb-6 text-slate-700 font-medium text-lg">Next Generation Radio Simulator.</p>
+          <div class="flex flex-wrap justify-center gap-2 mb-6">
+            <span
+              class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg text-sm font-semibold border border-slate-200">C++</span>
+            <span
+              class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg text-sm font-semibold border border-slate-200">CUDA</span>
+            <span
+              class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg text-sm font-semibold border border-slate-200">Pytorch</span>
+            <span
+              class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg text-sm font-semibold border border-slate-200">Slang</span>
+            <span
+              class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg text-sm font-semibold border border-slate-200">ImGUI</span>
+            <span
+              class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg text-sm font-semibold border border-slate-200">OpenGL</span>
+            <span
+              class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg text-sm font-semibold border border-slate-200">Vulkan</span>
           </div>
-        </div>
-        <div class="flex justify-between items-center p-4">
-          <div class="space-x-2">
-            <a href="" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Coming Soon</a>
+          <div class="flex justify-between items-center border-t border-slate-200 pt-4">
+            <span
+              class="bg-ag-blue text-white px-4 py-2 rounded-lg text-sm font-bold opacity-80 cursor-not-allowed">Coming
+              Soon</span>
+            <span class="text-slate-500 font-bold">2025</span>
           </div>
-          <span class="text-gray-500">2025</span>
         </div>
       </div>
 
-      
-      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+      <!-- VTensor -->
+      <div class="glass-panel rounded-2xl overflow-hidden mb-8 hover:bg-white transition-all duration-300 group">
         <div class="md:flex">
+          <!-- Reverted: md:w-1/4, p-0, flex center -->
           <div class="md:w-1/4 flex items-center justify-center p-0">
             <div class="w-full h-full overflow-hidden">
               <img src="images/Projects/VTsm.png" class="w-full h-full object-contain" alt="VTensor">
             </div>
           </div>
-          <div class="p-6 md:w-3/4 p-4">
-            <h3 class="text-2xl font-bold mb-2">VTensor</h3>
-            <p class="mb-4">VTensor is an online visual editor for machine learning and neural networks.</p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">HTML</span>
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">CSS</span>
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Python</span>
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Flask</span>
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">SQL</span>
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Javascript</span>
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Typescript</span>
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">C++</span>
+          <!-- Reverted: md:w-3/4 -->
+          <div class="p-6 md:w-3/4">
+            <h3 class="text-2xl font-bold mb-3 text-slate-900 group-hover:text-ag-blue transition-colors">VTensor</h3>
+            <p class="mb-4 text-slate-700 font-medium">VTensor is an online visual editor for machine learning and
+              neural networks.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm font-semibold border border-slate-200">HTML/CSS</span>
+              <span
+                class="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm font-semibold border border-slate-200">Python</span>
+              <span
+                class="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm font-semibold border border-slate-200">Flask</span>
+              <span
+                class="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm font-semibold border border-slate-200">SQL</span>
+              <span
+                class="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm font-semibold border border-slate-200">JS/TS</span>
+              <span
+                class="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm font-semibold border border-slate-200">C++</span>
             </div>
-            <div class="flex justify-between items-center">
-              <div class="space-x-2">
-                <!-- <a href="#" class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">GitHub</a> -->
-              </div>
-              <span class="text-gray-500">2020</span>
+            <div class="flex justify-end items-center border-t border-slate-200 pt-4">
+              <span class="text-slate-500 font-bold">2020</span>
             </div>
           </div>
         </div>
       </div>
-      
-      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-        <div class="p-6 text-center">
-          <img src="https://raw.githubusercontent.com/Asixa/Dragonfly-docs/master/misc/images/banner.jpg" 
-               class="h-40 object-contain mx-auto mb-4" alt="Dragonfly">
-          <h3 class="text-2xl font-bold mb-2">A <s>Differentiable, GPU-Friendly</s> Programming Language</h3>
-          <div class="flex flex-wrap justify-center gap-2 mb-4">
-            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">C/C++</span>
-            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">CUDA</span>
-            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">LLVM</span>
-            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Assembly</span>
-          </div>
-          <div class="flex justify-between items-center">
-            <div class="space-x-2">
-              <a href="https://github.com/Asixa/Dragonfly" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">GitHub</a>
-              <!-- <a href="#" class="bg-blue-100 text-blue-800 px-3 py-1 rounded hover:bg-blue-200">Website</a> -->
-            </div>
-            <span class="text-gray-500">2020</span>
-          </div>
-        </div>
-      </div>
-      
-      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-        <div class="p-6">
-          <h3 class="text-2xl font-bold mb-2">ALight Renderer Combo</h3>
-          <p class="mb-6">ALight Renderer Combo is a combination of various rendering technologies for research and study use.</p>
-          
 
-          
-          <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-gray-50 rounded-lg border border-gray-200">
-              <div class="w-full aspect-square overflow-hidden">
-                <img src="images/Projects/Raster-min.gif" class="w-full h-full object-contain" alt="ALight Rasterizer">
+      <!-- Dragonfly -->
+      <div class="glass-panel rounded-2xl overflow-hidden mb-8 hover:bg-white transition-all duration-300 group">
+        <div class="p-8 text-center">
+          <!-- Reverted: mb-4, removed rounded-lg -->
+          <img src="https://raw.githubusercontent.com/Asixa/Dragonfly-docs/master/misc/images/banner.jpg"
+            class="h-40 object-contain mx-auto mb-4" alt="Dragonfly">
+          <h3 class="text-2xl font-bold mb-3 text-slate-900 group-hover:text-ag-blue transition-colors">A <span
+              class="line-through decoration-slate-400 text-slate-400">Differentiable, GPU-Friendly</span> Programming
+            Language</h3>
+          <div class="flex flex-wrap justify-center gap-2 mb-6">
+            <span
+              class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg text-sm font-semibold border border-slate-200">C/C++</span>
+            <span
+              class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg text-sm font-semibold border border-slate-200">CUDA</span>
+            <span
+              class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg text-sm font-semibold border border-slate-200">LLVM</span>
+            <span
+              class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg text-sm font-semibold border border-slate-200">Assembly</span>
+          </div>
+          <div class="flex justify-between items-center border-t border-slate-200 pt-4">
+            <a href="https://github.com/Asixa/Dragonfly"
+              class="text-sm font-bold text-ag-blue bg-blue-50 border border-blue-100 px-4 py-2 rounded-lg hover:bg-ag-blue hover:text-white transition-all">GitHub</a>
+            <span class="text-slate-500 font-bold">2020</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALight Renderer Combo -->
+      <div class="glass-panel rounded-2xl overflow-hidden mb-8 p-6">
+        <h3 class="text-2xl font-bold mb-3 text-slate-900">ALight Renderer Combo</h3>
+        <p class="mb-8 text-slate-700 font-medium">ALight Renderer Combo is a combination of various rendering
+          technologies for research and study use.</p>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Rasterizer -->
+          <div
+            class="bg-white/50 rounded-xl border border-slate-200 overflow-hidden hover:border-ag-blue/30 transition-all">
+            <!-- Reverted: Removed bg-black -->
+            <div class="w-full aspect-square overflow-hidden">
+              <img src="images/Projects/Raster-min.gif" class="w-full h-full object-contain" alt="ALight Rasterizer">
+            </div>
+            <div class="p-4">
+              <h4 class="text-lg font-bold mb-2 text-slate-900"><span
+                  class="text-slate-500 text-sm">[Archived]</span><br>ALight-Rasterizer</h4>
+              <p class="mb-4 text-sm text-slate-600">Realtime CPU rasterizer with programmable rendering pipeline.</p>
+              <div class="flex justify-center mb-4">
+                <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs font-semibold">C# .NET Core</span>
               </div>
-              <div class="p-4">
-                <h4 class="text-lg font-bold mb-2"><b>[Archived]</b> ALight-Rasterizer</h4>
-                <p class="mb-4">A realtime CPU rasterizer with programmable rendering pipeline for research and study use.</p>
-                <div class="flex justify-center mb-4">
-                  <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">C# .NET Core</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <div class="space-x-2">
-                    <a href="https://github.com/Asixa/ALight/tree/master/ALightRaster.DotNetCore" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">GitHub</a>
-                    <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">More</a>
-                  </div>
-                  <span class="text-gray-500">2018</span>
-                </div>
+              <div class="flex justify-between items-center pt-2 border-t border-slate-100">
+                <a href="https://github.com/Asixa/ALight/tree/master/ALightRaster.DotNetCore"
+                  class="text-xs font-bold text-ag-blue hover:underline">GitHub</a>
+                <span class="text-xs text-slate-500 font-bold">2018</span>
               </div>
             </div>
-            
-            <div class="bg-gray-50 rounded-lg border border-gray-200">
-              <div class="w-full aspect-square overflow-hidden">
-                <img src="images/Projects/RT-min.gif" class="w-full h-full object-contain" alt="ALight Ray">
+          </div>
+
+          <!-- Ray Tracer -->
+          <div
+            class="bg-white/50 rounded-xl border border-slate-200 overflow-hidden hover:border-ag-blue/30 transition-all">
+            <!-- Reverted: Removed bg-black -->
+            <div class="w-full aspect-square overflow-hidden">
+              <img src="images/Projects/RT-min.gif" class="w-full h-full object-contain" alt="ALight Ray">
+            </div>
+            <div class="p-4">
+              <h4 class="text-lg font-bold mb-2 text-slate-900"><span
+                  class="text-slate-500 text-sm">[Archived]</span><br>ALight-Ray</h4>
+              <p class="mb-4 text-sm text-slate-600">Physical based offline path tracing CPU renderer.</p>
+              <div class="flex justify-center mb-4">
+                <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs font-semibold">C#</span>
               </div>
-              <div class="p-4">
-                <h4 class="text-lg font-bold mb-2"><b>[Archived]</b> ALight-Ray</h4>
-                <p class="mb-4">A physical based offline path tracing CPU renderer for research and study use.</p>
-                <div class="flex justify-center mb-4">
-                  <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">C#</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <div class="space-x-2">
-                    <a href="http://xingyuchen.me/ALight/" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">GitHub</a>
-                  </div>
-                  <span class="text-gray-500">2018</span>
-                </div>
+              <div class="flex justify-between items-center pt-2 border-t border-slate-100">
+                <a href="http://xingyuchen.me/ALight/" class="text-xs font-bold text-ag-blue hover:underline">GitHub</a>
+                <span class="text-xs text-slate-500 font-bold">2018</span>
               </div>
             </div>
-            
-            <div class="bg-gray-50 rounded-lg border border-gray-200">
-              <div class="w-full aspect-square overflow-hidden">
-                <img src="images/Projects/GPU-min.gif" class="w-full h-full object-contain" alt="ALightGPU">
+          </div>
+
+          <!-- GPU Tracer -->
+          <div
+            class="bg-white/50 rounded-xl border border-slate-200 overflow-hidden hover:border-ag-blue/30 transition-all">
+            <!-- Reverted: Removed bg-black -->
+            <div class="w-full aspect-square overflow-hidden">
+              <img src="images/Projects/GPU-min.gif" class="w-full h-full object-contain" alt="ALightGPU">
+            </div>
+            <div class="p-4">
+              <h4 class="text-lg font-bold mb-2 text-slate-900"><span
+                  class="text-slate-500 text-sm">[Archived]</span><br>ALightGPU</h4>
+              <p class="mb-4 text-sm text-slate-600">Simple GPU path tracing renderer developed using CUDA.</p>
+              <div class="flex justify-center mb-4 gap-1 flex-wrap">
+                <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs font-semibold">C++</span>
+                <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs font-semibold">CUDA</span>
               </div>
-              <div class="p-4">
-                <h4 class="text-lg font-bold mb-2"><b>[Archived]</b> ALightGPU</h4>
-                <p class="mb-4">A simple GPU path tracing renderer developed using CUDA for research and study use.</p>
-                <div class="flex justify-center mb-4">
-                  <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">C++</span>
-                  <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">GPU</span>
-                  <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">CUDA</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <div class="space-x-2">
-                    <a href="https://github.com/Asixa/ALightGPU" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">GitHub</a>
-                  </div>
-                  <span class="text-gray-500">2019</span>
-                </div>
+              <div class="flex justify-between items-center pt-2 border-t border-slate-100">
+                <a href="https://github.com/Asixa/ALightGPU"
+                  class="text-xs font-bold text-ag-blue hover:underline">GitHub</a>
+                <span class="text-xs text-slate-500 font-bold">2019</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
 
-      
-      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+      <!-- Unity Steam -->
+      <div class="glass-panel rounded-2xl overflow-hidden mb-8 hover:bg-white transition-all duration-300 group">
         <div class="md:flex">
+          <!-- Reverted: md:w-1/4 -->
           <div class="md:w-1/4">
             <img src="images/Projects/Unity-Steam.png" class="h-full w-full object-cover" alt="Unity-Steam">
           </div>
+          <!-- Reverted: md:w-3/4 -->
           <div class="p-6 md:w-3/4">
-            <h3 class="text-2xl font-bold mb-2">Unity-Steam Networking System</h3>
-            <p class="mb-4">One of the first few solutions of Steam multiplayer networking for Unity Engine. It was developed entirely by me solely. It is a low-level networking framework to connect Unity Component System and Steam P2P network services. It is used by commercial games such us <a href="https://store.steampowered.com/app/805940/RUSSIA_BATTLEGROUNDS/" class="text-blue-600 hover:underline">RUSSIA BATTLEGROUNDS</a>, a battle royale game that supports up to 32 players at the same time.</p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">C#</span>
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Unity</span>
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Steamwork API</span>
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Networking</span>
+            <h3 class="text-2xl font-bold mb-3 text-slate-900 group-hover:text-ag-blue transition-colors">Unity-Steam
+              Networking System</h3>
+            <p class="mb-4 text-slate-700 font-medium">One of the first few solutions of Steam multiplayer networking
+              for Unity Engine. It is a low-level networking framework to connect Unity Component System and Steam P2P
+              network services. Used by commercial games such as <a
+                href="https://store.steampowered.com/app/805940/RUSSIA_BATTLEGROUNDS/"
+                class="text-ag-blue hover:underline font-bold">RUSSIA BATTLEGROUNDS</a>.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm font-semibold border border-slate-200">C#</span>
+              <span
+                class="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm font-semibold border border-slate-200">Unity</span>
+              <span
+                class="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm font-semibold border border-slate-200">Steamworks
+                API</span>
             </div>
-            <div class="flex justify-between items-center">
-              <div class="space-x-2">
-                <a href="https://github.com/Asixa/Steam-Multiplayer-for-Unity" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">GitHub</a>
-              </div>
-              <span class="text-gray-500">2017</span>
+            <div class="flex justify-between items-center border-t border-slate-200 pt-4">
+              <a href="https://github.com/Asixa/Steam-Multiplayer-for-Unity"
+                class="text-sm font-bold text-ag-blue bg-blue-50 border border-blue-100 px-4 py-2 rounded-lg hover:bg-ag-blue hover:text-white transition-all">GitHub</a>
+              <span class="text-slate-500 font-bold">2017</span>
             </div>
           </div>
         </div>
       </div>
-      
-      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+
+      <!-- Sandbox Game -->
+      <div class="glass-panel rounded-2xl overflow-hidden mb-8 hover:bg-white transition-all duration-300 group">
         <div class="md:flex">
+          <!-- Preserved: md:w-1/3 -->
           <div class="md:w-1/3">
             <img src="images/Projects/SD.jpg" class="h-full w-full object-cover" alt="Sandbox Game">
           </div>
+          <!-- Preserved: md:w-2/3 -->
           <div class="p-6 md:w-2/3">
-            <p class="">A 3D sandbox video game developed entirely by me solely when I was 14 years old (2014). It was the first time I have completed a large-scale project, handling PR and do business alone. Develop this game is what led me to study further on Computer Graphics.</p>
-            <div class="flex flex-wrap justify-center gap-2 ">
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">C#</span>
-              <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Unity</span>
+            <h3 class="text-2xl font-bold mb-3 text-slate-900 group-hover:text-ag-blue transition-colors">3D Sandbox
+              Game</h3>
+            <p class="mb-4 text-slate-700 font-medium">A 3D sandbox video game developed entirely by me when I was 14
+              years old (2014). It was the first time I completed a large-scale project, handling PR and business alone.
+              Developing this game led me to study Computer Graphics.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm font-semibold border border-slate-200">C#</span>
+              <span
+                class="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm font-semibold border border-slate-200">Unity</span>
             </div>
-            <div class="text-right">
-              <span class="text-gray-500">2013 ~ 2015</span>
+            <div class="flex justify-end items-center border-t border-slate-200 pt-4">
+              <span class="text-slate-500 font-bold">2013 ~ 2015</span>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </main>
-  
-  <footer class="bg-ucsd-navy py-6">
-    <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-      <p class="text-white text-center">Copyright &copy; Xingyu Chen 2025</p>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-300 py-8 bg-slate-200/90 relative z-10">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+      <p class="text-slate-600 text-sm">Copyright &copy; Xingyu Chen 2025.</p>
     </div>
   </footer>
-  
+
+  <!-- Scripts -->
   <script>
-    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+    document.getElementById('mobile-menu-button').addEventListener('click', function () {
       const menu = document.getElementById('mobile-menu');
       menu.classList.toggle('hidden');
     });
+
+    // Subtle Particle Animation (Same as index.html)
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2 + 1;
+        this.color = `rgba(29, 78, 216, ${Math.random() * 0.1 + 0.05})`;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0) this.x = width;
+        if (this.x > width) this.x = 0;
+        if (this.y < 0) this.y = height;
+        if (this.y > height) this.y = 0;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const particleCount = Math.floor(width * height / 15000);
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      ctx.strokeStyle = 'rgba(29, 78, 216, 0.03)';
+      ctx.lineWidth = 0.5;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      resize();
+      initParticles();
+    });
+
+    resize();
+    initParticles();
+    animate();
   </script>
 </body>
-
 
 </html>

@@ -4,45 +4,110 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <!-- <link rel="icon" href="../../../../favicon.ico"> -->
+  <meta name="description" content="Xingyu Chen - Publications">
+  <meta name="author" content="Xingyu Chen">
   <link rel="icon" type="image/png" href="images/UCSD.png">
-  <title>Xingyu Chen</title>
-  <meta name="description"
-    content="Xingyu Chen is 3rd year PhD student in Computer Science at University of California, San Diego. Research interests include mobile computing, computer graphics, and machine learning.">
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="bootstrap/css/docs.min.css" rel="stylesheet">
+  <title>Publications | Xingyu Chen</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/highlight/styles/default.css">
-  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
+            'ag-light': '#f8fafc', // Slate-50
+            'ag-blue': '#1d4ed8', // Blue-700 (Darker Tech Blue)
+            'ag-blue-dark': '#1e3a8a', // Blue-900
+            'ag-text-main': '#0f172a', // Slate-900 (Deep Black)
+            'ag-text-sub': '#334155', // Slate-700 (Dark Grey)
             'ucsd-navy': '#182B49',
             'ucsd-gold': '#FFCD00',
           },
           fontFamily: {
             'manrope': ['Manrope', 'sans-serif'],
+          },
+          backdropBlur: {
+            'xs': '2px',
+            'xl': '24px',
           }
         }
       }
     }
   </script>
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-  <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-  <script src="https://getbootstrap.com/docs/4.0/assets/js/docs.min.js"></script>
-  <script src="assets/highlight/js/highlight.pack.js"></script>
+
+  <!-- Global Styles -->
+  <style>
+    body {
+      background-color: #f8fafc;
+      color: #0f172a;
+      /* Deep Black */
+      font-family: 'Manrope', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Particle Canvas Background */
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 1;
+    }
+
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      transition: all 0.2s ease;
+    }
+
+    .glass-panel:hover {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(29, 78, 216, 0.2);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f8fafc;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132051884-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -54,60 +119,33 @@
   </script>
 </head>
 
-<style>
-  .vertical-center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
+<body class="antialiased selection:bg-blue-100 selection:text-blue-900">
 
+  <!-- Dynamic Background -->
+  <div id="canvas-container">
+    <canvas id="particles"></canvas>
+  </div>
 
-  .rounded {
-    border-radius: 0.5rem !important;
-  }
-
-  .tooltip-inner {
-    max-width: 500px;
-    /* If max-width does not work, try using width instead */
-    width: 500px;
-  }
-
-  .tooltip.show {
-    opacity: 1;
-    background: rgb(255, 255, 255);
-  }
-
-  img:hover>.overlay {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: #000;
-    opacity: 0.5;
-    border-radius: 30px;
-  }
-</style>
-
-<body class="font-manrope bg-gray-100">
-  <nav class="bg-ucsd-navy border-b-2 border-ucsd-gold fixed w-full z-10">
-    <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-      <div class="flex justify-between h-16">
+  <!-- Navigation -->
+  <nav class="glass-nav fixed w-full z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+      <div class="flex justify-between h-20">
         <div class="flex items-center">
-          <a href="index.html" class="text-white text-xl font-bold">Xingyu Chen</a>
+          <a href="index.html"
+            class="text-slate-900 text-2xl font-extrabold tracking-tight hover:text-ag-blue transition-colors">Xingyu
+            Chen</a>
         </div>
         <div class="hidden md:flex items-center">
-          <div class="ml-10 flex items-baseline space-x-4">
+          <div class="ml-10 flex items-baseline space-x-8">
             <a href="index.html"
-              class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium no-underline">Home</a>
+              class="text-slate-700 hover:text-ag-blue px-3 py-2 rounded-md text-sm font-bold transition-all">Home</a>
             <a href="projects.html"
-              class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium no-underline">Projects</a>
-            <a href="publications.html"
-              class="text-white px-3 py-2 rounded-md text-sm font-medium no-underline">Publications</a>
+              class="text-slate-700 hover:text-ag-blue px-3 py-2 rounded-md text-sm font-bold transition-all">Projects</a>
+            <a href="#" class="text-ag-blue px-3 py-2 rounded-md text-sm font-bold">Publications</a>
           </div>
         </div>
         <div class="md:hidden flex items-center">
-          <button type="button" class="text-gray-400 hover:text-white focus:outline-none" id="mobile-menu-button">
+          <button type="button" class="text-slate-600 hover:text-ag-blue focus:outline-none" id="mobile-menu-button">
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
               stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -117,277 +155,408 @@
       </div>
     </div>
 
-    <div class="hidden md:hidden" id="mobile-menu">
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden glass-panel border-t-0" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <a href="index.html"
-          class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium no-underline">Home</a>
+          class="text-slate-700 hover:text-ag-blue block px-3 py-2 rounded-md text-base font-bold hover:bg-slate-50">Home</a>
         <a href="projects.html"
-          class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium no-underline">Projects</a>
-        <a href="publications.html"
-          class="text-white block px-3 py-2 rounded-md text-base font-medium no-underline">Publications</a>
+          class="text-slate-700 hover:text-ag-blue block px-3 py-2 rounded-md text-base font-bold hover:bg-slate-50">Projects</a>
+        <a href="#" class="text-ag-blue block px-3 py-2 rounded-md text-base font-bold bg-blue-50">Publications</a>
       </div>
     </div>
   </nav>
 
-  <main class="pt-20 pb-10">
+  <!-- Main Content -->
+  <main class="pt-32 pb-10 relative">
     <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
 
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-4">Conference Papers</h2>
+      <!-- Conference Papers -->
+      <div class="mb-16">
+        <div class="flex items-center mb-8">
+          <h2 class="text-3xl font-extrabold text-slate-900 flex items-center">
+            <span class="bg-ag-blue w-2 h-10 rounded-full mr-4"></span>
+            Conference Papers
+          </h2>
+        </div>
 
-
-        <div class="space-y-4">
-
-
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C14]</span> Yadong Li, Shuning Wang, Yongjian Fu, Justin Chen,
-              <strong>Xingyu Chen</strong>, Ju Ren, Xinyu Zhang, Akshay Gadre, Ke Sun.
+        <div class="space-y-6">
+          <!-- C14 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C14]</span> Yadong Li, Shuning Wang, Yongjian Fu, Justin Chen,
+              <strong class="text-slate-900">Xingyu Chen</strong>, Ju Ren, Xinyu Zhang, Akshay Gadre, Ke Sun.
               "UltraPoser: Pushing the Limits of IMU-based Full-Body Pose Estimation with Ultrasound Sensing on Consumer
               Wearables"
               In ACM Symposium on User Interface Software and Technology
-              <span style="color: rgb(0, 0, 255);" class="font-bold">UIST</span> 2025.
+              <span class="font-bold text-ag-blue">UIST</span> 2025.
             </p>
           </div>
 
-
-
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C13]</span> <strong>Xingyu Chen</strong>, Xinmin Fang, Shuting
-              Zhang, Xinyu Zhang, Liang He, Zhengxiong Li.
+          <!-- C13 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C13]</span> <strong class="text-slate-900">Xingyu Chen</strong>,
+              Xinmin Fang, Shuting Zhang, Xinyu Zhang, Liang He, Zhengxiong Li.
               "You Only Render Once: Enhancing Energy and Computation Efficiency of Mobile Virtual Reality"
               In Proceedings of the 23rd ACM International Conference on Mobile Systems, Applications, and Services
-              <span style="color: rgb(0, 0, 255);" class="font-bold">MobiSys</span> 2025.
+              <span class="font-bold text-ag-blue">MobiSys</span> 2025.
             </p>
           </div>
 
-
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C12]</span> <strong>Xingyu Chen</strong>, Zihao Feng, Kun Qian,
-              Xinyu Zhang.
+          <!-- C12 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C12]</span> <strong class="text-slate-900">Xingyu Chen</strong>,
+              Zihao Feng, Kun Qian, Xinyu Zhang.
               "Radio Frequency Ray Tracing with Neural Object Representation for Enhanced RF Modeling"
-              In Proceedings of the 2025 Conference on Computer Vision and Pattern Recognition <span
-                style="color: rgb(0, 0, 255);" class="font-bold">CVPR</span> 2025.</p>
-          </div>
-
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C11]</span> <strong>Xingyu Chen</strong>, Zihao Feng, Ke Sun, Kun
-              Qian, Xinyu Zhang.
-              "RFCanvas: Modeling RF Channel by Fusing Visual Priors and Few-shot RF measurements"
-              In Proceedings of the 22th
-              Conference on Embedded Networked Sensor Systems <span style="color: rgb(0, 0, 255);"
-                class="font-bold">SenSys</span> 2024.</p>
-          </div>
-
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C10]</span> Ruichun Ma, Shicheng Zheng, Hao Pan, Lili Qiu,
-              <strong>Xingyu Chen</strong>, Liangyu Liu, Yihong
-              Liu, Wenjun Hu, Ju Ren
-              "AutoMS: Automated Service for mmWave Coverage Optimization using Low-cost Metasurfaces"
-              In Proceedings of the 30th Annual International Conference on Mobile Computing and Networking <span
-                style="color: rgb(0, 0, 255);" class="font-bold">MobiCom</span> 2024.
+              In Proceedings of the 2025 Conference on Computer Vision and Pattern Recognition
+              <span class="font-bold text-ag-blue">CVPR</span> 2025.
             </p>
           </div>
 
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C9]</span> <strong>Xingyu Chen</strong>, Xinyu Zhang.
+          <!-- C11 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C11]</span> <strong class="text-slate-900">Xingyu Chen</strong>,
+              Zihao Feng, Ke Sun, Kun Qian, Xinyu Zhang.
+              "RFCanvas: Modeling RF Channel by Fusing Visual Priors and Few-shot RF measurements"
+              In Proceedings of the 22th Conference on Embedded Networked Sensor Systems
+              <span class="font-bold text-ag-blue">SenSys</span> 2024.
+            </p>
+          </div>
+
+          <!-- C10 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C10]</span> Ruichun Ma, Shicheng Zheng, Hao Pan, Lili Qiu,
+              <strong class="text-slate-900">Xingyu Chen</strong>, Liangyu Liu, Yihong Liu, Wenjun Hu, Ju Ren.
+              "AutoMS: Automated Service for mmWave Coverage Optimization using Low-cost Metasurfaces"
+              In Proceedings of the 30th Annual International Conference on Mobile Computing and Networking
+              <span class="font-bold text-ag-blue">MobiCom</span> 2024.
+            </p>
+          </div>
+
+          <!-- C9 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C9]</span> <strong class="text-slate-900">Xingyu Chen</strong>,
+              Xinyu Zhang.
               "RF Genesis: Zero-Shot Generalization of mmWave Sensing through Simulation-Based Data Synthesis and
-              Generative
-              Diffusion Models"
-              In Proceedings of the 21th
-              Conference on Embedded Networked Sensor Systems <span style="color: rgb(0, 0, 255);"
-                class="font-bold">SenSys</span> 2023.</p>
+              Generative Diffusion Models"
+              In Proceedings of the 21th Conference on Embedded Networked Sensor Systems
+              <span class="font-bold text-ag-blue">SenSys</span> 2023.
+            </p>
           </div>
 
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C8]</span> <strong>Xingyu Chen*</strong>, Zhengxiong Li*, Baicheng
-              Chen*, Yi Zhu, Chris Xiaoxuan Lu, Zhengyu
-              Peng, Feng Lin, Wenyao Xu, Kui Ren, Chunming Qiao.
+          <!-- C8 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C8]</span> <strong class="text-slate-900">Xingyu Chen*</strong>,
+              Zhengxiong Li*, Baicheng Chen*, Yi Zhu, Chris Xiaoxuan Lu, Zhengyu Peng, Feng Lin, Wenyao Xu, Kui Ren,
+              Chunming Qiao.
               "MetaWave: Attacking mmWave Sensing with Meta-material-enhanced Tags"
-              Proceedings of the The Network and Distributed System Security
-              Symposium <span style="color: rgb(0, 0, 255);" class="font-bold">NDSS</span> 2023.</p>
+              Proceedings of the The Network and Distributed System Security Symposium
+              <span class="font-bold text-ag-blue">NDSS</span> 2023.
+            </p>
           </div>
 
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C7]</span> Chenhan Xu, Huining Li, Zhengxiong Li, <strong>Xingyu
-                Chen</strong>, Aditya Singh Rathore, Hanbin
-              Zhang, Kun Wang, and Wenyao Xu.
+          <!-- C7 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C7]</span> Chenhan Xu, Huining Li, Zhengxiong Li, <strong
+                class="text-slate-900">Xingyu Chen</strong>, Aditya Singh Rathore, Hanbin Zhang, Kun Wang, and Wenyao
+              Xu.
               "The Visual Accelerometer: A High-fidelity Optic-to-Inertial Transformation Framework for Wearable Health
               Computing"
-              Proceedings of the IEEE International Conference on Health Informatics 2022 <span
-                style="color: rgb(0, 0, 255);" class="font-bold">ICHI</span> <span class="text-red-600 font-bold">Best
-                Student Paper Award</span></p>
+              Proceedings of the IEEE International Conference on Health Informatics 2022
+              <span class="font-bold text-ag-blue">ICHI</span> <span
+                class="text-red-600 font-bold bg-red-50 px-2 py-0.5 rounded ml-2">Best Student Paper Award</span>
+            </p>
           </div>
 
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C6]</span> Zhengxiong Li, Baicheng Chen, <strong>Xingyu
-                Chen</strong>, Chenhan Xu, Yuyang Chen, Feng Lin,
-              Changzhi Li, Karthik Dantu, Kui Ren, and Wenyao Xu.
+          <!-- C6 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C6]</span> Zhengxiong Li, Baicheng Chen, <strong
+                class="text-slate-900">Xingyu Chen</strong>, Chenhan Xu, Yuyang Chen, Feng Lin, Changzhi Li, Karthik
+              Dantu, Kui Ren, and Wenyao Xu.
               "Reliable Digital Forensics in the Air: Exploring an RF-based Drone Identification System"
-              Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies <span
-                style="color: rgb(0, 0, 255);" class="font-bold">UbiComp</span> 6, no. 2 (2022): 1-25</p>
-          </div>
-
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C5]</span> Zhengxiong Li, Baicheng Chen, <strong>Xingyu
-                Chen</strong>, Huining Li, Chenhan Xu, Chris Xiaoxuan
-              Lu, Feng Lin, Kui Ren, and Wenyao Xu,
-              Ming-chun Huang, and Wenyao Xu. "SpiralSpy: Exploring a Stealthy and Practical Covert Channel to Attack
-              Air-gapped Computing Devices via mmWave Sensing" Proceedings of the The Network and Distributed System
-              Security
-              Symposium <span style="color: rgb(0, 0, 255);" class="font-bold">NDSS</span> 2022.</p>
-          </div>
-
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C4]</span> Chenhan Xu, Huining Li, Zhengxiong Li, Hanbin Zhang,
-              Aditya Singh Rathore, <strong>Xingyu
-                Chen</strong>, Kun Wang,
-              Ming-chun Huang, and Wenyao Xu. "CardiacWave: A mmWave-based Scheme of Non-Contact and High-Definition
-              Heart
-              Activity Computing." Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies
-              <span style="color: rgb(0, 0, 255);" class="font-bold">UbiComp</span> 5, no.
-              3 (2021): 1-26.
+              Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies
+              <span class="font-bold text-ag-blue">UbiComp</span> 6, no. 2 (2022): 1-25
             </p>
           </div>
 
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C3]</span> Baicheng Chen, Huining Li, Zhengxiong Li, <strong>Xingyu
-                Chen</strong>, Chenhan Xu, and Wenyao Xu.
-              "Thermowave: a new paradigm of wireless passive temperature monitoring via mmwave sensing." In Proceedings
-              of the 26th Annual
-              International Conference on Mobile Computing and Networking <span style="color: rgb(0, 0, 255);"
-                class="font-bold">MobiCom</span>, pp.
-              1-14. 2020.</p>
+          <!-- C5 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C5]</span> Zhengxiong Li, Baicheng Chen, <strong
+                class="text-slate-900">Xingyu Chen</strong>, Huining Li, Chenhan Xu, Chris Xiaoxuan Lu, Feng Lin, Kui
+              Ren, and Wenyao Xu, Ming-chun Huang, and Wenyao Xu.
+              "SpiralSpy: Exploring a Stealthy and Practical Covert Channel to Attack Air-gapped Computing Devices via
+              mmWave Sensing"
+              Proceedings of the The Network and Distributed System Security Symposium
+              <span class="font-bold text-ag-blue">NDSS</span> 2022.
+            </p>
           </div>
 
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C2]</span> Hanbin Zhang, Gabriel Guo, Emery Comstock, Baicheng
-              Chen, <strong>Xingyu Chen</strong>, Chen Song,
-              Jerry Ajay et al.
+          <!-- C4 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C4]</span> Chenhan Xu, Huining Li, Zhengxiong Li, Hanbin Zhang,
+              Aditya Singh Rathore, <strong class="text-slate-900">Xingyu Chen</strong>, Kun Wang, Ming-chun Huang, and
+              Wenyao Xu.
+              "CardiacWave: A mmWave-based Scheme of Non-Contact and High-Definition Heart Activity Computing."
+              Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies
+              <span class="font-bold text-ag-blue">UbiComp</span> 5, no. 3 (2021): 1-26.
+            </p>
+          </div>
+
+          <!-- C3 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C3]</span> Baicheng Chen, Huining Li, Zhengxiong Li, <strong
+                class="text-slate-900">Xingyu Chen</strong>, Chenhan Xu, and Wenyao Xu.
+              "Thermowave: a new paradigm of wireless passive temperature monitoring via mmwave sensing."
+              In Proceedings of the 26th Annual International Conference on Mobile Computing and Networking
+              <span class="font-bold text-ag-blue">MobiCom</span>, pp. 1-14. 2020.
+            </p>
+          </div>
+
+          <!-- C2 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C2]</span> Hanbin Zhang, Gabriel Guo, Emery Comstock, Baicheng Chen,
+              <strong class="text-slate-900">Xingyu Chen</strong>, Chen Song, Jerry Ajay et al.
               "RehabPhone: a software-defined tool using 3D printing and smartphones for personalized home-based
-              rehabilitation." In Proceedings of the 18th international conference on mobile systems, applications, and
-              services <span style="color: rgb(0, 0, 255);" class="font-bold">MobiSys</span>, pp. 434-447. 2020.</p>
+              rehabilitation."
+              In Proceedings of the 18th international conference on mobile systems, applications, and services
+              <span class="font-bold text-ag-blue">MobiSys</span>, pp. 434-447. 2020.
+            </p>
           </div>
 
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
-            <p class="mb-2"><span class="font-bold">[C1]</span> Zhengxiong Li, Baicheng Chen, Zhuolin Yang, Huining Li,
-              Chenhan Xu, <strong>Xingyu Chen</strong>,
-              Kun Wang, and Wenyao Xu. "Ferrotag: A paper-based mmwave-scannable tagging infrastructure." In Proceedings
-              of the 17th
-              Conference on Embedded Networked Sensor Systems <span style="color: rgb(0, 0, 255);"
-                class="font-bold">SenSys</span>, pp. 324-337.
-              2019. <span class="text-red-600 font-bold">Best Paper Award</span></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-4">Patents</h2>
-
-
-        <div class="space-y-4">
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-red-500">
-            <p class="mb-2"><span class="font-bold">[P1]</span> <strong><a
-                  href="https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2024178210"
-                  class="text-blue-600 hover:underline">WO2024178210</a></strong> MILLIMETER WAVE ATTACKS WITH
-              META-MATERIAL-ENHANCED ATTACK TAGS</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-4">Journal Papers</h2>
-
-
-        <div class="space-y-4">
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-green-500">
-            <p class="mb-2"><span class="font-bold">[J3]</span> <strong>Xingyu Chen*</strong>, Zhengxiong Li*,
-              Srirangaraj Setlur, Wenyao Xu, "Exploring Racial and
-              Gender Disparities in Voice Biometrics", <span style="color: rgb(0, 0, 255);" class="font-bold">Scientific
-                Reports</span> 12.1 (2022):
-              3723.</p>
-          </div>
-
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-green-500">
-            <p class="mb-2"><span class="font-bold">[J2]</span> Huining Li, <strong>Xingyu Chen</strong>, Xiaoye Qian,
-              Huan Chen, Zhengxiong Li, Soumyadeep
-              Bhattacharjee, Hanbin Zhang, Ming-Chun Huang, Wenyao Xu "An explainable COVID-19 detection system based on
-              human
-              sounds." <span style="color: rgb(0, 0, 255);" class="font-bold">Smart Health</span> (2022): 100332.</p>
-          </div>
-
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-green-500">
-            <p class="mb-2"><span class="font-bold">[J1]</span> Huining Li, Huan Chen, Chenhan Xu, Anarghya Das,
-              <strong>Xingyu Chen</strong>, Zhengxiong Li, Jian
-              Xiao, Ming-Chun Huang, and Wenyao Xu. "Privacy computing using deep compression learning techniques for
-              neural decoding." <span style="color: rgb(0, 0, 255);" class="font-bold">Smart Health</span> (2022):
-              100229.
+          <!-- C1 -->
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-ag-blue hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-ag-blue">[C1]</span> Zhengxiong Li, Baicheng Chen, Zhuolin Yang, Huining Li,
+              Chenhan Xu, <strong class="text-slate-900">Xingyu Chen</strong>, Kun Wang, and Wenyao Xu.
+              "Ferrotag: A paper-based mmwave-scannable tagging infrastructure."
+              In Proceedings of the 17th Conference on Embedded Networked Sensor Systems
+              <span class="font-bold text-ag-blue">SenSys</span>, pp. 324-337. 2019.
+              <span class="text-red-600 font-bold bg-red-50 px-2 py-0.5 rounded ml-2">Best Paper Award</span>
             </p>
           </div>
         </div>
       </div>
 
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-4">Poster/Demo Papers</h2>
-
-
-        <div class="space-y-4">
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-yellow-500">
-            <p class="mb-2"><span class="font-bold">[D4]</span> <strong>Xingyu Chen</strong>, Xinyu Zhang.
-              "Poster: Generalizing mmWave Sensing with Simulation Synthesis and Generative Models" In Proceedings of
-              the 25th International Workshop on Mobile Computing Systems and Applications <span
-                style="color: rgb(0, 0, 255);" class="font-bold">HotMobile</span>, 2024.</p>
-          </div>
-
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-yellow-500">
-            <p class="mb-2"><span class="font-bold">[D3]</span> <strong>Xingyu Chen</strong>, Xinmin Fang, Wenchuan Wei
-              , Wenyao Xu, Zhengxiong Li.
-              "Exploring an Extensible Children Game Framework based on Augmented Reality Building Blocks." In
-              Proceedings of
-              the 19th ACM Conference on Embedded Networked Sensor Systems <span style="color: rgb(0, 0, 255);"
-                class="font-bold">SenSys</span>, pp.
-              359-360. 2021.</p>
-          </div>
-
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-yellow-500">
-            <p class="mb-2"><span class="font-bold">[D2]</span> Xinmin Fang*, <strong>Xingyu Chen*</strong>, Wenyao Xu,
-              Zhengxiong Li.
-              "Enhanced Virtual Reality: Exploring an Immersive and Realistic Virtual Reality Training for Nursing." In
-              Proceedings of the 19th ACM Conference on Embedded Networked Sensor Systems <span
-                style="color: rgb(0, 0, 255);" class="font-bold">SenSys</span>, pp. 361-362. 2021.</p>
-          </div>
-
-          <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-yellow-500">
-            <p class="mb-2"><span class="font-bold">[D1]</span> <strong>Xingyu Chen</strong>, Chenhan Xu, Baicheng Chen,
-              Zhengxiong Li, Wenyao Xu.
-              "In-Ear Thermometer: Wearable Real-time Core Body Temperature Monitoring", the 18th Conference
-              on Embedded Networked Sensor Systems <span style="color: rgb(0, 0, 255);" class="font-bold">SenSys</span>,
-              pp. 687-688. 2020.</p>
+      <!-- Patents -->
+      <div class="mb-16">
+        <div class="flex items-center mb-8">
+          <h2 class="text-3xl font-extrabold text-slate-900 flex items-center">
+            <span class="bg-red-500 w-2 h-10 rounded-full mr-4"></span>
+            Patents
+          </h2>
+        </div>
+        <div class="space-y-6">
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-red-500 hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-red-600">[P1]</span>
+              <a href="https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2024178210"
+                class="text-ag-blue hover:underline font-bold">WO2024178210</a>
+              MILLIMETER WAVE ATTACKS WITH META-MATERIAL-ENHANCED ATTACK TAGS
+            </p>
           </div>
         </div>
       </div>
+
+      <!-- Journal Papers -->
+      <div class="mb-16">
+        <div class="flex items-center mb-8">
+          <h2 class="text-3xl font-extrabold text-slate-900 flex items-center">
+            <span class="bg-green-500 w-2 h-10 rounded-full mr-4"></span>
+            Journal Papers
+          </h2>
+        </div>
+        <div class="space-y-6">
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-green-500 hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-green-600">[J3]</span> <strong class="text-slate-900">Xingyu Chen*</strong>,
+              Zhengxiong Li*, Srirangaraj Setlur, Wenyao Xu,
+              "Exploring Racial and Gender Disparities in Voice Biometrics",
+              <span class="font-bold text-ag-blue">Scientific Reports</span> 12.1 (2022): 3723.
+            </p>
+          </div>
+
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-green-500 hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-green-600">[J2]</span> Huining Li, <strong class="text-slate-900">Xingyu
+                Chen</strong>, Xiaoye Qian, Huan Chen, Zhengxiong Li, Soumyadeep Bhattacharjee, Hanbin Zhang, Ming-Chun
+              Huang, Wenyao Xu
+              "An explainable COVID-19 detection system based on human sounds."
+              <span class="font-bold text-ag-blue">Smart Health</span> (2022): 100332.
+            </p>
+          </div>
+
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-green-500 hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-green-600">[J1]</span> Huining Li, Huan Chen, Chenhan Xu, Anarghya Das,
+              <strong class="text-slate-900">Xingyu Chen</strong>, Zhengxiong Li, Jian Xiao, Ming-Chun Huang, and Wenyao
+              Xu.
+              "Privacy computing using deep compression learning techniques for neural decoding."
+              <span class="font-bold text-ag-blue">Smart Health</span> (2022): 100229.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Poster/Demo Papers -->
+      <div class="mb-16">
+        <div class="flex items-center mb-8">
+          <h2 class="text-3xl font-extrabold text-slate-900 flex items-center">
+            <span class="bg-yellow-500 w-2 h-10 rounded-full mr-4"></span>
+            Poster/Demo Papers
+          </h2>
+        </div>
+        <div class="space-y-6">
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-yellow-500 hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-yellow-600">[D4]</span> <strong class="text-slate-900">Xingyu Chen</strong>,
+              Xinyu Zhang.
+              "Poster: Generalizing mmWave Sensing with Simulation Synthesis and Generative Models"
+              In Proceedings of the 25th International Workshop on Mobile Computing Systems and Applications
+              <span class="font-bold text-ag-blue">HotMobile</span>, 2024.
+            </p>
+          </div>
+
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-yellow-500 hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-yellow-600">[D3]</span> <strong class="text-slate-900">Xingyu Chen</strong>,
+              Xinmin Fang, Wenchuan Wei, Wenyao Xu, Zhengxiong Li.
+              "Exploring an Extensible Children Game Framework based on Augmented Reality Building Blocks."
+              In Proceedings of the 19th ACM Conference on Embedded Networked Sensor Systems
+              <span class="font-bold text-ag-blue">SenSys</span>, pp. 359-360. 2021.
+            </p>
+          </div>
+
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-yellow-500 hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-yellow-600">[D2]</span> Xinmin Fang*, <strong class="text-slate-900">Xingyu
+                Chen*</strong>, Wenyao Xu, Zhengxiong Li.
+              "Enhanced Virtual Reality: Exploring an Immersive and Realistic Virtual Reality Training for Nursing."
+              In Proceedings of the 19th ACM Conference on Embedded Networked Sensor Systems
+              <span class="font-bold text-ag-blue">SenSys</span>, pp. 361-362. 2021.
+            </p>
+          </div>
+
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-yellow-500 hover:bg-white transition-all">
+            <p class="text-slate-800 leading-relaxed font-medium">
+              <span class="font-bold text-yellow-600">[D1]</span> <strong class="text-slate-900">Xingyu Chen</strong>,
+              Chenhan Xu, Baicheng Chen, Zhengxiong Li, Wenyao Xu.
+              "In-Ear Thermometer: Wearable Real-time Core Body Temperature Monitoring",
+              the 18th Conference on Embedded Networked Sensor Systems
+              <span class="font-bold text-ag-blue">SenSys</span>, pp. 687-688. 2020.
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </main>
 
-  <footer class="bg-ucsd-navy py-6">
-    <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-      <p class="text-white text-center">Copyright &copy; Xingyu Chen 2025</p>
+  <!-- Footer -->
+  <footer class="border-t border-slate-300 py-8 bg-slate-200/90 relative z-10">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+      <p class="text-slate-600 text-sm">Copyright &copy; Xingyu Chen 2025.</p>
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script>
     document.getElementById('mobile-menu-button').addEventListener('click', function () {
       const menu = document.getElementById('mobile-menu');
       menu.classList.toggle('hidden');
     });
 
-    $(document).ready(function () {
-      $('[data-toggle="tooltip"]').tooltip({
-        container: 'body',
-        animated: 'fade',
-        placement: 'bottom',
-        html: true
+    // Subtle Particle Animation (Same as index.html)
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2 + 1;
+        this.color = `rgba(29, 78, 216, ${Math.random() * 0.1 + 0.05})`;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0) this.x = width;
+        if (this.x > width) this.x = 0;
+        if (this.y < 0) this.y = height;
+        if (this.y > height) this.y = 0;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const particleCount = Math.floor(width * height / 15000);
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
       });
+      ctx.strokeStyle = 'rgba(29, 78, 216, 0.03)';
+      ctx.lineWidth = 0.5;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      resize();
+      initParticles();
     });
+
+    resize();
+    initParticles();
+    animate();
   </script>
 </body>
 
