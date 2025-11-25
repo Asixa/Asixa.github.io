@@ -48,7 +48,7 @@
   <!-- Global Styles -->
   <style>
     body {
-      background-color: #f8fafc;
+      background-color: #e5e7eb;
       color: #0f172a;
       /* Deep Black */
       font-family: 'Manrope', sans-serif;
@@ -75,17 +75,16 @@
     }
 
     .glass-panel {
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       transition: all 0.2s ease;
     }
 
     .glass-panel:hover {
-      background: rgba(255, 255, 255, 0.85);
-      border-color: rgba(29, 78, 216, 0.2);
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(255, 255, 255, 0.6);
     }
 
     /* Scrollbar */
@@ -94,7 +93,7 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: #f8fafc;
+      background: #e5e7eb;
     }
 
     ::-webkit-scrollbar-thumb {
@@ -442,10 +441,10 @@
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
+        this.vx = (Math.random() - 0.5) * 0.2; // Slower velocity
+        this.vy = (Math.random() - 0.5) * 0.2;
         this.size = Math.random() * 2 + 1;
-        this.color = `rgba(29, 78, 216, ${Math.random() * 0.1 + 0.05})`;
+        this.color = `rgba(80, 80, 80, ${Math.random() * 0.15 + 0.1})`; // Darker neutral gray
       }
 
       update() {
@@ -479,7 +478,7 @@
         p.update();
         p.draw();
       });
-      ctx.strokeStyle = 'rgba(29, 78, 216, 0.03)';
+      ctx.strokeStyle = 'rgba(80, 80, 80, 0.05)';
       ctx.lineWidth = 0.5;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
