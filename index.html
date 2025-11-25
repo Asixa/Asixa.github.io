@@ -48,7 +48,7 @@
   <!-- Global Styles -->
   <style>
     body {
-      background-color: #f8fafc;
+      background-color: #e5e7eb;
       color: #0f172a;
       /* Deep Black */
       font-family: 'Manrope', sans-serif;
@@ -76,27 +76,36 @@
     }
 
     .glass-panel {
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       transition: all 0.2s ease;
     }
 
     /* Stronger glass for profile */
     .glass-panel-strong {
-      background: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.5);
     }
 
     .glass-panel:hover {
-      background: rgba(255, 255, 255, 0.85);
-      border-color: rgba(29, 78, 216, 0.2);
-      /* Adjusted for darker blue */
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Publication card - no glass effect */
+    .publication-card {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .publication-card:hover {
+      background: rgba(255, 255, 255, 1);
+      border-color: rgba(148, 163, 184, 0.5);
     }
 
     /* Smooth reveal animation for acceptance rate */
@@ -104,7 +113,7 @@
       max-width: 0;
       overflow: hidden;
       opacity: 0;
-      transition: max-width 0.5s ease-out, opacity 0.5s ease-out;
+      transition: max-width 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       white-space: nowrap;
     }
 
@@ -112,6 +121,7 @@
       max-width: 150px;
       opacity: 1;
       margin-left: 0.25rem;
+      transition: max-width 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     /* Scrollbar */
@@ -120,7 +130,7 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: #f8fafc;
+      background: #e5e7eb;
     }
 
     ::-webkit-scrollbar-thumb {
@@ -209,7 +219,7 @@
         <!-- Profile info -->
         <div class="md:w-2/3 text-center md:text-left">
           <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900 tracking-tight">Xingyu Chen <span
-              class="text-4xl md:text-5xl text-slate-600 font-normal ml-2">| 陈星宇</span></h2>
+              class="text-4xl md:text-5xl text-slate-600 font-normal ml-2">| <b>陈星宇</b></span></h2>
 
           <!-- Stronger glass effect applied here -->
           <div class="glass-panel-strong p-6 rounded-2xl mb-6 inline-block w-full">
@@ -271,64 +281,71 @@
             News
           </h2>
 
-          <div class="space-y-4">
-            <!-- News item -->
-            <div class="glass-panel p-4 rounded-xl flex items-start group hover:border-ag-blue/30">
-              <div class="flex-shrink-0 mt-1.5">
-                <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
+          <div class="glass-panel p-6 rounded-xl">
+            <div class="space-y-3">
+              <!-- News item -->
+              <div class="flex items-start group">
+                <div class="flex-shrink-0 mt-1.5">
+                  <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
+                </div>
+                <div class="ml-4 flex items-start">
+                  <span class="text-ag-blue font-bold text-sm inline-block w-24 flex-shrink-0">[Mar 2025]</span>
+                  <p class="text-slate-800 text-sm font-medium">
+                    <em><b>YORO</b></em> is accepted by <em>MobiSys 2025</em>.
+                  </p>
+                </div>
               </div>
-              <div class="ml-4">
-                <p class="text-slate-800 text-sm font-medium"><span class="text-ag-blue font-bold">[Mar 2025]</span>
-                  <em><b>YORO</b></em> is accepted by <em>MobiSys 2025</em>.
-                </p>
-              </div>
-            </div>
 
-            <!-- News item -->
-            <div class="glass-panel p-4 rounded-xl flex items-start group hover:border-ag-blue/30">
-              <div class="flex-shrink-0 mt-1.5">
-                <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
+              <!-- News item -->
+              <div class="flex items-start group">
+                <div class="flex-shrink-0 mt-1.5">
+                  <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
+                </div>
+                <div class="ml-4 flex items-start">
+                  <span class="text-ag-blue font-bold text-sm inline-block w-24 flex-shrink-0">[Feb 2025]</span>
+                  <p class="text-slate-800 text-sm font-medium">
+                    <em><b>RFScape</b></em> is accepted by <em>CVPR 2025</em>.
+                  </p>
+                </div>
               </div>
-              <div class="ml-4">
-                <p class="text-slate-800 text-sm font-medium"><span class="text-ag-blue font-bold">[Feb 2025]</span>
-                  <em><b>RFScape</b></em> is accepted by <em>CVPR 2025</em>.
-                </p>
-              </div>
-            </div>
 
-            <!-- News item -->
-            <div class="glass-panel p-4 rounded-xl flex items-start group hover:border-ag-blue/30">
-              <div class="flex-shrink-0 mt-1.5">
-                <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
+              <!-- News item -->
+              <div class="flex items-start group">
+                <div class="flex-shrink-0 mt-1.5">
+                  <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
+                </div>
+                <div class="ml-4 flex items-start">
+                  <span class="text-ag-blue font-bold text-sm inline-block w-24 flex-shrink-0">[Sept 2024]</span>
+                  <p class="text-slate-800 text-sm font-medium">
+                    <em><b>RFCanvas</b></em> is accepted by <em>SenSys 2024</em>.
+                  </p>
+                </div>
               </div>
-              <div class="ml-4">
-                <p class="text-slate-800 text-sm font-medium"><span class="text-ag-blue font-bold">[Sept 2024]</span>
-                  <em><b>RFCanvas</b></em> is accepted by <em>SenSys 2024</em>.
-                </p>
-              </div>
-            </div>
 
-            <!-- News item -->
-            <div class="glass-panel p-4 rounded-xl flex items-start group hover:border-ag-blue/30">
-              <div class="flex-shrink-0 mt-1.5">
-                <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
+              <!-- News item -->
+              <div class="flex items-start group">
+                <div class="flex-shrink-0 mt-1.5">
+                  <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
+                </div>
+                <div class="ml-4 flex items-start">
+                  <span class="text-ag-blue font-bold text-sm inline-block w-24 flex-shrink-0">[Sept 2023]</span>
+                  <p class="text-slate-800 text-sm font-medium">
+                    <em><b>RFGenesis</b></em> is accepted by <em>SenSys 2023</em>.
+                  </p>
+                </div>
               </div>
-              <div class="ml-4">
-                <p class="text-slate-800 text-sm font-medium"><span class="text-ag-blue font-bold">[Sept 2023]</span>
-                  <em><b>RFGenesis</b></em> is accepted by <em>SenSys 2023</em>.
-                </p>
-              </div>
-            </div>
 
-            <div class="glass-panel p-4 rounded-xl flex items-start group hover:border-ag-blue/30">
-              <div class="flex-shrink-0 mt-1.5">
-                <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
-              </div>
-              <div class="ml-4">
-                <p class="text-slate-800 text-sm font-medium"><span class="text-ag-blue font-bold">[Sept 2023]</span> I
-                  had a wonderful internship at <em><a
-                      href="https://www.microsoft.com/en-us/research/group/msr-asia-shanghai/"
-                      class="text-ag-blue hover:text-ag-blue-dark hover:underline">Microsoft Research Asia</a></em>.</p>
+              <!-- News item -->
+              <div class="flex items-start group">
+                <div class="flex-shrink-0 mt-1.5">
+                  <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
+                </div>
+                <div class="ml-4 flex items-start">
+                  <span class="text-ag-blue font-bold text-sm inline-block w-24 flex-shrink-0">[Sept 2023]</span>
+                  <p class="text-slate-800 text-sm font-medium">I had a wonderful internship at <em><a
+                        href="https://www.microsoft.com/en-us/research/group/msr-asia-shanghai/"
+                        class="text-ag-blue hover:text-ag-blue-dark hover:underline">Microsoft Research Asia</a></em>.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -473,7 +490,7 @@
   </section>
 
   <!-- Publications section with extended semi-transparent gradient background -->
-  <div class="bg-gradient-to-b from-slate-50/90 to-slate-200/90">
+  <div class="bg-gradient-to-b from-gray-200/90 to-gray-300/90">
     <section class="py-12">
       <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
         <div class="flex items-center mb-8">
@@ -487,7 +504,7 @@
 
         <div class="space-y-6">
           <!-- Publication item -->
-          <div class="glass-panel rounded-2xl overflow-hidden hover:bg-white transition-all duration-300 group">
+          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
             <div class="md:flex">
               <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                 <img src="images/Publications/YORO/pull.png"
@@ -495,7 +512,7 @@
               </div>
               <div class="p-6 md:w-3/4">
                 <div class="flex justify-between items-start mb-2">
-                  <p class="text-ag-blue font-black text-lg tracking-tight">MobiSys 2025</p>
+                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg inline-block">MobiSys 2025</p>
                   <span
                     class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
                     Acceptance Rate: 18% <span class="reveal-content">(42 of 233)</span>
@@ -518,7 +535,7 @@
           </div>
 
           <!-- Publication item -->
-          <div class="glass-panel rounded-2xl overflow-hidden hover:bg-white transition-all duration-300 group">
+          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
             <div class="md:flex">
               <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                 <img src="images/Publications/RFScape/pull.png"
@@ -526,7 +543,7 @@
               </div>
               <div class="p-6 md:w-3/4">
                 <div class="flex justify-between items-start mb-2">
-                  <p class="text-ag-blue font-black text-lg tracking-tight">CVPR 2025</p>
+                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg inline-block">CVPR 2025</p>
                   <span
                     class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
                     Acceptance Rate: 22.1% <span class="reveal-content">(2878 of 13008)</span>
@@ -548,7 +565,7 @@
           </div>
 
           <!-- Publication item -->
-          <div class="glass-panel rounded-2xl overflow-hidden hover:bg-white transition-all duration-300 group">
+          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
             <div class="md:flex">
               <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                 <img src="images/Publications/RFCanvas/pull.png"
@@ -556,7 +573,7 @@
               </div>
               <div class="p-6 md:w-3/4">
                 <div class="flex justify-between items-start mb-2">
-                  <p class="text-ag-blue font-black text-lg tracking-tight">SenSys 2024</p>
+                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg inline-block">SenSys 2024</p>
                   <span
                     class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
                     Acceptance Rate: 18.5% <span class="reveal-content">(58 of 313)</span>
@@ -576,7 +593,7 @@
           </div>
 
           <!-- Publication item -->
-          <div class="glass-panel rounded-2xl overflow-hidden hover:bg-white transition-all duration-300 group">
+          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
             <div class="md:flex">
               <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                 <img src="images/Publications/RFGen/pull_wide.png"
@@ -584,7 +601,7 @@
               </div>
               <div class="p-6 md:w-3/4">
                 <div class="flex justify-between items-start mb-2">
-                  <p class="text-ag-blue font-black text-lg tracking-tight">SenSys 2023</p>
+                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg inline-block">SenSys 2023</p>
                   <span
                     class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
                     Acceptance Rate: 19.0% <span class="reveal-content">(34 of 179)</span>
@@ -608,7 +625,7 @@
           </div>
 
           <!-- Publication item (MetaWave) -->
-          <div class="glass-panel rounded-2xl overflow-hidden hover:bg-white transition-all duration-300 group">
+          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
             <div class="md:flex">
               <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                 <img src="images/Publications/Metawave/pull_wide.png"
@@ -616,7 +633,7 @@
               </div>
               <div class="p-6 md:w-3/4">
                 <div class="flex justify-between items-start mb-2">
-                  <p class="text-ag-blue font-black text-lg tracking-tight">NDSS 2023</p>
+                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg inline-block">NDSS 2023</p>
                   <span
                     class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
                     Acceptance Rate: 16.2% <span class="reveal-content">(94 of 581)</span>
@@ -689,14 +706,34 @@
               <span class="bg-ag-blue w-2 h-8 rounded-full mr-3"></span>
               Service
             </h2>
-            <div class="glass-panel p-6 rounded-xl hover:border-ag-blue/30 transition-colors">
-              <h3 class="font-bold text-slate-900 mb-2">Invited Reviewer</h3>
-              <p class="text-slate-700 text-sm mb-4 font-medium">IEEE GlobeCom, IEEE TMC, IEEE TSC, IEEE Network, IMWUT
-                UbiComp</p>
+            <div class="space-y-4">
+              <!-- Invited Reviewer -->
+              <div class="glass-panel p-5 rounded-xl hover:border-ag-blue/30 transition-colors">
+                <h3 class="font-bold text-slate-900 mb-3 text-lg">Invited Reviewer</h3>
+                <ul class="space-y-1.5 text-slate-700 text-sm font-medium">
+                  <li>• <a href="https://www.itsoc.org/event/globecom23-main-symposium-communication-and-information-system-security-ciss"
+                      class="text-ag-blue hover:text-ag-blue-dark hover:underline">IEEE GlobeCom 2023 CISS</a></li>
+                  <li>• <a href="https://ieee-cas.org/publication/ieee-transactions-mobile-computing"
+                      class="text-ag-blue hover:text-ag-blue-dark hover:underline">IEEE Transactions on Mobile Computing</a></li>
+                  <li>• IEEE Transactions on Services Computing</li>
+                  <li>• IEEE Transactions on Communications</li>
+                  <li>• IEEE Network Magazine</li>
+                  <li>• IMWUT UbiComp 2024</li>
+                </ul>
+              </div>
 
-              <h3 class="font-bold text-slate-900 mb-2">Artifact Evaluation</h3>
-              <p class="text-slate-700 text-sm font-medium">ACM MobiCom 2023, ACM MobiSys 2022, ACM SenSys Data Workshop
-              </p>
+              <!-- Artifact Evaluation Committee -->
+              <div class="glass-panel p-5 rounded-xl hover:border-ag-blue/30 transition-colors">
+                <h3 class="font-bold text-slate-900 mb-3 text-lg">Artifact Evaluation Committee</h3>
+                <ul class="space-y-1.5 text-slate-700 text-sm font-medium">
+                  <li>• <a href="https://www.sigmobile.org/mobicom/2023/index.html"
+                      class="text-ag-blue hover:text-ag-blue-dark hover:underline">ACM MobiCom 2023</a></li>
+                  <li>• <a href="https://www.sigmobile.org/mobisys/2022/artifact.html"
+                      class="text-ag-blue hover:text-ag-blue-dark hover:underline">ACM MobiSys 2022</a></li>
+                  <li>• <a href="https://data-workshop.github.io/DATA2022/"
+                      class="text-ag-blue hover:text-ag-blue-dark hover:underline">ACM SenSys/BuildSys Data Workshop 2022</a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -704,7 +741,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-300 py-8 mt-12 bg-slate-200/90">
+    <footer class="border-t border-gray-400 py-8 mt-12 bg-gray-300/90">
       <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
         <p class="text-slate-600 text-sm">Copyright &copy; Xingyu Chen 2025.</p>
       </div>
@@ -741,10 +778,10 @@
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.5; // Very slow velocity
-        this.vy = (Math.random() - 0.5) * 0.5;
+        this.vx = (Math.random() - 0.5) * 0.2; // Slower velocity
+        this.vy = (Math.random() - 0.5) * 0.2;
         this.size = Math.random() * 2 + 1;
-        this.color = `rgba(29, 78, 216, ${Math.random() * 0.1 + 0.05})`; // Faint blue
+        this.color = `rgba(80, 80, 80, ${Math.random() * 0.15 + 0.1})`; // Darker neutral gray
       }
 
       update() {
@@ -783,7 +820,7 @@
       });
 
       // Draw faint connections
-      ctx.strokeStyle = 'rgba(29, 78, 216, 0.03)';
+      ctx.strokeStyle = 'rgba(80, 80, 80, 0.05)';
       ctx.lineWidth = 0.5;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
