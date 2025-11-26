@@ -108,21 +108,6 @@
       border-color: rgba(148, 163, 184, 0.5);
     }
 
-    /* Smooth reveal animation for acceptance rate */
-    .reveal-content {
-      max-width: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-width 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      white-space: nowrap;
-    }
-
-    .group:hover .reveal-content {
-      max-width: 150px;
-      opacity: 1;
-      margin-left: 0.25rem;
-      transition: max-width 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
 
     /* Scrollbar */
     ::-webkit-scrollbar {
@@ -494,7 +479,7 @@
               <div>
                 <p class="text-ag-blue text-sm font-bold mb-1">[June 2023 ~ Sept 2023]</p>
                 <h3 class="font-bold text-slate-900 text-xl">Microsoft Research Asia</h3>
-                <p class="text-slate-700 font-medium">Research Intern, Wireless Group</p>
+                <p class="text-slate-700 font-medium">Research Intern, Wireless Group. <br> Advised by <a href="https://www.cs.utexas.edu/~lili/" class="text-ag-blue hover:text-ag-blue-dark hover:underline font-bold">Prof. Lili Qiu</a>.</p>
               </div>
             </div>
 
@@ -538,11 +523,11 @@
                   class="w-full h-auto max-h-60 object-contain rounded mix-blend-multiply" alt="YORO publication">
               </div>
               <div class="p-6 md:w-3/4">
-                <div class="flex justify-between items-start mb-2">
-                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg inline-block">MobiCom 2026</p>
+                <div class="flex flex-row flex-wrap justify-between items-start gap-2 mb-2">
+                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg flex-shrink-0">MobiCom 2026</p>
                   <span
-                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
-                    Acceptance Rate: 11% <span class="reveal-content">(29 of 260)</span>
+                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue whitespace-normal text-right">
+                    Acceptance Rate: 11% (29 of 260)
                   </span>
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-slate-900">Physically Accurate Differentiable Inverse Rendering for <br> Radio Frequency Digital Twin</h3>
@@ -568,11 +553,11 @@
                   class="w-full h-auto max-h-40 object-contain rounded mix-blend-multiply" alt="YORO publication">
               </div>
               <div class="p-6 md:w-3/4">
-                <div class="flex justify-between items-start mb-2">
-                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg inline-block">MobiSys 2025</p>
+                <div class="flex flex-row flex-wrap justify-between items-start gap-2 mb-2">
+                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg flex-shrink-0">MobiSys 2025</p>
                   <span
-                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
-                    Acceptance Rate: 18% <span class="reveal-content">(42 of 233)</span>
+                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue whitespace-normal text-right">
+                    Acceptance Rate: 18% (42 of 233)
                   </span>
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-slate-900">You Only
@@ -599,11 +584,11 @@
                   class="w-full h-auto max-h-40 object-contain rounded mix-blend-multiply" alt="RFScape publication">
               </div>
               <div class="p-6 md:w-3/4">
-                <div class="flex justify-between items-start mb-2">
-                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg inline-block">CVPR 2025</p>
+                <div class="flex flex-row flex-wrap justify-between items-start gap-2 mb-2">
+                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg flex-shrink-0">CVPR 2025</p>
                   <span
-                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
-                    Acceptance Rate: 22.1% <span class="reveal-content">(2878 of 13008)</span>
+                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue whitespace-normal text-right">
+                    Acceptance Rate: 22.1% (2878 of 13008)
                   </span>
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-slate-900">Radio
@@ -629,11 +614,11 @@
                   class="w-full h-auto max-h-40 object-contain rounded mix-blend-multiply" alt="RFCanvas publication">
               </div>
               <div class="p-6 md:w-3/4">
-                <div class="flex justify-between items-start mb-2">
-                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg inline-block">SenSys 2024</p>
+                <div class="flex flex-row flex-wrap justify-between items-start gap-2 mb-2">
+                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg flex-shrink-0">SenSys 2024</p>
                   <span
-                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
-                    Acceptance Rate: 18.5% <span class="reveal-content">(58 of 313)</span>
+                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue whitespace-normal text-right">
+                    Acceptance Rate: 18.5% (58 of 313)
                   </span>
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-slate-900">RFCanvas:
@@ -657,11 +642,11 @@
                   class="w-full h-auto max-h-40 object-contain rounded mix-blend-multiply" alt="RFGen publication">
               </div>
               <div class="p-6 md:w-3/4">
-                <div class="flex justify-between items-start mb-2">
-                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg inline-block">SenSys 2023</p>
+                <div class="flex flex-row flex-wrap justify-between items-start gap-2 mb-2">
+                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg flex-shrink-0">SenSys 2023</p>
                   <span
-                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
-                    Acceptance Rate: 19.0% <span class="reveal-content">(34 of 179)</span>
+                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue whitespace-normal text-right">
+                    Acceptance Rate: 19.0% (34 of 179)
                   </span>
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-slate-900">RF Genesis:
@@ -689,11 +674,11 @@
                   class="w-full h-auto max-h-40 object-contain rounded mix-blend-multiply" alt="MetaWave publication">
               </div>
               <div class="p-6 md:w-3/4">
-                <div class="flex justify-between items-start mb-2">
-                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg inline-block">NDSS 2023</p>
+                <div class="flex flex-row flex-wrap justify-between items-start gap-2 mb-2">
+                  <p class="text-ag-blue font-black text-lg tracking-tight bg-blue-50 border border-ag-blue/30 px-3 py-1 rounded-lg flex-shrink-0">NDSS 2023</p>
                   <span
-                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue flex items-center">
-                    Acceptance Rate: 16.2% <span class="reveal-content">(94 of 581)</span>
+                    class="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded font-medium transition-all group-hover:bg-blue-50 group-hover:text-ag-blue whitespace-normal text-right">
+                    Acceptance Rate: 16.2% (94 of 581)
                   </span>
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-slate-900">MetaWave:
