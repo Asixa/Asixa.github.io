@@ -55,18 +55,6 @@
       overflow-x: hidden;
     }
 
-    /* Particle Canvas Background */
-    #canvas-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-      opacity: 1;
-      /* Full opacity, controlled in canvas */
-    }
 
     .glass-nav {
       background: rgba(255, 255, 255, 0.85);
@@ -126,6 +114,30 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #94a3b8;
     }
+
+    .witwin-card {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .witwin-dots {
+      position: absolute;
+      inset: -20%;
+      background-image: radial-gradient(circle at 55% 45%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 32%, transparent 58%);
+      background-blend-mode: screen;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .witwin-dots-sm {
+      opacity: 0.2;
+      -webkit-mask-image: radial-gradient(circle, #000 0 35%, transparent 36%);
+      -webkit-mask-size: 14px 14px;
+      -webkit-mask-position: 26px 10px;
+      mask-image: radial-gradient(circle, #000 0 35%, transparent 36%);
+      mask-size: 14px 14px;
+      mask-position: 26px 10px;
+    }
   </style>
 
   <!-- Google Analytics -->
@@ -141,11 +153,6 @@
 </head>
 
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900">
-
-  <!-- Dynamic Background -->
-  <div id="canvas-container">
-    <canvas id="particles"></canvas>
-  </div>
 
   <!-- Navigation -->
   <nav class="glass-nav fixed w-full z-50 transition-all duration-300">
@@ -404,31 +411,56 @@
             </p>
           </div>
 
-          <h3 class="text-xl font-bold mb-4 text-slate-900">Research Interests</h3>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">RF
-              Simulation</span>
-            <span
-              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Rendering</span>
-            <span
-              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Computer
-              Vision / Graphics</span>
-            <span
-              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Mobile
-              Computing</span>
-            <span
-              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Ray
-              Tracing</span>
-            <span
-              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Digital
-              Twin</span>
-            <span
-              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Virtual
-              Reality</span>
-            <span
-              class="glass-panel px-3 py-1.5 rounded-full text-sm font-semibold text-slate-800 border-slate-200 hover:bg-white hover:text-ag-blue hover:border-ag-blue/30 cursor-default transition-all">Differentiable
-              Simulation</span>
+        </div>
+      </div>
+
+      <!-- My Research - Full Width -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold mb-6 text-slate-900 flex items-center">
+          <span class="bg-ag-blue w-2 h-8 rounded-full mr-3"></span>
+          My Research
+        </h2>
+        <div class="glass-panel p-6 rounded-xl">
+          <p class="text-slate-800 leading-relaxed font-medium mb-4">
+            My research lies at the intersection of
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Wireless</span>,
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Systems</span>, and
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Graphics</span>.
+            I focus on bridging
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Differentiable Rendering</span>,
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Electromagnetic (RF) Simulation</span>, and
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Wireless System Design</span>
+            to enable physically-accurate, learning-based wireless channel modeling and sensing.
+          </p>
+          <p class="text-slate-800 leading-relaxed font-medium">
+            I am interested in both <span class="font-bold">physically-accurate mathematical modeling</span> (especially differentiable formulations) and <span class="font-bold">practical system implementation</span> with real-world efficiency and energy constraints. My vision is to leverage cross-disciplinary techniques to build complete
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Computational Wireless Systems</span>.
+          </p>
+        </div>
+      </div>
+
+      <!-- My Open Source Platform - Full Width -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold mb-6 text-slate-900 flex items-center">
+          <span class="bg-ag-blue w-2 h-8 rounded-full mr-3"></span>
+          My Open Source Research Platform
+        </h2>
+        <div class="relative rounded-2xl overflow-hidden witwin-card" style="background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f0f1a 100%);">
+          <span class="witwin-dots witwin-dots-sm" aria-hidden="true"></span>
+          <!-- Content -->
+          <div class="relative z-10 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 class="text-3xl md:text-4xl font-black text-white mb-2 tracking-tight">
+                WiTwin<span class="text-cyan-400">.AI</span>
+              </h3>
+              <p class="text-slate-300 text-sm md:text-base max-w-md">
+                An open-source platform for differentiable electromagnetic simulation and wireless digital twin.
+              </p>
+            </div>
+            <a href="https://witwin.ai" target="_blank" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3 rounded-full font-semibold transition-all backdrop-blur-sm">
+              <span>Explore</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
           </div>
         </div>
       </div>
@@ -872,93 +904,6 @@
     if (avator == "robot")
       document.getElementById("avator").src = "images/A-R.jpg"
 
-    // Subtle Particle Animation
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let width, height;
-    let particles = [];
-
-    function resize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-    }
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.2; // Slower velocity
-        this.vy = (Math.random() - 0.5) * 0.2;
-        this.size = Math.random() * 2 + 1;
-        this.color = `rgba(80, 80, 80, ${Math.random() * 0.15 + 0.1})`; // Darker neutral gray
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        // Wrap around screen
-        if (this.x < 0) this.x = width;
-        if (this.x > width) this.x = 0;
-        if (this.y < 0) this.y = height;
-        if (this.y > height) this.y = 0;
-      }
-
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-      }
-    }
-
-    function initParticles() {
-      particles = [];
-      const particleCount = Math.floor(width * height / 15000); // Density based on screen size
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-
-      // Draw faint connections
-      ctx.strokeStyle = 'rgba(80, 80, 80, 0.05)';
-      ctx.lineWidth = 0.5;
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 100) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      requestAnimationFrame(animate);
-    }
-
-    window.addEventListener('resize', () => {
-      resize();
-      initParticles();
-    });
-
-    resize();
-    initParticles();
-    animate();
   </script>
 </body>
 

@@ -55,17 +55,6 @@
       overflow-x: hidden;
     }
 
-    /* Particle Canvas Background */
-    #canvas-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-      opacity: 1;
-    }
 
     .glass-nav {
       background: rgba(255, 255, 255, 0.85);
@@ -119,11 +108,6 @@
 </head>
 
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900">
-
-  <!-- Dynamic Background -->
-  <div id="canvas-container">
-    <canvas id="particles"></canvas>
-  </div>
 
   <!-- Navigation -->
   <nav class="glass-nav fixed w-full z-50 transition-all duration-300">
@@ -476,86 +460,6 @@
       menu.classList.toggle('hidden');
     });
 
-    // Subtle Particle Animation (Same as index.html)
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let width, height;
-    let particles = [];
-
-    function resize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-    }
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.2; // Slower velocity
-        this.vy = (Math.random() - 0.5) * 0.2;
-        this.size = Math.random() * 2 + 1;
-        this.color = `rgba(80, 80, 80, ${Math.random() * 0.15 + 0.1})`; // Darker neutral gray
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0) this.x = width;
-        if (this.x > width) this.x = 0;
-        if (this.y < 0) this.y = height;
-        if (this.y > height) this.y = 0;
-      }
-
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-      }
-    }
-
-    function initParticles() {
-      particles = [];
-      const particleCount = Math.floor(width * height / 15000);
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      ctx.strokeStyle = 'rgba(80, 80, 80, 0.05)';
-      ctx.lineWidth = 0.5;
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 100) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-      requestAnimationFrame(animate);
-    }
-
-    window.addEventListener('resize', () => {
-      resize();
-      initParticles();
-    });
-
-    resize();
-    initParticles();
-    animate();
   </script>
 </body>
 
