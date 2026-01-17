@@ -447,12 +447,57 @@
         </h2>
         <div class="relative rounded-2xl overflow-hidden witwin-card" style="background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f0f1a 100%);">
           <span class="witwin-dots witwin-dots-sm" aria-hidden="true"></span>
+          <!-- Rainbow Waves (diagonal from upper-right to lower-left, following 135deg gradient) -->
+          <svg class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 200" style="opacity: 0.3;">
+            <defs>
+              <linearGradient id="wg1" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="rgba(0,255,255,0)"/>
+                <stop offset="25%" stop-color="rgba(0,255,255,0.7)"/>
+                <stop offset="75%" stop-color="rgba(0,255,255,0.7)"/>
+                <stop offset="100%" stop-color="rgba(0,255,255,0)"/>
+              </linearGradient>
+              <linearGradient id="wg2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+                <stop offset="25%" stop-color="rgba(255,255,255,0.6)"/>
+                <stop offset="75%" stop-color="rgba(255,255,255,0.6)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+              </linearGradient>
+              <linearGradient id="wg3" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="rgba(255,220,100,0)"/>
+                <stop offset="25%" stop-color="rgba(255,220,100,0.65)"/>
+                <stop offset="75%" stop-color="rgba(255,220,100,0.65)"/>
+                <stop offset="100%" stop-color="rgba(255,220,100,0)"/>
+              </linearGradient>
+              <linearGradient id="wg4" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="rgba(255,150,220,0)"/>
+                <stop offset="25%" stop-color="rgba(255,150,220,0.7)"/>
+                <stop offset="75%" stop-color="rgba(255,150,220,0.7)"/>
+                <stop offset="100%" stop-color="rgba(255,150,220,0)"/>
+              </linearGradient>
+              <linearGradient id="wg5" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="rgba(100,200,255,0)"/>
+                <stop offset="25%" stop-color="rgba(100,200,255,0.6)"/>
+                <stop offset="75%" stop-color="rgba(100,200,255,0.6)"/>
+                <stop offset="100%" stop-color="rgba(100,200,255,0)"/>
+              </linearGradient>
+              <filter id="wglow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <!-- Diagonal sine waves from upper-right towards lower-left -->
+            <path d="M450,-20 C420,0 400,40 370,50 S320,40 290,70 S240,100 210,100 S160,80 130,120 S80,160 50,160 S0,140 -30,180" stroke="url(#wg1)" stroke-width="2.5" fill="none" filter="url(#wglow)"/>
+            <path d="M470,0 C440,20 420,55 390,60 S340,45 310,80 S260,115 230,110 S180,85 150,130 S100,175 70,170 S20,145 -10,195" stroke="url(#wg2)" stroke-width="2" fill="none" filter="url(#wglow)"/>
+            <path d="M460,-40 C430,-20 410,20 380,30 S330,20 300,55 S250,90 220,85 S170,60 140,105 S90,150 60,145 S10,120 -20,165" stroke="url(#wg3)" stroke-width="2.5" fill="none" filter="url(#wglow)"/>
+            <path d="M480,10 C450,30 430,70 400,75 S350,55 320,95 S270,135 240,125 S190,95 160,145 S110,195 80,185 S30,155 0,205" stroke="url(#wg4)" stroke-width="2.8" fill="none" filter="url(#wglow)"/>
+            <path d="M440,-50 C410,-30 390,10 360,20 S310,10 280,45 S230,80 200,75 S150,50 120,95 S70,140 40,135 S-10,110 -40,155" stroke="url(#wg5)" stroke-width="2" fill="none" filter="url(#wglow)"/>
+          </svg>
           <!-- Content -->
           <div class="relative z-10 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <h3 class="text-3xl md:text-4xl font-black text-white mb-2 tracking-tight">
+              <a href="https://witwin.ai" target="_blank" class="text-3xl md:text-4xl font-black text-white mb-2 tracking-tight block hover:opacity-80 transition-opacity">
                 WiTwin<span class="text-cyan-400">.AI</span>
-              </h3>
+              </a>
               <p class="text-slate-300 text-sm md:text-base max-w-md">
                 An open-source platform for differentiable electromagnetic simulation and wireless digital twin.
               </p>
