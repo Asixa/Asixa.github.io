@@ -165,11 +165,11 @@
         </div>
         <div class="hidden md:flex items-center">
           <div class="ml-10 flex items-baseline space-x-8">
-            <a href="#" class="text-ag-blue px-3 py-2 rounded-md text-sm font-bold">Home</a>
+            <a href="#" class="text-ag-blue bg-blue-50 px-3 py-2 rounded-full text-sm font-bold transition-all">Home</a>
             <a href="projects.html"
-              class="text-slate-700 hover:text-ag-blue px-3 py-2 rounded-md text-sm font-bold transition-all">Projects</a>
+              class="text-slate-700 hover:text-ag-blue hover:bg-blue-50 px-3 py-2 rounded-full text-sm font-bold transition-all">Projects</a>
             <a href="publications.html"
-              class="text-slate-700 hover:text-ag-blue px-3 py-2 rounded-md text-sm font-bold transition-all">Publications</a>
+              class="text-slate-700 hover:text-ag-blue hover:bg-blue-50 px-3 py-2 rounded-full text-sm font-bold transition-all">Publications</a>
           </div>
         </div>
         <div class="md:hidden flex items-center">
@@ -186,11 +186,11 @@
     <!-- Mobile menu -->
     <div class="hidden md:hidden glass-panel border-t-0" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <a href="#" class="text-ag-blue block px-3 py-2 rounded-md text-base font-bold bg-blue-50">Home</a>
+        <a href="#" class="text-ag-blue block px-3 py-2 rounded-full text-base font-bold bg-blue-50">Home</a>
         <a href="projects.html"
-          class="text-slate-700 hover:text-ag-blue block px-3 py-2 rounded-md text-base font-bold hover:bg-slate-50">Projects</a>
+          class="text-slate-700 hover:text-ag-blue block px-3 py-2 rounded-full text-base font-bold hover:bg-blue-50">Projects</a>
         <a href="publications.html"
-          class="text-slate-700 hover:text-ag-blue block px-3 py-2 rounded-md text-base font-bold hover:bg-slate-50">Publications</a>
+          class="text-slate-700 hover:text-ag-blue block px-3 py-2 rounded-full text-base font-bold hover:bg-blue-50">Publications</a>
       </div>
     </div>
   </nav>
@@ -284,7 +284,7 @@
                 <div class="ml-4 flex items-start">
                   <span class="text-ag-blue font-bold text-sm inline-block w-24 flex-shrink-0">[May 2026]</span>
                   <p class="text-slate-800 text-sm font-medium">
-                    <em><b>FlowForm</b></em> is accepted by <em>SIGCOMM 2026</em>. Congrats to Wuqiong!
+                    <em><b>FlowForm</b></em> is accepted by <em>SIGCOMM 2026</em>.<br>Congrats to Wuqiong!
                   </p>
                 </div>
               </div>
@@ -296,7 +296,7 @@
                 <div class="ml-4 flex items-start">
                   <span class="text-ag-blue font-bold text-sm inline-block w-24 flex-shrink-0">[May 2026]</span>
                   <p class="text-slate-800 text-sm font-medium">
-                    <em><b>SNRFT</b></em> is accepted by <em>ICML 2026</em>. Congrats to Yinyan!
+                    <em><b>SNRFT</b></em> is accepted by <em>ICML 2026</em>.<br>Congrats to Yinyan!
                   </p>
                 </div>
               </div>
@@ -352,7 +352,7 @@
               </div>
 
               <!-- News item -->
-              <div class="flex items-start group">
+              <div class="news-old hidden flex items-start group">
                 <div class="flex-shrink-0 mt-1.5">
                   <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
                 </div>
@@ -365,7 +365,7 @@
               </div>
 
               <!-- News item -->
-              <div class="flex items-start group">
+              <div class="news-old hidden flex items-start group">
                 <div class="flex-shrink-0 mt-1.5">
                   <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
                 </div>
@@ -378,7 +378,7 @@
               </div>
 
               <!-- News item -->
-              <div class="flex items-start group">
+              <div class="news-old hidden flex items-start group">
                 <div class="flex-shrink-0 mt-1.5">
                   <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
                 </div>
@@ -391,7 +391,7 @@
                 </div>
               </div>
 
-              <div class="flex items-start group">
+              <div class="news-old hidden flex items-start group">
                 <div class="flex-shrink-0 mt-1.5">
                   <div class="w-2 h-2 rounded-full bg-ag-blue group-hover:scale-125 transition-transform"></div>
                 </div>
@@ -403,6 +403,16 @@
                 </div>
               </div>
 
+            </div>
+            <div class="mt-3 flex justify-end">
+              <button type="button" id="news-toggle"
+                class="text-xs font-bold text-ag-blue hover:text-ag-blue-dark cursor-pointer inline-flex items-center gap-1">
+                <span id="news-toggle-label">More</span>
+                <svg id="news-toggle-icon" class="w-3 h-3 transition-transform" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -447,18 +457,18 @@
         <div class="glass-panel p-6 rounded-xl">
           <p class="text-slate-800 leading-relaxed font-medium mb-4">
             My research lies at the intersection of
-            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Wireless</span>,
-            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Systems</span>, and
-            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Graphics</span>.
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 whitespace-nowrap">Wireless</span>,
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 whitespace-nowrap">Systems</span>, and
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 whitespace-nowrap">Graphics</span>.
             I focus on bridging
-            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Differentiable Rendering</span>,
-            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Electromagnetic (RF) Simulation</span>, and
-            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Wireless System Design</span>
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 whitespace-nowrap">Differentiable Rendering</span>,
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 whitespace-nowrap">Electromagnetic (RF) Simulation</span>, and
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 whitespace-nowrap">Wireless System Design</span>
             to enable physically-accurate, learning-based wireless channel modeling for 6G communication and sensing.
           </p>
           <p class="text-slate-800 leading-relaxed font-medium">
             I am interested in both <span class="font-bold">physically-accurate mathematical modeling</span> (especially differentiable formulations) and <span class="font-bold">practical system implementation</span> with real-world efficiency and energy constraints. My vision is to leverage cross-disciplinary techniques to build complete
-            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 border border-slate-300 whitespace-nowrap">Computational Wireless Systems</span>.
+            <span class="inline-block bg-slate-200 px-2.5 py-0.5 rounded-full text-sm font-semibold text-slate-800 whitespace-nowrap">Computational Wireless Systems</span>.
           </p>
           <!-- <p class="text-slate-700 leading-relaxed font-medium mt-4 text-sm bg-slate-50 border border-slate-200 rounded-lg px-4 py-2">
             My research is supported by an <span class="font-bold">Amazon Research Grant (2026)</span>, for which I was the lead proposal writer.
@@ -624,7 +634,7 @@
   <div class="bg-gradient-to-b from-gray-200/90 to-gray-300/90">
     <section class="py-12">
       <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-        <div class="flex items-center mb-8">
+        <div class="flex items-center mb-6">
           <h2 class="text-2xl font-bold text-slate-900 flex items-center">
             <span class="bg-ag-blue w-2 h-8 rounded-full mr-3"></span>
             Selected Publications
@@ -633,10 +643,39 @@
             All)</a>
         </div>
 
-        <div class="space-y-6">
+        <!-- Publication filter -->
+        <div class="flex flex-wrap gap-2 mb-6" id="pub-filter">
+          <button type="button" data-filter="all"
+            class="filter-btn cursor-pointer inline-flex items-center gap-2 pl-4 pr-2 py-1.5 text-sm font-bold rounded-full bg-ag-blue text-white transition-all">
+            <span>All</span>
+            <span class="filter-count inline-flex items-center justify-center min-w-[1.5rem] h-6 px-1.5 rounded-full bg-white/25 text-white text-xs">0</span>
+          </button>
+          <button type="button" data-filter="lead-author"
+            class="filter-btn cursor-pointer inline-flex items-center gap-2 pl-4 pr-2 py-1.5 text-sm font-bold rounded-full bg-white border border-slate-300 text-slate-700 hover:border-ag-blue hover:text-ag-blue transition-all">
+            <span>Lead-Author</span>
+            <span class="filter-count inline-flex items-center justify-center min-w-[1.5rem] h-6 px-1.5 rounded-full bg-slate-200 text-slate-700 text-xs">0</span>
+          </button>
+          <button type="button" data-filter="rf-digital-twin"
+            class="filter-btn cursor-pointer inline-flex items-center gap-2 pl-4 pr-2 py-1.5 text-sm font-bold rounded-full bg-white border border-slate-300 text-slate-700 hover:border-ag-blue hover:text-ag-blue transition-all">
+            <span>RF Digital Twin</span>
+            <span class="filter-count inline-flex items-center justify-center min-w-[1.5rem] h-6 px-1.5 rounded-full bg-slate-200 text-slate-700 text-xs">0</span>
+          </button>
+          <button type="button" data-filter="metasurfaces"
+            class="filter-btn cursor-pointer inline-flex items-center gap-2 pl-4 pr-2 py-1.5 text-sm font-bold rounded-full bg-white border border-slate-300 text-slate-700 hover:border-ag-blue hover:text-ag-blue transition-all">
+            <span>Metasurfaces</span>
+            <span class="filter-count inline-flex items-center justify-center min-w-[1.5rem] h-6 px-1.5 rounded-full bg-slate-200 text-slate-700 text-xs">0</span>
+          </button>
+          <button type="button" data-filter="mobile-system"
+            class="filter-btn cursor-pointer inline-flex items-center gap-2 pl-4 pr-2 py-1.5 text-sm font-bold rounded-full bg-white border border-slate-300 text-slate-700 hover:border-ag-blue hover:text-ag-blue transition-all">
+            <span>Mobile System</span>
+            <span class="filter-count inline-flex items-center justify-center min-w-[1.5rem] h-6 px-1.5 rounded-full bg-slate-200 text-slate-700 text-xs">0</span>
+          </button>
+        </div>
+
+        <div class="space-y-3">
 
           <!-- Publication item - SIGCOMM 2026 -->
-          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
+          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="metasurfaces">
             <div class="md:flex">
               <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                 <img src="images/Publications/FlowForm/pull.png"
@@ -649,15 +688,18 @@
                     SIGCOMM 2026</p>
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-slate-900">FlowForm: Scalable Passive Metasurface Network for mmWave Coverage Expansion</h3>
-                <p class="mb-0 text-slate-700 text-sm font-medium">
+                <p class="mb-2 text-slate-700 text-sm font-medium">
                   Wuqiong Zhao, Baicheng Chen, Kai Zheng, <b class="text-slate-900 font-black">Xingyu Chen</b>, Wenqian Zhang, Xinyu Zhang
                 </p>
+                <div class="flex flex-wrap gap-1.5 justify-end">
+                  <span class="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-slate-200">Metasurfaces</span>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Publication item - ICML 2026 -->
-          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
+          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="rf-digital-twin">
             <div class="md:flex">
               <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                 <img src="images/Publications/SNRFT/pull.png"
@@ -668,17 +710,24 @@
                   <p
                     class="text-ag-blue font-black text-lg tracking-tight">
                     ICML 2026</p>
+                  <span
+                    class="text-xs text-ag-blue/80 font-semibold whitespace-normal text-right bg-white/80 px-2 py-0.5 rounded">
+                    Acceptance Rate: 26.6% (6352 of 23918)
+                  </span>
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-slate-900">Stochastic Neural Ray Tracing for Radio Frequency Channel Modeling</h3>
-                <p class="mb-0 text-slate-700 text-sm font-medium">
+                <p class="mb-2 text-slate-700 text-sm font-medium">
                   Yinyan Bu, Jiajie Yu, <b class="text-slate-900 font-black">Xingyu Chen</b>, Bo Wen, Xinyu Zhang, Piya Pal
                 </p>
+                <div class="flex flex-wrap gap-1.5 justify-end">
+                  <span class="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-slate-200">RF Digital Twin</span>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Publication item -->
-          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
+          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="lead-author mobile-system">
             <div class="md:flex">
               <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                 <img src="images/Publications/KDC/pull.png"
@@ -695,18 +744,20 @@
                   </span>
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-slate-900">From Bits to Tokens: Knowledge-Driven Generative Communication of Multimodal Data</h3>
-                <p class="text-xs text-slate-500 italic mb-1">Previously titled: "Efficient and Resilient Sensor Data Delivery through Knowledge-Driven Communication"</p>
-                <p class="mb-4 text-slate-700 text-sm font-medium">
+                <p class="mb-2 text-slate-700 text-sm font-medium">
                   <b class="text-slate-900 font-black">Xingyu Chen</b>, Zihao Feng, Wuqiong Zhao, Jianrong Ding, Ke Sun,
                   Xinyu Zhang
                 </p>
+                <div class="flex flex-wrap gap-1.5 justify-end">
+                  <span class="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-slate-200">Mobile System</span>
+                </div>
               </div>
             </div>
           </div>
 
 
           <!-- Publication item - MobiCom 2026 -->
-          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
+          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="lead-author rf-digital-twin">
             <div class="md:flex">
               <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                 <img src="images/Publications/RFDT/pull.png"
@@ -728,17 +779,22 @@
                   <b class="text-slate-900 font-black">Xingyu Chen</b>, Xinyu Zhang, Kai Zheng, Xinmin Fang, Tzu-Mao Li,
                   Chris Xiaoxuan Lu, Zhengxiong Li
                 </p>
-                <div class="flex space-x-3">
-                  <a href="https://arxiv.org/abs/2603.18026"
-                    class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">ArXiv</a>
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex flex-wrap gap-2">
+                    <a href="https://arxiv.org/abs/2603.18026"
+                      class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">ArXiv</a>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-slate-200">RF Digital Twin</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="space-y-6">
+          <div class="space-y-3">
             <!-- Publication item -->
-            <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
+            <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="lead-author mobile-system">
               <div class="md:flex">
                 <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                   <img src="images/Publications/YORO/pull.png"
@@ -761,18 +817,23 @@
                     He,
                     Zhengxiong Li
                   </p>
-                  <div class="flex space-x-3">
-                    <a href="https://yoro-vr.github.io/"
-                      class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">Page</a>
-                    <a href="https://arxiv.org/abs/2506.15183"
-                      class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">ArXiv</a>
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex flex-wrap gap-2">
+                      <a href="https://yoro-vr.github.io/"
+                        class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">Page</a>
+                      <a href="https://arxiv.org/abs/2506.15183"
+                        class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">ArXiv</a>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      <span class="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-slate-200">Mobile System</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Publication item -->
-            <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
+            <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="lead-author rf-digital-twin">
               <div class="md:flex">
                 <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                   <img src="images/Publications/RFScape/pull.png"
@@ -793,18 +854,47 @@
                   <p class="mb-4 text-slate-700 text-sm font-medium">
                     <b class="text-slate-900 font-black">Xingyu Chen</b>, Zihao Feng, Kun Qian, Xinyu Zhang
                   </p>
-                  <div class="flex space-x-3">
-                    <a href="https://cvpr.thecvf.com/virtual/2025/poster/33757"
-                      class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">Page</a>
-                    <a href="https://arxiv.org/abs/2411.18635"
-                      class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">ArXiv</a>
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex flex-wrap gap-2">
+                      <a href="https://cvpr.thecvf.com/virtual/2025/poster/33757"
+                        class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">Page</a>
+                      <a href="https://arxiv.org/abs/2411.18635"
+                        class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">ArXiv</a>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      <span class="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-slate-200">RF Digital Twin</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Publication item - AutoMS MobiCom 2024 -->
+            <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="metasurfaces">
+              <div class="md:flex">
+                <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
+                  <img src="images/Publications/AutoMS/pull.png"
+                    class="w-full h-auto max-h-40 object-contain rounded mix-blend-multiply" alt="AutoMS publication">
+                </div>
+                <div class="p-6 md:w-3/4">
+                  <div class="flex flex-row flex-wrap justify-between items-center gap-2 mb-2 bg-blue-50 px-3 py-1 rounded-lg">
+                    <p class="text-ag-blue font-black text-lg tracking-tight">
+                      MobiCom 2024</p>
+                  </div>
+                  <h3 class="text-xl font-bold mb-2 text-slate-900">AutoMS: Automated Service for mmWave Coverage Optimization using Low-cost Metasurfaces</h3>
+                  <p class="mb-2 text-slate-700 text-sm font-medium">
+                    Ruichun Ma, Shicheng Zheng, Hao Pan, Lili Qiu, <b class="text-slate-900 font-black">Xingyu Chen</b>,
+                    Liangyu Liu, Yihong Liu, Wenjun Hu, Ju Ren
+                  </p>
+                  <div class="flex flex-wrap gap-1.5 justify-end">
+                    <span class="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-slate-200">Metasurfaces</span>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Publication item -->
-            <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
+            <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="lead-author rf-digital-twin">
               <div class="md:flex">
                 <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                   <img src="images/Publications/RFCanvas/pull.png"
@@ -825,16 +915,21 @@
                   <p class="mb-4 text-slate-700 text-sm font-medium">
                     <b class="text-slate-900 font-black">Xingyu Chen</b>, Zihao Feng, Ke Sun, Kun Qian, Xinyu Zhang
                   </p>
-                  <div class="flex space-x-3">
-                    <a href="https://dl.acm.org/doi/abs/10.1145/3666025.3699351"
-                      class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">PDF</a>
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex flex-wrap gap-2">
+                      <a href="https://dl.acm.org/doi/abs/10.1145/3666025.3699351"
+                        class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">PDF</a>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      <span class="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-slate-200">RF Digital Twin</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Publication item -->
-            <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
+            <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="lead-author rf-digital-twin">
               <div class="md:flex">
                 <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                   <img src="images/Publications/RFGen/pull_wide.png"
@@ -855,20 +950,25 @@
                   <p class="mb-4 text-slate-700 text-sm font-medium">
                     <b class="text-slate-900 font-black">Xingyu Chen</b>, Xinyu Zhang
                   </p>
-                  <div class="flex flex-wrap gap-2">
-                    <a href="https://rfgen.xingyuchen.me/"
-                      class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">Page</a>
-                    <a href="files/Xingyu.Chen_SenSys23_RFGen.pdf"
-                      class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">PDF</a>
-                    <a href="https://github.com/Asixa/RF-Genesis"
-                      class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">Code</a>
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex flex-wrap gap-2">
+                      <a href="https://rfgen.xingyuchen.me/"
+                        class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">Page</a>
+                      <a href="files/Xingyu.Chen_SenSys23_RFGen.pdf"
+                        class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">PDF</a>
+                      <a href="https://github.com/Asixa/RF-Genesis"
+                        class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">Code</a>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      <span class="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-slate-200">RF Digital Twin</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Publication item (MetaWave) -->
-            <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group">
+            <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="lead-author metasurfaces rf-digital-twin">
               <div class="md:flex">
                 <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                   <img src="images/Publications/Metawave/pull_wide.png"
@@ -897,13 +997,19 @@
                       class="text-slate-700 hover:text-ag-blue hover:underline">Wenyao Xu</a>,
                     Kui Ren, Chunming Qiao
                   </p>
-                  <div class="flex flex-wrap gap-2">
-                    <a href="https://www.ndss-symposium.org/ndss-paper/metawave-attacking-mmwave-sensing-with-meta-material-enhanced-tags/"
-                      class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">Link</a>
-                    <a href="files/ndss23-fall-final348.pdf"
-                      class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">PDF(Hi-Res)</a>
-                    <a href="https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_f348_paper.pdf"
-                      class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">PDF(Lo-Res)</a>
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex flex-wrap gap-2">
+                      <a href="https://www.ndss-symposium.org/ndss-paper/metawave-attacking-mmwave-sensing-with-meta-material-enhanced-tags/"
+                        class="text-xs font-bold text-ag-blue bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg hover:bg-ag-blue hover:text-white transition-all">Link</a>
+                      <a href="files/ndss23-fall-final348.pdf"
+                        class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">PDF(Hi-Res)</a>
+                      <a href="https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_f348_paper.pdf"
+                        class="text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-all">PDF(Lo-Res)</a>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      <span class="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-slate-200">Metasurfaces</span>
+                      <span class="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-slate-200">RF Digital Twin</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -964,6 +1070,9 @@
                 <h3 class="font-bold text-slate-900 mb-3 text-lg">Invited Reviewer</h3>
                 <ul class="space-y-1.5 text-slate-700 text-sm font-medium">
                   <li>• <a
+                      href="https://pimrc2025.ieee-pimrc.org/"
+                      class="text-ag-blue hover:text-ag-blue-dark hover:underline">IEEE PIMRC</a></li>
+                  <li>• <a
                       href="https://www.itsoc.org/event/globecom23-main-symposium-communication-and-information-system-security-ciss"
                       class="text-ag-blue hover:text-ag-blue-dark hover:underline">IEEE GlobeCom 2023 CISS</a></li>
                   <li>• <a href="https://ieee-cas.org/publication/ieee-transactions-mobile-computing"
@@ -995,6 +1104,65 @@
       </div>
     </section>
 
+    <!-- Teaching & Talks and Mentorship -->
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div class="md:flex md:space-x-12">
+          <div class="md:w-1/2">
+            <h2 class="text-2xl font-bold mb-6 text-slate-900 flex items-center">
+              <span class="bg-ag-blue w-2 h-8 rounded-full mr-3"></span>
+              Teaching &amp; Talks
+            </h2>
+            <div class="space-y-4">
+              <div class="glass-panel p-5 rounded-xl hover:border-ag-blue/30 transition-colors">
+                <h3 class="font-bold text-slate-900 mb-3 text-lg">Teaching Assistant</h3>
+                <p class="text-slate-700 text-sm font-medium mb-3">University of Colorado Denver</p>
+                <ul class="space-y-1.5 text-slate-700 text-sm font-medium">
+                  <li>• <span class="font-semibold">CSCI 4771/5771</span> Introduction to Mobile Computing</li>
+                  <li>• <span class="font-semibold">CSCI 4773/5773</span> Introduction to Emerging System Security</li>
+                </ul>
+              </div>
+
+              <div class="glass-panel p-5 rounded-xl hover:border-ag-blue/30 transition-colors">
+                <h3 class="font-bold text-slate-900 mb-3 text-lg">Invited Talks</h3>
+                <ul class="space-y-1.5 text-slate-700 text-sm font-medium">
+                  <li>• <span class="font-semibold">Samsung Research America</span> Spark Session</li>
+                  <li>• <span class="font-semibold">UCSD CWC</span> Seminar</li>
+                  <li>• <span class="font-semibold">UCSD CSE 291</span> Pixel Cafe Seminar</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:w-1/2 mt-8 md:mt-0">
+            <h2 class="text-2xl font-bold mb-6 text-slate-900 flex items-center">
+              <span class="bg-ag-blue w-2 h-8 rounded-full mr-3"></span>
+              Mentorship
+            </h2>
+            <div class="glass-panel p-5 rounded-xl hover:border-ag-blue/30 transition-colors">
+              <ul class="space-y-3 text-slate-700 text-sm font-medium">
+                <li>
+                  <a href="https://www.linkedin.com/in/wenxuan-guo-a4ba72265"
+                    class="font-bold text-ag-blue hover:text-ag-blue-dark hover:underline">Wenxuan Guo</a>
+                  <span class="text-slate-600"> — UCSD (Master)</span>
+                </li>
+                <li>
+                  <a href="https://zihaofeng.com/"
+                    class="font-bold text-ag-blue hover:text-ag-blue-dark hover:underline">Zihao Feng</a>
+                  <span class="text-slate-600"> — UCSD (Master) → USC (PhD)</span>
+                </li>
+                <li>
+                  <a href="https://fangxm.me/"
+                    class="font-bold text-ag-blue hover:text-ag-blue-dark hover:underline">Xinmin Fang</a>
+                  <span class="text-slate-600"> — Middle School → High School → Guangdong University of Technology (Bachelor) → CU Denver (PhD)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer class="border-t border-gray-400 py-8 mt-12 bg-gray-300/90">
       <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
@@ -1014,7 +1182,73 @@
     const urlParams = new URLSearchParams(window.location.search);
     const avator = urlParams.get('avator')
     if (avator == "robot")
-      document.getElementById("avator").src = "images/A-R.jpg"
+      document.getElementById("avator").src = "images/A-R.jpg";
+
+    // News More/Less toggle
+    (function () {
+      const btn = document.getElementById('news-toggle');
+      if (!btn) return;
+      const label = document.getElementById('news-toggle-label');
+      const icon = document.getElementById('news-toggle-icon');
+      const items = document.querySelectorAll('.news-old');
+      let expanded = false;
+      btn.addEventListener('click', () => {
+        expanded = !expanded;
+        items.forEach(el => el.classList.toggle('hidden', !expanded));
+        label.textContent = expanded ? 'Less' : 'More';
+        icon.style.transform = expanded ? 'rotate(180deg)' : '';
+      });
+    })();
+
+    // Publication filter
+    (function () {
+      const filterBar = document.getElementById('pub-filter');
+      if (!filterBar) return;
+      const buttons = filterBar.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.publication-card');
+      const activeBtnCls = ['bg-ag-blue', 'text-white'];
+      const inactiveBtnCls = ['bg-white', 'border', 'border-slate-300', 'text-slate-700', 'hover:border-ag-blue', 'hover:text-ag-blue'];
+      const activeCountCls = ['bg-white/25', 'text-white'];
+      const inactiveCountCls = ['bg-slate-200', 'text-slate-700'];
+
+      // Compute counts
+      buttons.forEach(btn => {
+        const filter = btn.dataset.filter;
+        const count = (filter === 'all')
+          ? cards.length
+          : Array.from(cards).filter(c => (c.dataset.tags || '').split(/\s+/).includes(filter)).length;
+        const countEl = btn.querySelector('.filter-count');
+        if (countEl) countEl.textContent = count;
+      });
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.filter;
+          buttons.forEach(b => {
+            const countEl = b.querySelector('.filter-count');
+            if (b === btn) {
+              b.classList.add(...activeBtnCls);
+              b.classList.remove(...inactiveBtnCls);
+              if (countEl) {
+                countEl.classList.add(...activeCountCls);
+                countEl.classList.remove(...inactiveCountCls);
+              }
+            } else {
+              b.classList.remove(...activeBtnCls);
+              b.classList.add(...inactiveBtnCls);
+              if (countEl) {
+                countEl.classList.remove(...activeCountCls);
+                countEl.classList.add(...inactiveCountCls);
+              }
+            }
+          });
+          cards.forEach(card => {
+            const tags = (card.dataset.tags || '').split(/\s+/);
+            card.style.display = (filter === 'all' || tags.includes(filter)) ? '' : 'none';
+          });
+        });
+      });
+    })();
 
   </script>
 </body>
