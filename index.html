@@ -672,14 +672,14 @@
         <!-- Publication filter -->
         <div class="flex flex-wrap gap-2 mb-6" id="pub-filter">
           <button type="button" data-filter="all"
-            class="filter-btn cursor-pointer inline-flex items-center gap-2 pl-4 pr-2 py-1.5 text-sm font-bold rounded-full bg-ag-blue text-white transition-all">
+            class="filter-btn cursor-pointer inline-flex items-center gap-2 pl-4 pr-2 py-1.5 text-sm font-bold rounded-full bg-white border border-slate-300 text-slate-700 hover:border-ag-blue hover:text-ag-blue transition-all">
             <span>All</span>
-            <span class="filter-count inline-flex items-center justify-center min-w-[1.5rem] h-6 px-1.5 rounded-full bg-white/25 text-white text-xs">0</span>
+            <span class="filter-count inline-flex items-center justify-center min-w-[1.5rem] h-6 px-1.5 rounded-full bg-slate-200 text-slate-700 text-xs">0</span>
           </button>
           <button type="button" data-filter="lead-author"
-            class="filter-btn cursor-pointer inline-flex items-center gap-2 pl-4 pr-2 py-1.5 text-sm font-bold rounded-full bg-white border border-slate-300 text-slate-700 hover:border-ag-blue hover:text-ag-blue transition-all">
+            class="filter-btn cursor-pointer inline-flex items-center gap-2 pl-4 pr-2 py-1.5 text-sm font-bold rounded-full bg-ag-blue text-white transition-all">
             <span>Lead-Author</span>
-            <span class="filter-count inline-flex items-center justify-center min-w-[1.5rem] h-6 px-1.5 rounded-full bg-slate-200 text-slate-700 text-xs">0</span>
+            <span class="filter-count inline-flex items-center justify-center min-w-[1.5rem] h-6 px-1.5 rounded-full bg-white/25 text-white text-xs">0</span>
           </button>
           <button type="button" data-filter="rf-digital-twin"
             class="filter-btn cursor-pointer inline-flex items-center gap-2 pl-4 pr-2 py-1.5 text-sm font-bold rounded-full bg-white border border-slate-300 text-slate-700 hover:border-ag-blue hover:text-ag-blue transition-all">
@@ -1303,6 +1303,8 @@
           });
         });
       });
+
+      filterBar.querySelector('[data-filter="lead-author"]')?.click();
     })();
 
   </script>
