@@ -97,6 +97,19 @@
     }
 
 
+    /* Featured publications */
+    .publication-card-highlight {
+      background: linear-gradient(120deg, #fff8e1 0%, #ffffff 75%);
+      border-color: #e4c46b;
+      box-shadow: 0 4px 16px rgba(161, 119, 22, 0.10);
+    }
+
+    .publication-card-highlight:hover {
+      background: linear-gradient(120deg, #fff0bd 0%, #ffffff 75%);
+      border-color: #c99b32;
+      box-shadow: 0 6px 22px rgba(161, 119, 22, 0.16);
+    }
+
     /* Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
@@ -294,7 +307,7 @@
                 <div class="ml-4 flex items-start">
                   <span class="text-ag-blue font-bold text-sm inline-block w-24 flex-shrink-0">[July 2026]</span>
                   <p class="text-slate-800 text-sm font-medium">
-                    <em><b>Dirichlet Splatting</b></em> is accepted by <em>ACM Transactions on Graphics</em>.<br>
+                    <em><b>Dirichlet Splatting</b></em> is accepted by <em>SIGGRAPH Asia (Journal Track)</em>.<br>
                   </p>
                 </div>
               </div>
@@ -701,7 +714,7 @@
         <div class="space-y-3">
 
           <!-- Publication item - SIGGRAPH Asia 2026 -->
-          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="lead-author rf-digital-twin">
+          <div class="publication-card publication-card-highlight rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="lead-author rf-digital-twin">
             <div class="md:flex">
               <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                 <img src="images/Publications/DirichletSplat/pull.png"
@@ -711,11 +724,7 @@
                 <div class="flex flex-row flex-wrap justify-between items-center gap-2 mb-2 bg-blue-50 px-3 py-1 rounded-lg">
                   <p
                     class="text-ag-blue font-black text-lg tracking-tight">
-                    Transactions on Graphics</p>
-                  <span
-                    class="text-xs text-ag-blue/80 font-semibold whitespace-normal text-right bg-white/80 px-2 py-0.5 rounded">
-                    SIGGRAPH Asia 2026
-                  </span>
+                    SIGGRAPH Asia 2026 (Journal Track)</p>
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-slate-900">Dirichlet Splatting: Differentiable Rendering for Wave-Based Inverse Problems</h3>
                 <p class="mb-2 text-slate-700 text-sm font-medium">
@@ -780,38 +789,8 @@
             </div>
           </div>
 
-          <!-- Publication item -->
-          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="lead-author mobile-system">
-            <div class="md:flex">
-              <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
-                <img src="images/Publications/KDC/pull.png"
-                  class="w-full h-auto max-h-60 object-contain rounded mix-blend-multiply" alt="YORO publication">
-              </div>
-              <div class="p-6 md:w-3/4">
-                <div class="flex flex-row flex-wrap justify-between items-center gap-2 mb-2 bg-blue-50 px-3 py-1 rounded-lg">
-                  <p
-                    class="text-ag-blue font-black text-lg tracking-tight">
-                    NSDI 2026</p>
-                  <span
-                    class="text-xs text-ag-blue/80 font-semibold whitespace-normal text-right bg-white/80 px-2 py-0.5 rounded">
-                    Acceptance Rate: 22.1% (100 of 452)
-                  </span>
-                </div>
-                <h3 class="text-xl font-bold mb-2 text-slate-900">From Bits to Tokens: Knowledge-Driven Generative Communication of Multimodal Data</h3>
-                <p class="mb-2 text-slate-700 text-sm font-medium">
-                  <b class="text-slate-900 font-black">Xingyu Chen</b>, Zihao Feng, Wuqiong Zhao, Jianrong Ding, Ke Sun,
-                  Xinyu Zhang
-                </p>
-                <div class="flex flex-wrap gap-1.5 justify-end">
-                  <span class="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-slate-200">Mobile System</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
           <!-- Publication item - MobiCom 2026 -->
-          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="lead-author rf-digital-twin">
+          <div class="publication-card publication-card-highlight rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="lead-author rf-digital-twin">
             <div class="md:flex">
               <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
                 <img src="images/Publications/RFDT/pull.png"
@@ -845,6 +824,36 @@
               </div>
             </div>
           </div>
+
+          <!-- Publication item -->
+          <div class="publication-card rounded-2xl overflow-hidden transition-all duration-300 group" data-tags="lead-author mobile-system">
+            <div class="md:flex">
+              <div class="md:w-1/4 p-4 flex items-center justify-center bg-slate-50">
+                <img src="images/Publications/KDC/pull.png"
+                  class="w-full h-auto max-h-60 object-contain rounded mix-blend-multiply" alt="YORO publication">
+              </div>
+              <div class="p-6 md:w-3/4">
+                <div class="flex flex-row flex-wrap justify-between items-center gap-2 mb-2 bg-blue-50 px-3 py-1 rounded-lg">
+                  <p
+                    class="text-ag-blue font-black text-lg tracking-tight">
+                    NSDI 2026</p>
+                  <span
+                    class="text-xs text-ag-blue/80 font-semibold whitespace-normal text-right bg-white/80 px-2 py-0.5 rounded">
+                    Acceptance Rate: 22.1% (100 of 452)
+                  </span>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-slate-900">From Bits to Tokens: Knowledge-Driven Generative Communication of Multimodal Data</h3>
+                <p class="mb-2 text-slate-700 text-sm font-medium">
+                  <b class="text-slate-900 font-black">Xingyu Chen</b>, Zihao Feng, Wuqiong Zhao, Jianrong Ding, Ke Sun,
+                  Xinyu Zhang
+                </p>
+                <div class="flex flex-wrap gap-1.5 justify-end">
+                  <span class="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-full border border-slate-200">Mobile System</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
           <div class="space-y-3">
             <!-- Publication item -->
